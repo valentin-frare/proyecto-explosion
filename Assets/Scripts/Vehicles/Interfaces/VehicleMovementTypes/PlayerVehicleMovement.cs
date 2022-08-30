@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerVehicleMovement : BaseVehicleMovement
 {
-    public PlayerVehicleMovement(VehicleWheels vehicleWheels, VehicleConfig vehicleConfig) : base(vehicleWheels, vehicleConfig)
+    public PlayerVehicleMovement(Rigidbody rigidbody, VehicleWheels vehicleWheels, VehicleConfig vehicleConfig) : base(rigidbody, vehicleWheels, vehicleConfig)
     {
     }
 }

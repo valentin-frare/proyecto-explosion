@@ -8,6 +8,8 @@ public class VehicleWheels
 {
     public Transform frontLeftWheel;
     public Transform frontRightWheel;
+    public Transform frontLeftWheelAxis;
+    public Transform frontRightWheelAxis;
     public WheelCollider frontLeftWheelCol;
     public WheelCollider frontRightWheelCol;
     public List<Wheel> backWheels;

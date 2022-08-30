@@ -11,12 +11,13 @@ public class VehicleController : MonoBehaviour
     private bool onAccel => Input.GetKey(KeyCode.W);
     private bool onBrake => Input.GetKey(KeyCode.S);
 
+    [SerializeField] private Rigidbody rigidbody; 
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
 
     void Start()
     {
-        vehicleMovement = new PlayerVehicleMovement(vehicleWheels, vehicleConfig);
+        vehicleMovement = new PlayerVehicleMovement(rigidbody, vehicleWheels, vehicleConfig);
     }
 
     void Update()
