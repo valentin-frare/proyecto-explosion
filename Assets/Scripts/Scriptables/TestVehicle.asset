@@ -16,3 +16,4 @@ MonoBehaviour:
   torqueReverse: 200
   brakeForce: 2000
   steeringSpeed: 0.4
+  maxSteeringAngle: 30

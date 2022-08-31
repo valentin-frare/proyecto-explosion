@@ -11,6 +11,7 @@ public class VehicleController : MonoBehaviour
     private bool onAccel => Input.GetKey(KeyCode.W);
     private bool onBrake => Input.GetKey(KeyCode.S);
 
+    [SerializeField] private SwipeControl swipeControl;
     [SerializeField] private Rigidbody rb; 
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
@@ -18,6 +19,8 @@ public class VehicleController : MonoBehaviour
     void Start()
     {
         vehicleMovement = new PlayerVehicleMovement(rb, vehicleWheels, vehicleConfig);
+
+        swipeControl.Init(vehicleConfig.maxSteeringAngle, vehicleConfig.torque);
     }
 
     void Update()
@@ -29,29 +32,16 @@ public class VehicleController : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (onSteeringRight)
+        if (swipeControl.onDragging)
         {
-            vehicleMovement.SteerRight();
-        }
-        else if (onSteeringLeft)
-        {
-            vehicleMovement.SteerLeft();
+            vehicleMovement.SetSteeringAngle(-swipeControl.Steering);
+
+            vehicleMovement.SetMotorTorque(swipeControl.Acceleration);
         }
         else
         {
             vehicleMovement.SteerToCenter();
-        }
 
-        if (onAccel)
-        {
-            vehicleMovement.Accel();
-        }
-        else if (onBrake)
-        {
-            vehicleMovement.Brake();
-        }
-        else
-        {
             vehicleMovement.Idle();
         }
     }

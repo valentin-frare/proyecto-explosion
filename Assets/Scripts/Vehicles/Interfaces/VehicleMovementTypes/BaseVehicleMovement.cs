@@ -79,12 +79,12 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SteerLeft()
     {
-        if (vehicleWheels.frontLeftWheelCol.steerAngle > -30f)
+        if (vehicleWheels.frontLeftWheelCol.steerAngle > -vehicleConfig.maxSteeringAngle)
         {
             vehicleWheels.frontLeftWheelCol.steerAngle -= vehicleConfig.steeringSpeed;
         }
 
-        if (vehicleWheels.frontLeftWheelCol.steerAngle > -30f)
+        if (vehicleWheels.frontLeftWheelCol.steerAngle > -vehicleConfig.maxSteeringAngle)
         {
             vehicleWheels.frontRightWheelCol.steerAngle -= vehicleConfig.steeringSpeed;
         }
@@ -92,12 +92,12 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SteerRight()
     {
-        if (vehicleWheels.frontLeftWheelCol.steerAngle < 30f)
+        if (vehicleWheels.frontLeftWheelCol.steerAngle < vehicleConfig.maxSteeringAngle)
         {
             vehicleWheels.frontLeftWheelCol.steerAngle += vehicleConfig.steeringSpeed;
         }
 
-        if (vehicleWheels.frontLeftWheelCol.steerAngle < 30f)
+        if (vehicleWheels.frontLeftWheelCol.steerAngle < vehicleConfig.maxSteeringAngle)
         {
             vehicleWheels.frontRightWheelCol.steerAngle += vehicleConfig.steeringSpeed;
         }
@@ -121,5 +121,19 @@ public class BaseVehicleMovement : IVehicleMovement
         vehicleWheels.frontLeftWheelCol.steerAngle += (vehicleWheels.frontLeftWheelCol.steerAngle > 0) ? -vehicleConfig.steeringSpeed : vehicleConfig.steeringSpeed;
 
         vehicleWheels.frontRightWheelCol.steerAngle += (vehicleWheels.frontRightWheelCol.steerAngle > 0) ? -vehicleConfig.steeringSpeed : vehicleConfig.steeringSpeed;
+    }
+
+    public virtual void SetSteeringAngle(float angle)
+    {
+        vehicleWheels.frontLeftWheelCol.steerAngle = angle;
+        vehicleWheels.frontRightWheelCol.steerAngle = angle;
+    }
+
+    public virtual void SetMotorTorque(float torque)
+    {
+        foreach (var wheel in vehicleWheels.backWheels)
+        {
+            wheel.collider.motorTorque = torque;
+        }
     }
 }
