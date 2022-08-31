@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class VehicleController : MonoBehaviour
@@ -15,12 +16,17 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Rigidbody rb; 
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
+    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+
+    private CameraControl cameraControl;
 
     void Start()
     {
         vehicleMovement = new PlayerVehicleMovement(rb, vehicleWheels, vehicleConfig);
 
         swipeControl.Init(vehicleConfig.maxSteeringAngle, vehicleConfig.torque);
+
+        cameraControl = new CameraControl(cinemachineVirtualCamera);
     }
 
     void Update()
@@ -37,12 +43,23 @@ public class VehicleController : MonoBehaviour
             vehicleMovement.SetSteeringAngle(-swipeControl.Steering);
 
             vehicleMovement.SetMotorTorque(swipeControl.Acceleration);
+
+            if (swipeControl.deltaY < 0) 
+            {
+                cameraControl.VehicleOnTop();
+            }
+            else 
+            {
+                cameraControl.VehicleOnBotton();
+            }
         }
         else
         {
             vehicleMovement.SteerToCenter();
 
             vehicleMovement.Idle();
+
+            cameraControl.VehicleOnCenter();
         }
     }
 }
