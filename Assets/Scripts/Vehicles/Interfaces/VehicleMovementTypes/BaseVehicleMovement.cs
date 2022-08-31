@@ -17,8 +17,8 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Update()
     {
-        vehicleWheels.frontLeftWheelAxis.localEulerAngles = new Vector3(vehicleWheels.frontLeftWheelAxis.localEulerAngles.x, ((vehicleWheels.frontLeftWheelCol.steerAngle - 90f) - vehicleWheels.frontLeftWheel.localEulerAngles.z), vehicleWheels.frontLeftWheelAxis.localEulerAngles.z);
-        vehicleWheels.frontRightWheelAxis.localEulerAngles = new Vector3(vehicleWheels.frontRightWheelAxis.localEulerAngles.x, ((vehicleWheels.frontRightWheelCol.steerAngle - 90f) - vehicleWheels.frontRightWheel.localEulerAngles.z), vehicleWheels.frontRightWheelAxis.localEulerAngles.z);
+        vehicleWheels.frontLeftWheelAxis.localEulerAngles = new Vector3(vehicleWheels.frontLeftWheelAxis.localEulerAngles.x, vehicleWheels.frontLeftWheelCol.steerAngle, vehicleWheels.frontLeftWheelAxis.localEulerAngles.z);
+        vehicleWheels.frontRightWheelAxis.localEulerAngles = new Vector3(vehicleWheels.frontRightWheelAxis.localEulerAngles.x, vehicleWheels.frontRightWheelCol.steerAngle, vehicleWheels.frontRightWheelAxis.localEulerAngles.z);
 
         vehicleWheels.frontLeftWheel.transform.Rotate((Vector3.up * vehicleWheels.frontLeftWheelCol.rpm) * Time.fixedDeltaTime); 
         vehicleWheels.frontRightWheel.transform.Rotate((Vector3.up * vehicleWheels.frontRightWheelCol.rpm) * Time.fixedDeltaTime); 
