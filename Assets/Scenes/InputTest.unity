@@ -318,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178830054}
   m_LocalRotation: {x: -0.000000043065413, y: 0.8616215, z: -0.5075515, w: -0.00000007310802}
-  m_LocalPosition: {x: 10.410005, y: 33.384354, z: 12.507838}
+  m_LocalPosition: {x: 13.540006, y: 33.384354, z: 12.507838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -762,6 +762,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1665755825355551969, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: amountToPool
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665755825355551969, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: objectToPool
+      value: 
+      objectReference: {fileID: 7274502809276218343, guid: e0a43e72513f4444fadabeded2781f2e,
+        type: 3}
     - target: {fileID: 5963810425803470486, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
         type: 3}
       propertyPath: speed
@@ -876,7 +887,7 @@ PrefabInstance:
     - target: {fileID: 5887539917300634858, guid: 082ec7b1aefad1e4790a423f89a718a4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.41
+      value: 13.54
       objectReference: {fileID: 0}
     - target: {fileID: 5887539917300634858, guid: 082ec7b1aefad1e4790a423f89a718a4,
         type: 3}
@@ -1156,7 +1167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061815947}
   m_LocalRotation: {x: -0.000000043065413, y: 0.8616215, z: -0.5075515, w: -0.00000007310802}
-  m_LocalPosition: {x: 10.410005, y: 33.384354, z: 12.507838}
+  m_LocalPosition: {x: 13.540006, y: 33.384354, z: 12.507838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1181,6 +1192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444835069997967689, guid: d8e46e65fec8e2049bdfc5623dee362f,
+        type: 3}
+      propertyPath: m_TagString
+      value: LvlContainer
       objectReference: {fileID: 0}
     - target: {fileID: 5348685213501675628, guid: d8e46e65fec8e2049bdfc5623dee362f,
         type: 3}
