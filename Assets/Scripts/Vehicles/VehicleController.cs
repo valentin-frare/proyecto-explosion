@@ -17,8 +17,10 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private TrailRenderer trailRenderer;
 
     private CameraControl cameraControl;
+    private TrailController trailController;
 
     void Start()
     {
@@ -27,11 +29,15 @@ public class VehicleController : MonoBehaviour
         swipeControl.Init(vehicleConfig.maxSteeringAngle, vehicleConfig.torque);
 
         cameraControl = new CameraControl(cinemachineVirtualCamera);
+
+        trailController = new TrailController(trailRenderer);
     }
 
     void Update()
     {
         vehicleMovement.Update();
+
+        trailController.Update();
 
         HandleInputs();
     }

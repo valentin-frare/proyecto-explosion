@@ -26,4 +26,10 @@ public class PlayerVehicleMovement : BaseVehicleMovement
             base.SetSteeringAngle(rigidbody.gameObject.transform.rotation.y * -40f);
         }
     }
+
+    public override void SetMotorTorque(float torque)
+    {
+        if (torque < 0)
+            base.SetMotorTorque(torque);
+    }
 }
