@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class VehicleController : MonoBehaviour
 {
+    public Transform roadBuilderHelper;
+
     private IVehicleMovement vehicleMovement;
 
     private bool onSteeringRight => Input.GetKey(KeyCode.D);
@@ -35,6 +37,8 @@ public class VehicleController : MonoBehaviour
 
     void Update()
     {
+        roadBuilderHelper.position = transform.position.ooZ() + new Vector3(0,0,60);
+
         vehicleMovement.Update();
 
         trailController.Update();
