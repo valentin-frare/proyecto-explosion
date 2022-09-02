@@ -10,7 +10,7 @@ public class SpawnPlants : MonoBehaviour
     [SerializeField]
     private int amount;
     [SerializeField]
-    private Transform truck;
+    private Transform route;
     private Camera cam;
     
     void Awake(){
@@ -26,14 +26,49 @@ public class SpawnPlants : MonoBehaviour
     }
 
     private void ActivateObject(){
-        Vector3 posicion = new Vector3();
+        Vector3 position = new Vector3();
 
-        float izquierda = cam.ScreenToWorldPoint(new Vector3(0f, 0f)).x;
-        float derecha = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, 0f)).x;
-        
-        posicion = new Vector3(Random.Range(izquierda, derecha), 0, truck.position.z - 100);
+        float left = cam.ScreenToWorldPoint(new Vector3(0f, 0f)).x;
+        float right = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth, 0f)).x;
 
-        StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(posicion)));
+        float rightRoute = route.position.x + (route.localScale.x/(Mathf.Sign(route.localScale.x) >= 0 ? -2 : 2));
+        if (Mathf.Abs(right) > Mathf.Abs(rightRoute))
+        {
+            right = rightRoute;
+        }
+
+        float leftRoute = route.position.x - (route.localScale.x/(Mathf.Sign(route.localScale.x) >= 0 ? -2 : 2));
+        if(Mathf.Abs(left) > Mathf.Abs(leftRoute))
+        {
+            left = leftRoute;
+        }
+
+        position = new Vector3(Random.Range(left, right), 0, route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)));
+        StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));
+    }
+
+    private float NotSoRandom(float left, float right){
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        float steer = player.GetComponent<SwipeControl>().Steering;
+
+        if(left > right){
+            float num = left;
+            right = left;
+            left = num;
+        }
+
+        if(steer == 0)
+        {
+            return Random.Range(left, right);
+        }
+        else if (steer > 0)
+        {
+            return Random.Range(left+((right-left)*0.25f), right);
+        }
+        else
+        {
+            return Random.Range(left, right-((right-left)*0.25f));
+        }
     }
 
     public IEnumerator DeleteAfter(float time, GameObject obj)
@@ -49,6 +84,6 @@ public class SpawnPlants : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
