@@ -16,6 +16,7 @@ public class SwipeControl : MonoBehaviour
     public float Steering => steering;
     public float Acceleration => acceleration;
     public float deltaY => delta.y;
+    public float MaxTorque => maxTorque;
 
     public void Init(float maxSteeringAngle, float maxTorque)
     {
