@@ -29,6 +29,8 @@ public class PlayerVehicleMovement : BaseVehicleMovement
 
     public override void SetMotorTorque(float torque)
     {
+        Debug.Log(torque);
+
         if (torque < 0)
             base.SetMotorTorque(torque);
     }
