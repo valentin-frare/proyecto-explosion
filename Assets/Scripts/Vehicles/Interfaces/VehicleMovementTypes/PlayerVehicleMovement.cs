@@ -8,10 +8,7 @@ public class PlayerVehicleMovement : BaseVehicleMovement
 
     public override void Idle()
     {
-        foreach (var wheel in vehicleWheels.backWheels)
-        {
-            wheel.collider.motorTorque = -vehicleConfig.torque / 4;
-        }
+        SetMotorTorque(-vehicleConfig.torque / 4);
     }
 
     public override void SteerToCenter()
@@ -29,7 +26,11 @@ public class PlayerVehicleMovement : BaseVehicleMovement
 
     public override void SetMotorTorque(float torque)
     {
-        Debug.Log(torque);
+        if (vehicleWheels.backWheels[0].collider.rpm < -vehicleConfig.maxRpm)
+        {
+            base.SetMotorTorque(0f);
+            return;
+        }
 
         if (torque < 0)
             base.SetMotorTorque(torque);

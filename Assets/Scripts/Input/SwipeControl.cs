@@ -6,6 +6,7 @@ public class SwipeControl : MonoBehaviour
 {
     public bool onDragging;
 
+    private bool returnToZeroAfterStopDragging;
     private Vector3 startPos;
     private Vector3 delta;
     private float steering;
@@ -18,10 +19,11 @@ public class SwipeControl : MonoBehaviour
     public float deltaY => delta.y;
     public float MaxTorque => maxTorque;
 
-    public void Init(float maxSteeringAngle, float maxTorque)
+    public void Init(float maxSteeringAngle, float maxTorque, bool returnToZeroAfterStopDragging = false)
     {
         this.maxSteeringAngle = maxSteeringAngle;
         this.maxTorque = maxTorque;
+        this.returnToZeroAfterStopDragging = returnToZeroAfterStopDragging;
     }
 
     void Update()
@@ -70,6 +72,12 @@ public class SwipeControl : MonoBehaviour
     private void OnStopDragging()
     {
         startPos = new Vector3(0,0,0);
+
+        if (returnToZeroAfterStopDragging)
+        {
+            acceleration = 0;
+            steering = 0;
+        }
 
         onDragging = false;
     }

@@ -7,4 +7,5 @@ public class VehicleConfig : ScriptableObject {
     public float brakeForce;
     public float steeringSpeed;
     public float maxSteeringAngle;
+    public float maxRpm;
 }

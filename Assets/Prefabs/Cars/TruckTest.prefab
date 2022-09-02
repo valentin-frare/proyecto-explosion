@@ -354,6 +354,37 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!1 &3824498752650412617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7355761172527044697}
+  m_Layer: 0
+  m_Name: RoadBuilderHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7355761172527044697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824498752650412617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5887539917300634858}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5887539916101982757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1087,7 @@ GameObject:
   - component: {fileID: 5887539917300634859}
   m_Layer: 0
   m_Name: TruckTest
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,6 +1107,7 @@ Transform:
   - {fileID: 5887539916101982754}
   - {fileID: 5887539916865922820}
   - {fileID: 5887539917167354108}
+  - {fileID: 7355761172527044697}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1107,7 +1139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414f1870ee8707b4887bf56abc7e7e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 5887539917300634861}
+  roadBuilderHelper: {fileID: 7355761172527044697}
+  swipeControl: {fileID: 0}
+  rb: {fileID: 0}
   vehicleConfig: {fileID: 11400000, guid: 53cfca6acdf5f9447b700bf9215dbf35, type: 2}
   vehicleWheels:
     frontLeftWheel: {fileID: 5887539917116137970}
@@ -1125,6 +1159,8 @@ MonoBehaviour:
       obj: {fileID: 2787894751905634183}
     - collider: {fileID: 2787894753801560589}
       obj: {fileID: 2787894751960051055}
+  cinemachineVirtualCamera: {fileID: 0}
+  trailRenderer: {fileID: 0}
 --- !u!1 &5887539917366839601
 GameObject:
   m_ObjectHideFlags: 0
