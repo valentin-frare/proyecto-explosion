@@ -37,6 +37,7 @@ public class PoolingManager
             if(!pooledObjects[i].activeInHierarchy)
             {
                 pooledObjects[i].SetActive(true);
+                pooledObjects[i].transform.GetChild(Random.Range(0,pooledObjects[i].transform.childCount)).gameObject.SetActive(true);
                 pooledObjects[i].transform.position = position;
                 pooledObjects[i].transform.rotation = rotation;
                 return pooledObjects[i];

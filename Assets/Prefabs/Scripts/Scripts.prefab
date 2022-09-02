@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e698c2ef3c9cbbc408ad4c51f933e516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allObjects:
-  - {fileID: 7274502809276218343, guid: e0a43e72513f4444fadabeded2781f2e, type: 3}
+  plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   amount: 10
+  truck: {fileID: 5887539917300634858, guid: 082ec7b1aefad1e4790a423f89a718a4, type: 3}
 --- !u!1 &6069603103408384432
 GameObject:
   m_ObjectHideFlags: 0
