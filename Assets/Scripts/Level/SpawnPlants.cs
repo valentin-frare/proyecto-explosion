@@ -9,12 +9,14 @@ public class SpawnPlants : MonoBehaviour
     private GameObject plants;
     [SerializeField]
     private int amount;
-    [SerializeField]
     private Transform route;
+    [SerializeField]
+    private SwipeControl swipeCtrl;
     private Camera cam;
     
     void Awake(){
         cam = Camera.main;
+        route = GameObject.FindGameObjectWithTag("Route").transform;
     }
     
     void Start()
@@ -48,8 +50,7 @@ public class SpawnPlants : MonoBehaviour
     }
 
     private float NotSoRandom(float left, float right){
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-        float steer = player.GetComponent<SwipeControl>().Steering;
+        float steer = swipeCtrl.Steering;
 
         if(left > right){
             float num = left;

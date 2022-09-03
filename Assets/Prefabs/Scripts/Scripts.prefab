@@ -140,7 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   amount: 10
-  truck: {fileID: 5887539917300634858, guid: 082ec7b1aefad1e4790a423f89a718a4, type: 3}
+  route: {fileID: 0}
+  swipeCtrl: {fileID: 1468377091994966426}
 --- !u!1 &6069603103408384432
 GameObject:
   m_ObjectHideFlags: 0
