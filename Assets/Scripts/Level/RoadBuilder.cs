@@ -12,6 +12,8 @@ public class RoadBuilder : MonoBehaviour
     private Transform levelContainer;
     private Transform roadsContainer;
 
+    private int generaciones = 0;
+
     private void Awake() {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>().roadBuilderHelper;
 
@@ -35,6 +37,8 @@ public class RoadBuilder : MonoBehaviour
             if ((player.position.z - road.position.z) < -maxDistance)
             {
                 road.position = player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount);
+                generaciones++;
+                //Debug.Log(generaciones);
             }
         }
     }

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 30
-  roadCount: 50
+  roadCount: 10
   roadPrefabs:
   - {fileID: 1129994986824492377, guid: f6f96a4cad11ea246af32bd3076163c8, type: 3}
 --- !u!1 &5425985435390336413
