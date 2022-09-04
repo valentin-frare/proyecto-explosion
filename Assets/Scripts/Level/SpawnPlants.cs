@@ -45,30 +45,26 @@ public class SpawnPlants : MonoBehaviour
             left = leftRoute;
         }
 
-        position = new Vector3(Random.Range(left, right), 0, route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)));
+        position = new Vector3(NotSoRandom(left, right), 0, route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)));
         StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));
     }
 
     private float NotSoRandom(float left, float right){
         float steer = swipeCtrl.Steering;
 
-        if(left > right){
-            float num = left;
-            right = left;
-            left = num;
-        }
-
         if(steer == 0)
         {
+            Debug.Log("steer 0");
             return Random.Range(left, right);
         }
         else if (steer > 0)
         {
-            return Random.Range(left+((right-left)*0.25f), right);
+            return Random.Range(left-((right-left)*0.25f), right);
+            
         }
         else
         {
-            return Random.Range(left, right-((right-left)*0.25f));
+            return Random.Range(left, right+((right-left)*0.25f));
         }
     }
 
