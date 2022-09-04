@@ -129,6 +129,11 @@ public class BaseVehicleMovement : IVehicleMovement
         vehicleWheels.frontRightWheelCol.steerAngle = angle;
     }
 
+    public virtual float GetSteeringAngle()
+    {
+        return (vehicleWheels.frontLeftWheelCol.steerAngle + vehicleWheels.frontRightWheelCol.steerAngle) / 2;
+    }
+
     public virtual void SetMotorTorque(float torque)
     {
         foreach (var wheel in vehicleWheels.backWheels)

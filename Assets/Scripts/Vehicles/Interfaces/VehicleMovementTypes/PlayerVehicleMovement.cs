@@ -13,14 +13,21 @@ public class PlayerVehicleMovement : BaseVehicleMovement
 
     public override void SteerToCenter()
     {
-        if (rigidbody.gameObject.transform.rotation.y > 0.001f) 
+        if (base.GetSteeringAngle() == 0f) return;
+
+        if ((rigidbody.gameObject.transform.rotation.y * Mathf.Rad2Deg) < 0.005f && (rigidbody.gameObject.transform.rotation.y * Mathf.Rad2Deg) > -0.005f)
         {
-            base.SetSteeringAngle(rigidbody.gameObject.transform.rotation.y * -40f);
+            base.SetSteeringAngle(0f);
         }
 
-        if (rigidbody.gameObject.transform.rotation.y < -0.001f) 
+        if ((rigidbody.gameObject.transform.rotation.y * Mathf.Rad2Deg) > 0.001f ) 
         {
-            base.SetSteeringAngle(rigidbody.gameObject.transform.rotation.y * -40f);
+            base.SetSteeringAngle(-(rigidbody.gameObject.transform.rotation.y * Mathf.Rad2Deg));
+        }
+
+        if ((rigidbody.gameObject.transform.rotation.y * Mathf.Rad2Deg) < -0.001f) 
+        {
+            base.SetSteeringAngle(-(rigidbody.gameObject.transform.rotation.y * Mathf.Rad2Deg));
         }
     }
 

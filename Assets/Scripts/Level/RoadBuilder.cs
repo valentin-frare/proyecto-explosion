@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class RoadBuilder : MonoBehaviour
 {
+    [SerializeField] private int maxDistance;
+    [SerializeField] private int roadCount;
     [SerializeField] private List<GameObject> roadPrefabs;
     private Transform player;
     private List<Transform> roads = new List<Transform>();
-    [SerializeField] private int maxDistance;
-    [SerializeField] private int roadCount;
+    private Transform levelContainer;
+    private Transform roadsContainer;
 
     private void Awake() {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>().roadBuilderHelper;
+
+        levelContainer = GameObject.FindGameObjectWithTag("LvlContainer").transform;
+
+        roadsContainer = new GameObject("RoadsContainer").transform;
+        roadsContainer.SetParent(levelContainer);
     }
 
     private void Start() {
         for (int i = 0; i <= roadCount; i++)
         {
-            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], player.position.ooZ() - new Vector3(0,0,maxDistance * i),  transform.rotation).transform);
+            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], player.position.ooZ() - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
         }
     }
 

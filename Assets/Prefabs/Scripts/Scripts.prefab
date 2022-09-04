@@ -89,11 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d92050cd45fc643941d6f1e0e3ebab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadPrefabs:
-  - {fileID: 1129994986824492377, guid: f6f96a4cad11ea246af32bd3076163c8, type: 3}
-  - {fileID: 465612451968644296, guid: ea7da287e14b6fe41883a102692297d2, type: 3}
   maxDistance: 30
   roadCount: 50
+  roadPrefabs:
+  - {fileID: 1129994986824492377, guid: f6f96a4cad11ea246af32bd3076163c8, type: 3}
 --- !u!1 &5425985435390336413
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   amount: 10
-  route: {fileID: 0}
   swipeCtrl: {fileID: 1468377091994966426}
 --- !u!1 &6069603103408384432
 GameObject:
