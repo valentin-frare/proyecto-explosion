@@ -14,6 +14,7 @@ public class SpawnPlants : MonoBehaviour
     private SwipeControl swipeCtrl;
     private Camera cam;
     private Transform anyRoute;
+    private Transform player;
     
     void Awake(){
         cam = Camera.main;
@@ -25,6 +26,7 @@ public class SpawnPlants : MonoBehaviour
         poolingManager = new PoolingManager(plants, amount);
         poolingManager.Init();
         anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
@@ -46,7 +48,9 @@ public class SpawnPlants : MonoBehaviour
             left = leftRoute;
         }
 
-        position = new Vector3(NotSoRandom(left, right), 0, route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)));
+        //Debug.Log(route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)) - player.transform.position.z);
+
+        position = new Vector3(NotSoRandom(left, right), 0, player.transform.position.z - 70);
         StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));
     }
 
