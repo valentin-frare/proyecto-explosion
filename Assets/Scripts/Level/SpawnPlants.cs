@@ -63,16 +63,10 @@ public class SpawnPlants : MonoBehaviour
         }
         else if (steer > 0)
         {
-            Debug.Log("steer > 0");
-            Debug.Log(left);
-            Debug.Log(right+((left-right)*0.25f));
             return Random.Range(left, right+((left-right)*0.25f));
         }
         else
         {
-            Debug.Log("steer < 0");
-            Debug.Log(left-((left-right)*0.25f));
-            Debug.Log(right);
             return Random.Range(left-((left-right)*0.25f), right);
         }
     }
