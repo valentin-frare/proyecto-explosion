@@ -30,13 +30,14 @@ public class RoadBuilder : MonoBehaviour
         }
     }
 
-    void Update()
+    void LateUpdate()
     {
         foreach (Transform road in roads)
         {
             if ((player.position.z - road.position.z) < -maxDistance)
             {
-                road.position = player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount);
+                var pos = (player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount));
+                road.position = new Vector3(pos.x, pos.y, Mathf.RoundToInt(pos.z / 10) * 10);
                 generaciones++;
                 //Debug.Log(generaciones);
             }
