@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31dbeeea40ab0ab43858eb66f0652fff, type: 3}
-  m_Name: TestVehicle
+  m_Name: EnemyVehicle
   m_EditorClassIdentifier: 
-  torque: 2000
+  torque: 600
   torqueReverse: 200
-  brakeForce: 2000
-  steeringSpeed: 0.8
+  brakeForce: 20000
+  steeringSpeed: 2
   maxSteeringAngle: 30
-  maxRpm: 800
+  maxRpm: 400
