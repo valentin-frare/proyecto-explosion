@@ -7,6 +7,7 @@ public interface IVehicleMovement
     public abstract float GetSteeringAngle();
     public abstract void SetSteeringAngle(float angle);
     public abstract void SetMotorTorque(float torque);
+    public abstract void SetBrakeForce(float brake);
     public abstract void Accel();
     public abstract void Brake();
     public abstract void Reverse();

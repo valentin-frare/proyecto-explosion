@@ -13,19 +13,28 @@ public class BaseVehicleMovement : IVehicleMovement
         this.rigidbody = rigidbody;
         this.vehicleWheels = vehicleWheels;
         this.vehicleConfig = vehicleConfig;
+
+        Debug.Log(vehicleWheels.frontLeftWheel.rotation.z);
     }
 
     public virtual void Update()
     {
         vehicleWheels.frontLeftWheelAxis.localEulerAngles = new Vector3(vehicleWheels.frontLeftWheelAxis.localEulerAngles.x, vehicleWheels.frontLeftWheelCol.steerAngle, vehicleWheels.frontLeftWheelAxis.localEulerAngles.z);
         vehicleWheels.frontRightWheelAxis.localEulerAngles = new Vector3(vehicleWheels.frontRightWheelAxis.localEulerAngles.x, vehicleWheels.frontRightWheelCol.steerAngle, vehicleWheels.frontRightWheelAxis.localEulerAngles.z);
+        
+        vehicleWheels.frontLeftWheelCol.GetWorldPose(out var posLeft, out var quatLeft);
+        vehicleWheels.frontLeftWheel.position = posLeft;
+        //vehicleWheels.frontLeftWheel.Rotate(quatLeft.eulerAngles);
 
-        vehicleWheels.frontLeftWheel.transform.Rotate((Vector3.up * vehicleWheels.frontLeftWheelCol.rpm) * Time.fixedDeltaTime); 
-        vehicleWheels.frontRightWheel.transform.Rotate((Vector3.up * vehicleWheels.frontRightWheelCol.rpm) * Time.fixedDeltaTime); 
+        vehicleWheels.frontRightWheelCol.GetWorldPose(out var posRight, out var quatRight);
+        vehicleWheels.frontRightWheel.position = posRight;
+        //vehicleWheels.frontRightWheel.Rotate(quatRight.eulerAngles);
 
         foreach (var wheel in vehicleWheels.backWheels)
         {
-            wheel.obj.transform.Rotate((Vector3.up * wheel.collider.rpm) * Time.fixedDeltaTime);
+            wheel.collider.GetWorldPose(out var pos, out var quat);
+            wheel.obj.transform.position = pos;
+            //wheel.obj.transform.Rotate(quat.eulerAngles);
         }
 
         AntiRoll();
@@ -139,6 +148,14 @@ public class BaseVehicleMovement : IVehicleMovement
         foreach (var wheel in vehicleWheels.backWheels)
         {
             wheel.collider.motorTorque = torque;
+        }
+    }
+
+    public virtual void SetBrakeForce(float brake)
+    {
+        foreach (var wheel in vehicleWheels.backWheels)
+        {
+            wheel.collider.brakeTorque = brake;
         }
     }
 }
