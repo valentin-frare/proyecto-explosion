@@ -18,15 +18,15 @@ public class SpawnPlants : MonoBehaviour
     
     void Awake(){
         cam = Camera.main;
-        route = GameObject.FindGameObjectWithTag("Route").transform;
+        poolingManager = new PoolingManager(plants, amount);
+        poolingManager.Init();
     }
     
     void Start()
     {
-        poolingManager = new PoolingManager(plants, amount);
-        poolingManager.Init();
         anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        route = GameObject.FindGameObjectWithTag("Route").transform;
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
