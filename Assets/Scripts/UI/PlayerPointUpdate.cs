@@ -12,10 +12,15 @@ public class PlayerPointUpdate : MonoBehaviour
     private float final;
     private float start;
     private float playerPointStart;
-    
-    private void Start()
+
+    private void Awake() 
     {
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        GameEvents.OnPlayerSpawn += OnPlayerSpawn;
+    }
+    
+    private void OnPlayerSpawn(GameObject player)
+    {
+        playerPosition = player.transform;
         maxWidth = playerPointInvisible.position.x - playerPoint.position.x;
         playerPointStart = playerPoint.position.x;
         start = playerPosition.position.z;
@@ -24,6 +29,8 @@ public class PlayerPointUpdate : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (playerPosition == null) return;
+
         float porcentaje = (start-playerPosition.position.z)*100/final;
         if(porcentaje >= 100){
             return;
