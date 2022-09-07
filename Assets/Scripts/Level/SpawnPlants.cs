@@ -17,16 +17,16 @@ public class SpawnPlants : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
+        
+        poolingManager = new PoolingManager(plants, amount);
+        poolingManager.Init();
     
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
     }
 
     private void OnPlayerSpawn(GameObject player)
     {
-        route = GameObject.FindGameObjectWithTag("Route").transform;
-
-        poolingManager = new PoolingManager(plants, amount);
-        poolingManager.Init();
+        route = GameObject.FindGameObjectWithTag("Route").transform;        
         anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
         this.player = player.transform;
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);

@@ -35,7 +35,7 @@ public class PlayerVehicleMovement : BaseVehicleMovement
     {
         float nonConstantMaxRpm = Mathf.Abs(Mathf.Clamp(torque / vehicleConfig.torque, -1f, -0.25f));
 
-        Debug.Log(vehicleWheels.backWheels[0].collider.rpm.ToString() + " / " + (-vehicleConfig.maxRpm * nonConstantMaxRpm).ToString());
+        //Debug.Log(vehicleWheels.backWheels[0].collider.rpm.ToString() + " / " + (-vehicleConfig.maxRpm * nonConstantMaxRpm).ToString());
 
         if (vehicleWheels.backWheels[0].collider.rpm < (-vehicleConfig.maxRpm * nonConstantMaxRpm))
         {
