@@ -6,6 +6,9 @@ TagManager:
   tags:
   - LvlContainer
   - Route
+  - Road
+  - SpawnPoint
+  - SwipeController
   layers:
   - Default
   - TransparentFX

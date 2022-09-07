@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadBuilderHelper: {fileID: 7355761172527044697}
   swipeControl: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 5887539917300634861}
   vehicleConfig: {fileID: 11400000, guid: 53cfca6acdf5f9447b700bf9215dbf35, type: 2}
   vehicleWheels:
     frontLeftWheel: {fileID: 5887539917116137970}

@@ -14,24 +14,33 @@ public class RoadBuilder : MonoBehaviour
 
     private int generaciones = 0;
 
-    private void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<VehicleController>().roadBuilderHelper;
+    private void Awake() 
+    {
+        GameEvents.OnPlayerSpawn += OnPlayerSpawn;
+    }
 
+    private void OnPlayerSpawn(GameObject player)
+    {
+        this.player = player.GetComponent<VehicleController>().roadBuilderHelper;
+    }
+
+    private void Start() 
+    {
         levelContainer = GameObject.FindGameObjectWithTag("LvlContainer").transform;
 
         roadsContainer = new GameObject("RoadsContainer").transform;
         roadsContainer.SetParent(levelContainer);
-    }
 
-    private void Start() {
         for (int i = 0; i <= roadCount; i++)
         {
-            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], player.position.ooZ() - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
+            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0,0,30) - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
         }
     }
 
     void LateUpdate()
     {
+        if (player == null) return;
+
         foreach (Transform road in roads)
         {
             if ((player.position.z - road.position.z) < -maxDistance)

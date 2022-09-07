@@ -21,11 +21,19 @@ public class VehicleAiController : MonoBehaviour
 
     private List<IState> states = new List<IState>();
 
-    private void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+    private void Awake() 
+    {
+        GameEvents.OnPlayerSpawn += OnPlayerSpawn;
     }
 
-    private void Start()
+    private void OnPlayerSpawn(GameObject player)
+    {
+        this.player = player.transform;
+
+        Init();
+    }
+
+    private void Init()
     {
         vehicleMovement = new EnemyVehicleMovement(rb, vehicleWheels, vehicleConfig);
 
@@ -49,13 +57,10 @@ public class VehicleAiController : MonoBehaviour
 
     private void Update()
     {
+        if (stateMachine == null) return;
+
         vehicleMovement.Update();
 
         stateMachine.Update();
-    }
-
-    private void HandleInputs()
-    {
-        
     }
 }

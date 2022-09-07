@@ -9,11 +9,15 @@ public class CameraInit : MonoBehaviour
     private Transform player;
     private CinemachineVirtualCamera cinemachineVirtualCamera;
 
-    void Awake()
+    private void Awake() {
+        GameEvents.OnPlayerSpawn += OnPlayerSpawn;
+    }
+
+    void OnPlayerSpawn(GameObject player)
     {
         referenceObject = new GameObject("CamReference").transform;
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        this.player = player.transform;
 
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
 
@@ -22,6 +26,8 @@ public class CameraInit : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return;
+
         referenceObject.position = player.position.ooZ();
     }
 }

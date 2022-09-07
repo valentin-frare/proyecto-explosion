@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class SpawnPlants : MonoBehaviour
 {
+    [SerializeField] private GameObject plants;
+    [SerializeField] private int amount;
+    [SerializeField] private SwipeControl swipeCtrl;
+
     private PoolingManager poolingManager;
-    [SerializeField]
-    private GameObject plants;
-    [SerializeField]
-    private int amount;
-    private Transform route;
-    [SerializeField]
-    private SwipeControl swipeCtrl;
     private Camera cam;
+    private Transform route;
     private Transform anyRoute;
     private Transform player;
     
-    void Awake(){
-        cam = Camera.main;
-        route = GameObject.FindGameObjectWithTag("Route").transform;
-    }
-    
-    void Start()
+    private void Awake()
     {
+        cam = Camera.main;
+    
+        GameEvents.OnPlayerSpawn += OnPlayerSpawn;
+    }
+
+    private void OnPlayerSpawn(GameObject player)
+    {
+        route = GameObject.FindGameObjectWithTag("Route").transform;
+
         poolingManager = new PoolingManager(plants, amount);
         poolingManager.Init();
         anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        this.player = player.transform;
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
-    private void ActivateObject(){
+    private void ActivateObject()
+    {
         Vector3 position = new Vector3();
 
         float left = cam.ScreenToWorldPoint(new Vector3(0f + cam.pixelWidth*0.1f, 0f)).x;
@@ -54,7 +57,8 @@ public class SpawnPlants : MonoBehaviour
         StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));
     }
 
-    private float NotSoRandom(float left, float right){
+    private float NotSoRandom(float left, float right)
+    {
         float steer = swipeCtrl.Steering;
 
         if(steer == 0)
@@ -79,11 +83,5 @@ public class SpawnPlants : MonoBehaviour
             obj.transform.GetChild(i).gameObject.SetActive(false);
         }
         obj.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
