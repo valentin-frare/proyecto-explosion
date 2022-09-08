@@ -17,4 +17,4 @@ MonoBehaviour:
   brakeForce: 20000
   steeringSpeed: 2
   maxSteeringAngle: 30
-  maxRpm: 400
+  maxRpm: 800

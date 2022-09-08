@@ -60,8 +60,13 @@ public class EnemyVehicleMovement : BaseVehicleMovement
 
     public override void SetMotorTorque(float torque)
     {
-        if (vehicleWheels.backWheels[0].collider.rpm < -vehicleConfig.maxRpm)
+        float nonConstantMaxRpm = Mathf.Abs(Mathf.Clamp(torque / vehicleConfig.torque, -1f, -0.25f));
+
+        //Debug.Log(vehicleWheels.backWheels[0].collider.rpm.ToString() + " / " + (-vehicleConfig.maxRpm * nonConstantMaxRpm).ToString());
+
+        if (vehicleWheels.backWheels[0].collider.rpm < (-vehicleConfig.maxRpm * nonConstantMaxRpm))
         {
+            base.SetBrakeForce(200f);
             base.SetMotorTorque(0f);
             return;
         }

@@ -9,6 +9,8 @@ TagManager:
   - Road
   - SpawnPoint
   - SwipeController
+  - LeftLane
+  - RightLane
   layers:
   - Default
   - TransparentFX
