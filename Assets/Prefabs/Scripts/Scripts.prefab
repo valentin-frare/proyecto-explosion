@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModels:
-  - {fileID: 5887539917300634860, guid: 082ec7b1aefad1e4790a423f89a718a4, type: 3}
+  - {fileID: 5887539917300634860, guid: 5363001b1eb6eac47b2455c8d06872dc, type: 3}
 --- !u!1 &2745236779317231215
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,3 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4d9a57ab49f024bbc55137d1e0cf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLogged: 0
+  isInventoryUpdated: 0
+  isSelectedVehicle: 0
+  selectedVehicle: 

@@ -17,5 +17,24 @@ public class PlayerPrefabsManager : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
+    IEnumerator GetPlayerPrefab()
+    {
+        yield return new  WaitUntil(() => {return PlayfabManager.instance.isLogged;});
+
+        PlayfabManager.instance.GetSelectedVehicle();
+
+        yield return new  WaitUntil(() => {return PlayfabManager.instance.isInventoryUpdated;});
+
+        for (int i = 0; i < playerModels.Count; i++)
+        {
+            if (playerModels[i].name == PlayfabManager.instance.selectedVehicle)
+                actualPlayerModel = i;
+        }
+    }
+
+    private void Start() {
+        StartCoroutine(GetPlayerPrefab());
+    }
+
     public GameObject GetActualPlayerModel() => playerModels[actualPlayerModel];
 }

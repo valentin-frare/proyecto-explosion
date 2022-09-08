@@ -16,6 +16,7 @@ public class CrashingPlayerState : IState
         this.enemyMovement = enemyMovement;
         this.player = player;
     }
+    
     public void Update()
     {
         if (enemy.position.z > player.position.z)

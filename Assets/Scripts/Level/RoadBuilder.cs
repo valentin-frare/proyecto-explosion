@@ -46,7 +46,7 @@ public class RoadBuilder : MonoBehaviour
             if ((player.position.z - road.position.z) < -maxDistance)
             {
                 var pos = (player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount));
-                road.position = new Vector3(pos.x, pos.y, Mathf.RoundToInt(pos.z / 10) * 10);
+                road.position = new Vector3(pos.x, pos.y, Mathf.CeilToInt(pos.z / 10) * 10);
                 generaciones++;
                 //Debug.Log(generaciones);
             }
