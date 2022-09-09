@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbeeea40ab0ab43858eb66f0652fff, type: 3}
   m_Name: TestVehicle
   m_EditorClassIdentifier: 
-  torque: 2000
+  torque: 100
   torqueReverse: 200
   brakeForce: 2000
-  steeringSpeed: 0.8
+  steeringSpeed: 50
   maxSteeringAngle: 30
   maxRpm: 800
