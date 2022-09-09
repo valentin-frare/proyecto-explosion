@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 711059917034072470, guid: 8035698e15550b644a67e3075d6c7493,
+        type: 3}
+      propertyPath: points
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 901965894831507842, guid: 8035698e15550b644a67e3075d6c7493,
         type: 3}
       propertyPath: m_Name
-      value: PlantaCircular
+      value: PlantaCircularVerde
       objectReference: {fileID: 0}
     - target: {fileID: 1564370534261381056, guid: 8035698e15550b644a67e3075d6c7493,
         type: 3}

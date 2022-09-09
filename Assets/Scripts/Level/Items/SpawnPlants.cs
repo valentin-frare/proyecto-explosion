@@ -53,7 +53,7 @@ public class SpawnPlants : MonoBehaviour
 
         //Debug.Log(route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)) - player.transform.position.z);
 
-        position = new Vector3(NotSoRandom(left, right), 0, player.transform.position.z - 70);
+        position = new Vector3(NotSoRandom(left, right), 1, player.transform.position.z - 70);
         StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));
     }
 
@@ -81,6 +81,7 @@ public class SpawnPlants : MonoBehaviour
         for (int i = 0; i < obj.transform.childCount; i++)
         {
             obj.transform.GetChild(i).gameObject.SetActive(false);
+            obj.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
         }
         obj.SetActive(false);
     }
