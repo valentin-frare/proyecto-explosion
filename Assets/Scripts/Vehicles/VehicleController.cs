@@ -23,6 +23,7 @@ public class VehicleController : MonoBehaviour
 
     private CameraControl cameraControl;
     private TrailController trailController;
+    private bool stopHandleInputs = false;
 
     public void Init(SwipeControl swipeControl, CinemachineVirtualCamera cinemachineVirtualCamera)
     {
@@ -35,7 +36,6 @@ public class VehicleController : MonoBehaviour
         vehicleMovement = new PlayerVehicleMovement(rb, vehicleWheels, vehicleConfig);
         swipeControl.Init(vehicleConfig.maxSteeringAngle, vehicleConfig.torque);
         cameraControl = new CameraControl(cinemachineVirtualCamera);
-        //trailController = new TrailController(trailRenderer);
     }
 
     void Update()
@@ -44,7 +44,10 @@ public class VehicleController : MonoBehaviour
 
         vehicleMovement.Update();
 
-        //trailController.Update();
+        if (stopHandleInputs)
+        {
+            return;
+        }
 
         HandleInputs();
     }
@@ -74,5 +77,11 @@ public class VehicleController : MonoBehaviour
 
             cameraControl.VehicleOnCenter();
         }
+    }
+
+    public void StopVehicle()
+    {
+        stopHandleInputs = true;
+        vehicleMovement.SetMotorTorque(0);
     }
 }

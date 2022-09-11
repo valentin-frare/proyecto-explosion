@@ -13,6 +13,8 @@ public class SpawnPlants : MonoBehaviour
     private Transform route;
     private Transform anyRoute;
     private Transform player;
+    public PlayerPointUpdate playerPointUpdate;
+    private float playerSpawnZ = 0;
     
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class SpawnPlants : MonoBehaviour
         route = GameObject.FindGameObjectWithTag("Route").transform;        
         anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
         this.player = player.transform;
+        playerSpawnZ = this.player.position.z;
+        playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
@@ -51,7 +55,9 @@ public class SpawnPlants : MonoBehaviour
             left = leftRoute;
         }
 
-        //Debug.Log(route.position.z - (route.localScale.z/(Mathf.Sign(route.localScale.z) >= 0 ? 2 : -2)) - player.transform.position.z);
+        if((player.transform.position.z - 70) <= (playerSpawnZ - playerPointUpdate.final)){
+            return;
+        }
 
         position = new Vector3(NotSoRandom(left, right), 1, player.transform.position.z - 70);
         StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));

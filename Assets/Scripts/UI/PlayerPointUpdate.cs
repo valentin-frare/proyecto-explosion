@@ -9,9 +9,11 @@ public class PlayerPointUpdate : MonoBehaviour
     public Transform playerPointInvisible;
     private Transform playerPosition;
     private float maxWidth;
-    private float final;
+    public float final = 500f;
     private float start;
     private float playerPointStart;
+    private float porcentaje = 0;
+    private VehicleController playerVehicle;
 
     private void Awake() 
     {
@@ -21,20 +23,21 @@ public class PlayerPointUpdate : MonoBehaviour
     private void OnPlayerSpawn(GameObject player)
     {
         playerPosition = player.transform;
+        playerVehicle = player.GetComponent<VehicleController>();
         maxWidth = playerPointInvisible.position.x - playerPoint.position.x;
         playerPointStart = playerPoint.position.x;
         start = playerPosition.position.z;
-        final = 1000;
     }
 
     private void LateUpdate()
     {
         if (playerPosition == null) return;
 
-        float porcentaje = (start-playerPosition.position.z)*100/final;
         if(porcentaje >= 100){
+            playerVehicle.StopVehicle();
             return;
         }
+        porcentaje = (start-playerPosition.position.z)*100/final;
         playerPoint.position = new Vector2(playerPointStart + (porcentaje*maxWidth/100),playerPoint.position.y);
     }
 }

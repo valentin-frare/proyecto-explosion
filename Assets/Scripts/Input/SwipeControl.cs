@@ -49,7 +49,7 @@ public class SwipeControl : MonoBehaviour
 
     private void OnStartDragging(Vector3 position)
     {
-        startPos = position;
+        startPos = new Vector3(Screen.width/2, position.y, 0);
 
         delta = startPos - position;
 

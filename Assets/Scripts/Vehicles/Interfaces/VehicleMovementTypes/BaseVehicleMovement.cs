@@ -14,7 +14,7 @@ public class BaseVehicleMovement : IVehicleMovement
         this.vehicleWheels = vehicleWheels;
         this.vehicleConfig = vehicleConfig;
 
-        Debug.Log(vehicleWheels.frontLeftWheel.rotation.z);
+        //Debug.Log(vehicleWheels.frontLeftWheel.rotation.z);
     }
 
     public virtual void Update()
