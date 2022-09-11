@@ -13,8 +13,7 @@ public class SpawnPlants : MonoBehaviour
     private Transform route;
     private Transform anyRoute;
     private Transform player;
-    public PlayerPointUpdate playerPointUpdate;
-    private float playerSpawnZ = 0;
+    private Transform finishLine;
     
     private void Awake()
     {
@@ -31,8 +30,7 @@ public class SpawnPlants : MonoBehaviour
         route = GameObject.FindGameObjectWithTag("Route").transform;        
         anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
         this.player = player.transform;
-        playerSpawnZ = this.player.position.z;
-        playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
+        finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
@@ -55,7 +53,7 @@ public class SpawnPlants : MonoBehaviour
             left = leftRoute;
         }
 
-        if((player.transform.position.z - 70) <= (playerSpawnZ - playerPointUpdate.final)){
+        if((player.transform.position.z - 70) <= (finishLine.position.z)){
             return;
         }
 

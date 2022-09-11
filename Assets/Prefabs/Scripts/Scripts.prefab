@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7b948a033438e4490e0699726f99b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftLanes: []
 --- !u!1 &2660589027735010396
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +300,8 @@ MonoBehaviour:
   roadCount: 10
   roadPrefabs:
   - {fileID: 1129994986824492377, guid: f6f96a4cad11ea246af32bd3076163c8, type: 3}
+  finishLine: {fileID: 151592668270188619, guid: 66112a0a487ad7943ac46b6bbabaf238,
+    type: 3}
 --- !u!1 &3915610730548294064
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +396,7 @@ MonoBehaviour:
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   amount: 10
   swipeCtrl: {fileID: 1468377091994966426}
+  playerPointUpdate: {fileID: 0}
 --- !u!1 &6069603103408384432
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +500,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.46205357, y: 1}
+    m_SensorSize: {x: 0.46153846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

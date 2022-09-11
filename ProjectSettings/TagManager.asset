@@ -11,6 +11,7 @@ TagManager:
   - SwipeController
   - LeftLane
   - RightLane
+  - FinishLine
   layers:
   - Default
   - TransparentFX
