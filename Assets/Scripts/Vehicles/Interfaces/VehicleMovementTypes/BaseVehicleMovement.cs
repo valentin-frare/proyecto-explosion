@@ -81,13 +81,15 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SetMotorTorque(float torque)
     {
-        
+        float clampedTorque = Mathf.Clamp(torque, vehicleConfig.torque*-2, 0);
 
-        float singleStep = -torque * Time.deltaTime;
+        float singleStep = -clampedTorque * Time.deltaTime;
 
-        Debug.Log(singleStep);
+        Debug.Log(clampedTorque);
 
-        rigidbody.transform.position = Vector3.MoveTowards(rigidbody.transform.position, new Vector3(rigidbody.transform.position.x,rigidbody.transform.position.y,singleStep > 0 ? -10 : 10), singleStep);
+        rigidbody.AddForce(new Vector3(0,0,-1) * 2520f);
+
+        //rigidbody.transform.position = Vector3.MoveTowards(rigidbody.transform.position, new Vector3(rigidbody.transform.position.x, rigidbody.transform.position.y, rigidbody.transform.position.z + clampedTorque), singleStep);
     }
 
     public virtual void SetBrakeForce(float brake)

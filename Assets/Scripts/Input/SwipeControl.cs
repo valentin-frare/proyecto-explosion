@@ -55,7 +55,7 @@ public class SwipeControl : MonoBehaviour
 
         steering = (delta.x / (Screen.width / 2)) * maxSteeringAngle;
 
-        acceleration = (delta.y / (Screen.height / 5)) * maxTorque;
+        acceleration = (delta.y / (Screen.height / 2)) * maxTorque;
 
         onDragging = true;
     }
@@ -64,7 +64,7 @@ public class SwipeControl : MonoBehaviour
     {
         delta = startPos - position;
 
-        acceleration = (delta.y / (Screen.height / 5)) * maxTorque;
+        acceleration = (delta.y / (Screen.height / 2)) * maxTorque;
 
         steering = (delta.x / (Screen.width / 2)) * maxSteeringAngle;
     } 
