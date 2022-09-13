@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerVehicleMovement : BaseVehicleMovement
 {
-    public PlayerVehicleMovement(Rigidbody rigidbody, VehicleWheels vehicleWheels, VehicleConfig vehicleConfig) : base(rigidbody, vehicleWheels, vehicleConfig)
+    public PlayerVehicleMovement(Transform transform, Rigidbody sphereMotor, VehicleWheels vehicleWheels, VehicleConfig vehicleConfig, float alignToGroundTime = 20) : base(transform, sphereMotor, vehicleWheels, vehicleConfig, alignToGroundTime)
     {
     }
 }

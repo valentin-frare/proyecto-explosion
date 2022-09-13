@@ -5,26 +5,63 @@ using UnityEngine;
 public class BaseVehicleMovement : IVehicleMovement
 {   
     protected VehicleConfig vehicleConfig;
+    protected Transform transform;
+    protected Rigidbody sphereMotor;
     protected VehicleWheels vehicleWheels;
     protected Rigidbody rigidbody;
+    protected bool isCarGrounded;
+    protected float steering;
+    protected float torque;
+    protected float normalDrag;
+    protected float alignToGroundTime;
 
-    public BaseVehicleMovement(Rigidbody rigidbody, VehicleWheels vehicleWheels, VehicleConfig vehicleConfig)
+    Quaternion startRot;
+
+    public BaseVehicleMovement(Transform transform, Rigidbody sphereMotor, VehicleWheels vehicleWheels, VehicleConfig vehicleConfig, float alignToGroundTime = 20f)
     {
-        this.rigidbody = rigidbody;
+        this.transform = transform;
+        this.sphereMotor = sphereMotor;
         this.vehicleWheels = vehicleWheels;
         this.vehicleConfig = vehicleConfig;
+        this.alignToGroundTime = alignToGroundTime;
+        
+        sphereMotor.transform.parent = null;
+        normalDrag = sphereMotor.drag;
+
+        startRot = transform.rotation;
     }
 
     public virtual void Update()
     {
+        // Set Cars Position to Our Sphere
+        transform.position = sphereMotor.transform.position;
 
+        // Raycast to the ground and get normal to align car with it.
+        RaycastHit hit;
+        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, vehicleConfig.groundLayer);
+        
+        // Rotate Car to align with ground
+        //Quaternion toRotateTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+        //transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, alignToGroundTime * Time.deltaTime);
+        
+        // Calculate Movement Direction
+        torque *= torque > 0 ? vehicleConfig.torque : vehicleConfig.torqueReverse;
+        
+        // Calculate Drag
+        sphereMotor.drag = isCarGrounded ? normalDrag : vehicleConfig.drag;
+    }
+
+    public virtual void FixedUpdate()
+    {
+        if (isCarGrounded)
+            sphereMotor.AddForce(transform.forward * torque, ForceMode.Acceleration); // Add Movement
+        else
+            sphereMotor.AddForce(transform.up * -200f); // Add Gravity
     }
 
     public virtual void Accel()
     {
-        float singleStep = vehicleConfig.torque * Time.deltaTime;
-
-        rigidbody.transform.position = Vector3.MoveTowards(rigidbody.transform.position, rigidbody.transform.position + new Vector3(0,0,1), singleStep);
+        
     }
 
     public virtual void Brake()
@@ -49,29 +86,33 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Idle()
     {
-        
+        this.torque = vehicleConfig.torque/4;
     }
 
     public virtual void SteerToCenter()
     {
         float singleStep = vehicleConfig.steeringSpeed * Time.deltaTime;
 
-        rigidbody.transform.rotation = Quaternion.RotateTowards(rigidbody.transform.rotation, Quaternion.Euler(0,0,0), singleStep);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, Vector3.back, singleStep, 0.0f);
 
-        vehicleWheels.frontLeftWheel.rotation = Quaternion.Euler(0,0,-90f);
-        vehicleWheels.frontRightWheel.rotation = Quaternion.Euler(0,0,-90f);
+        //transform.rotation = Quaternion.LookRotation(newDirection);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDirection), Time.smoothDeltaTime * 4f);
     }
 
-    public virtual void SetSteeringAngle(float angle)
+    public virtual void SetSteeringAngle(float input)
     {
-        float singleStep = vehicleConfig.steeringSpeed * Time.deltaTime;
 
-        rigidbody.transform.rotation = Quaternion.RotateTowards(rigidbody.transform.rotation, Quaternion.Euler(0,angle,0), singleStep);
+        float newRot = input * vehicleConfig.steeringSpeed * Time.deltaTime /** torque*/;
+        
+        if (isCarGrounded)
+        {
+            float singleStep = vehicleConfig.steeringSpeed * Time.deltaTime;
 
-        vehicleWheels.frontLeftWheel.rotation = Quaternion.Euler(0,angle,-90f);
-        vehicleWheels.frontRightWheel.rotation = Quaternion.Euler(0,angle,-90f);
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)), 0.0f);
 
-        //rigidbody.transform.position = Vector3.MoveTowards(rigidbody.transform.position, rigidbody.transform.position + new Vector3(angle > 0 ? -1 : 1,0,0), singleStep / 4);
+            transform.rotation = Quaternion.Slerp(startRot, Quaternion.LookRotation(newDirection), vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)));
+        }
     }
 
     public virtual float GetSteeringAngle()
@@ -81,15 +122,7 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SetMotorTorque(float torque)
     {
-        float clampedTorque = Mathf.Clamp(torque, vehicleConfig.torque*-2, 0);
-
-        float singleStep = -clampedTorque * Time.deltaTime;
-
-        Debug.Log(clampedTorque);
-
-        rigidbody.AddForce(new Vector3(0,0,-1) * 2520f);
-
-        //rigidbody.transform.position = Vector3.MoveTowards(rigidbody.transform.position, new Vector3(rigidbody.transform.position.x, rigidbody.transform.position.y, rigidbody.transform.position.z + clampedTorque), singleStep);
+        this.torque = Mathf.Clamp(torque * vehicleConfig.torque, vehicleConfig.torque/4, vehicleConfig.torque);
     }
 
     public virtual void SetBrakeForce(float brake)

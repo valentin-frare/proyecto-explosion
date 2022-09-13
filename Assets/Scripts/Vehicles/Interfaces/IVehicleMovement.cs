@@ -1,6 +1,7 @@
 public interface IVehicleMovement
 {
     public abstract void Update();
+    public abstract void FixedUpdate();
     public abstract void SteerLeft();
     public abstract void SteerRight();
     public abstract void SteerToCenter();

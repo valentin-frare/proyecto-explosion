@@ -12,9 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbeeea40ab0ab43858eb66f0652fff, type: 3}
   m_Name: TestVehicle
   m_EditorClassIdentifier: 
-  torque: 50
-  torqueReverse: 200
+  drag: 1
+  torque: 500
+  torqueReverse: 50
   brakeForce: 2000
-  steeringSpeed: 50
+  steeringSpeed: 300
   maxSteeringAngle: 30
-  maxRpm: 800
+  maxRpm: 5.6810346
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  steeringCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.62026215
+      outSlope: 0.62026215
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.62026215
+      inSlope: 0.62026215
+      outSlope: 0.62026215
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  defaultDirection: {x: 0, y: 0, z: 0}
