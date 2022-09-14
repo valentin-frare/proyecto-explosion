@@ -17,6 +17,8 @@ public class RoadBuilder : MonoBehaviour
 
     private int generaciones = 0;
 
+    private int farDistance = 0;
+
     private void Awake() 
     {
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
@@ -39,8 +41,11 @@ public class RoadBuilder : MonoBehaviour
         {
             roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0,0,30) - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
         }
+        
         playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
         Instantiate(finishLine, new Vector3(0,0,playerSpawnZ-playerPointUpdate.final),  transform.rotation, roadsContainer);
+
+        farDistance = ((int)roads[roads.Count - 1].position.z);
     }
 
     void LateUpdate()
@@ -52,9 +57,9 @@ public class RoadBuilder : MonoBehaviour
             if ((player.position.z - road.position.z) < -maxDistance)
             {
                 var pos = (player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount));
-                road.position = new Vector3(pos.x, pos.y, Mathf.CeilToInt(pos.z / 10) * 10);
+                road.position = new Vector3(pos.x, pos.y, farDistance - 30);
                 generaciones++;
-                //Debug.Log(generaciones);
+                farDistance -= 30;
             }
         }
     }

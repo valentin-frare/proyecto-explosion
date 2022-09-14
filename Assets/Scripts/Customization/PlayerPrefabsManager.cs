@@ -33,7 +33,10 @@ public class PlayerPrefabsManager : MonoBehaviour {
     }
 
     private void Start() {
-        StartCoroutine(GetPlayerPrefab());
+        if (PlayfabManager.instance)
+            StartCoroutine(GetPlayerPrefab());
+        else
+            actualPlayerModel = 0;
     }
 
     public GameObject GetActualPlayerModel() => playerModels[actualPlayerModel];

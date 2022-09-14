@@ -9,13 +9,9 @@ public class VehicleController : MonoBehaviour
 
     private IVehicleMovement vehicleMovement;
 
-    private bool onSteeringRight => Input.GetKey(KeyCode.D);
-    private bool onSteeringLeft => Input.GetKey(KeyCode.A);
-    private bool onAccel => Input.GetKey(KeyCode.W);
-    private bool onBrake => Input.GetKey(KeyCode.S);
-
     [SerializeField] private SwipeControl swipeControl;
-    [SerializeField] private Rigidbody rb; 
+    [SerializeField] private Transform vehicle; 
+    [SerializeField] private Rigidbody sphere; 
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
@@ -33,8 +29,8 @@ public class VehicleController : MonoBehaviour
 
     void Start()
     {
-        vehicleMovement = new PlayerVehicleMovement(rb, vehicleWheels, vehicleConfig);
-        swipeControl.Init(vehicleConfig.maxSteeringAngle, vehicleConfig.torque);
+        vehicleMovement = new PlayerVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
+        swipeControl.Init();
         cameraControl = new CameraControl(cinemachineVirtualCamera);
     }
 
@@ -52,13 +48,17 @@ public class VehicleController : MonoBehaviour
         HandleInputs();
     }
 
+    private void FixedUpdate() {
+        vehicleMovement.FixedUpdate();
+    }
+
     private void HandleInputs()
     {
         if (swipeControl.onDragging)
         {
             vehicleMovement.SetSteeringAngle(-swipeControl.Steering);
 
-            vehicleMovement.SetMotorTorque(swipeControl.Acceleration);
+            vehicleMovement.SetMotorTorque(-swipeControl.Acceleration);
 
             if (swipeControl.deltaY < 0) 
             {

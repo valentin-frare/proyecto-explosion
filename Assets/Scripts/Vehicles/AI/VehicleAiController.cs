@@ -15,7 +15,8 @@ public class VehicleAiController : MonoBehaviour
     private StateMachine stateMachine;
     [SerializeField] private Sensors sensors;
 
-    [SerializeField] private Rigidbody rb; 
+    [SerializeField] private Transform vehicle; 
+    [SerializeField] private Rigidbody sphere; 
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private SensorsConfig sensorsConfig;
@@ -40,7 +41,7 @@ public class VehicleAiController : MonoBehaviour
 
         sensors.Init();
 
-        vehicleMovement = new EnemyVehicleMovement(rb, vehicleWheels, vehicleConfig);
+        vehicleMovement = new EnemyVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
 
         FollowPlayerState followPlayerState = new FollowPlayerState(transform, vehicleMovement, player, 25f);
         NormalDriveState normalDriveState = new NormalDriveState(transform, vehicleMovement, sensors);

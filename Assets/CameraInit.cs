@@ -24,7 +24,7 @@ public class CameraInit : MonoBehaviour
         cinemachineVirtualCamera.Follow = referenceObject;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (player == null) return;
 

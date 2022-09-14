@@ -11,18 +11,13 @@ public class SwipeControl : MonoBehaviour
     private Vector3 delta;
     private float steering;
     private float acceleration;
-    private float maxSteeringAngle;
-    private float maxTorque;
 
     public float Steering => steering;
     public float Acceleration => acceleration;
     public float deltaY => delta.y;
-    public float MaxTorque => maxTorque;
 
-    public void Init(float maxSteeringAngle, float maxTorque, bool returnToZeroAfterStopDragging = false)
+    public void Init(bool returnToZeroAfterStopDragging = false)
     {
-        this.maxSteeringAngle = maxSteeringAngle;
-        this.maxTorque = maxTorque;
         this.returnToZeroAfterStopDragging = returnToZeroAfterStopDragging;
     }
 
@@ -49,13 +44,13 @@ public class SwipeControl : MonoBehaviour
 
     private void OnStartDragging(Vector3 position)
     {
-        startPos = new Vector3(Screen.width/2, position.y, 0);
+        startPos = new Vector3(Screen.width/2, position.y, position.z);
 
         delta = startPos - position;
 
-        steering = (delta.x / (Screen.width / 2)) * maxSteeringAngle;
+        steering = (delta.x / (Screen.width / 2));
 
-        acceleration = (delta.y / (Screen.height / 5)) * maxTorque;
+        acceleration = (delta.y / (Screen.height / 2));
 
         onDragging = true;
     }
@@ -64,9 +59,9 @@ public class SwipeControl : MonoBehaviour
     {
         delta = startPos - position;
 
-        acceleration = (delta.y / (Screen.height / 5)) * maxTorque;
+        acceleration = (delta.y / (Screen.height / 2));
 
-        steering = (delta.x / (Screen.width / 2)) * maxSteeringAngle;
+        steering = (delta.x / (Screen.width / 2));
     } 
 
     private void OnStopDragging()
