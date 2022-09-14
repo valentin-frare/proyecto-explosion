@@ -33,30 +33,22 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Update()
     {
-        // Set Cars Position to Our Sphere
         transform.position = sphereMotor.transform.position;
 
-        // Raycast to the ground and get normal to align car with it.
         RaycastHit hit;
         isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, vehicleConfig.groundLayer);
         
-        // Rotate Car to align with ground
-        //Quaternion toRotateTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-        //transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, alignToGroundTime * Time.deltaTime);
-        
-        // Calculate Movement Direction
         torque *= torque > 0 ? vehicleConfig.torque : vehicleConfig.torqueReverse;
         
-        // Calculate Drag
         sphereMotor.drag = isCarGrounded ? normalDrag : vehicleConfig.drag;
     }
 
     public virtual void FixedUpdate()
     {
         if (isCarGrounded)
-            sphereMotor.AddForce(transform.forward * torque, ForceMode.Acceleration); // Add Movement
+            sphereMotor.AddForce(transform.forward * torque, ForceMode.Acceleration);
         else
-            sphereMotor.AddForce(transform.up * -200f); // Add Gravity
+            sphereMotor.AddForce(transform.up * -200f);
     }
 
     public virtual void Accel()
@@ -95,15 +87,13 @@ public class BaseVehicleMovement : IVehicleMovement
 
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, Vector3.back, singleStep, 0.0f);
 
-        //transform.rotation = Quaternion.LookRotation(newDirection);
-
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDirection), Time.smoothDeltaTime * 4f);
     }
 
     public virtual void SetSteeringAngle(float input)
     {
 
-        float newRot = input * vehicleConfig.steeringSpeed * Time.deltaTime /** torque*/;
+        float newRot = input * vehicleConfig.steeringSpeed * Time.deltaTime;
         
         if (isCarGrounded)
         {
