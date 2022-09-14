@@ -6,6 +6,8 @@ public class SpawnPlants : MonoBehaviour
 {
     [SerializeField] private GameObject plants;
     [SerializeField] private int amount;
+    [SerializeField] private GameObject obstacles;
+    [SerializeField] private int amountObstacles;
     [SerializeField] private SwipeControl swipeCtrl;
 
     private PoolingManager poolingManager;
