@@ -11,6 +11,7 @@ public class SpawnPlants : MonoBehaviour
     [SerializeField] private SwipeControl swipeCtrl;
 
     private PoolingManager poolingManager;
+    private PoolingManager poolingManagerObstacles;
     private Camera cam;
     private Transform route;
     private Transform anyRoute;
@@ -23,6 +24,9 @@ public class SpawnPlants : MonoBehaviour
         
         poolingManager = new PoolingManager(plants, amount);
         poolingManager.Init();
+
+        poolingManagerObstacles = new PoolingManager(obstacles, amountObstacles);
+        poolingManagerObstacles.Init();
     
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
     }
@@ -39,6 +43,7 @@ public class SpawnPlants : MonoBehaviour
     private void ActivateObject()
     {
         Vector3 position = new Vector3();
+        Vector3 positionObstacle = new Vector3();
 
         float left = cam.ScreenToWorldPoint(new Vector3(0f + cam.pixelWidth*0.1f, 0f)).x;
         float right = cam.ScreenToWorldPoint(new Vector3(cam.pixelWidth - cam.pixelWidth*0.1f, 0f)).x;
@@ -60,7 +65,9 @@ public class SpawnPlants : MonoBehaviour
         }
 
         position = new Vector3(NotSoRandom(left, right), 1, player.transform.position.z - 70);
-        StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position)));
+        positionObstacle = new Vector3((position.x >= 0 ? -4.5f : 4.5f), 1, player.transform.position.z - 75);
+        StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position), true));
+        StartCoroutine(DeleteAfter(20f, poolingManagerObstacles.GetPooledObject(positionObstacle), false));
     }
 
     private float NotSoRandom(float left, float right)
@@ -81,13 +88,16 @@ public class SpawnPlants : MonoBehaviour
         }
     }
 
-    public IEnumerator DeleteAfter(float time, GameObject obj)
+    public IEnumerator DeleteAfter(float time, GameObject obj, bool bol)
     {
         yield return new WaitForSeconds(time);
-        for (int i = 0; i < obj.transform.childCount; i++)
+        if(bol)
         {
-            obj.transform.GetChild(i).gameObject.SetActive(false);
-            obj.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+            for (int i = 0; i < obj.transform.childCount; i++)
+            {
+                obj.transform.GetChild(i).gameObject.SetActive(false);
+                obj.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+            }
         }
         obj.SetActive(false);
     }
