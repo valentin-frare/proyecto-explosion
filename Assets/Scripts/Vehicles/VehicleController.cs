@@ -82,6 +82,6 @@ public class VehicleController : MonoBehaviour
     public void StopVehicle()
     {
         stopHandleInputs = true;
-        vehicleMovement.SetMotorTorque(0);
+        vehicleMovement.Brake();
     }
 }

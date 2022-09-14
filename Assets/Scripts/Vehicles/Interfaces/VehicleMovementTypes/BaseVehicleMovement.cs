@@ -10,6 +10,7 @@ public class BaseVehicleMovement : IVehicleMovement
     protected VehicleWheels vehicleWheels;
     protected Rigidbody rigidbody;
     protected bool isCarGrounded;
+    protected bool isBraked;
     protected float steering;
     protected float torque;
     protected float normalDrag;
@@ -58,7 +59,9 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Brake()
     {
-        
+        isBraked = true;
+
+        SetMotorTorque(0f); //Update the motor torque
     }
 
     public virtual void Reverse()
@@ -112,7 +115,10 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SetMotorTorque(float torque)
     {
-        this.torque = Mathf.Clamp(torque * vehicleConfig.torque, vehicleConfig.torque/4, vehicleConfig.torque);
+        if (isBraked)
+            this.torque = 0f;
+        else
+            this.torque = Mathf.Clamp(torque * vehicleConfig.torque, vehicleConfig.torque/4, vehicleConfig.torque);
     }
 
     public virtual void SetBrakeForce(float brake)
