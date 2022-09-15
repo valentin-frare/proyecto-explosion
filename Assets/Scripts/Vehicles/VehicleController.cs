@@ -16,6 +16,7 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private CrashDetectors crashDetectors;
 
     private CameraControl cameraControl;
     private TrailController trailController;
@@ -32,6 +33,7 @@ public class VehicleController : MonoBehaviour
         vehicleMovement = new PlayerVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
         swipeControl.Init();
         cameraControl = new CameraControl(cinemachineVirtualCamera);
+        crashDetectors.OnVehicleCrashed += OnPlayerCrash;
     }
 
     void Update()
@@ -44,6 +46,8 @@ public class VehicleController : MonoBehaviour
         {
             return;
         }
+
+        crashDetectors.Update();
 
         HandleInputs();
     }
@@ -77,6 +81,12 @@ public class VehicleController : MonoBehaviour
 
             cameraControl.VehicleOnCenter();
         }
+    }
+
+    private void OnPlayerCrash()
+    {
+        stopHandleInputs = true;
+        vehicleMovement.Brake();
     }
 
     public void StopVehicle()
