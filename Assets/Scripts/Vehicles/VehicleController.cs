@@ -15,13 +15,16 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private GameObject trailRenderer;
     [SerializeField] private CrashDetectors crashDetectors;
     [SerializeField] private GameObject fireParticles;
 
     private CameraControl cameraControl;
     private TrailController trailController;
     private bool stopHandleInputs = false;
+
+    private GameObject trail1;
+    private GameObject trail2;
 
     public void Init(SwipeControl swipeControl, CinemachineVirtualCamera cinemachineVirtualCamera)
     {
@@ -39,7 +42,7 @@ public class VehicleController : MonoBehaviour
 
     void Update()
     {
-        roadBuilderHelper.position = transform.position.ooZ() + new Vector3(0,0,60);
+        roadBuilderHelper.position = transform.position.ooZ() + new Vector3(0,0,120);
 
         vehicleMovement.Update();
 
@@ -87,10 +90,38 @@ public class VehicleController : MonoBehaviour
 
             cameraControl.VehicleOnCenter();
         }
+
+        if (Mathf.Abs(swipeControl.Steering) > .5f && swipeControl.onDragging)
+        {
+            if (trail1 == null)
+            {
+                trail1 = Instantiate(trailRenderer, vehicleWheels.backWheels[0].obj.transform.position, vehicleWheels.backWheels[0].obj.transform.rotation, vehicleWheels.backWheels[0].obj.transform);
+            }
+
+            if (trail2 == null)
+            {
+                trail2 = Instantiate(trailRenderer, vehicleWheels.backWheels[1].obj.transform.position, vehicleWheels.backWheels[1].obj.transform.rotation, vehicleWheels.backWheels[1].obj.transform);
+            }
+        }
+        else 
+        {
+            if (trail1 != null)
+            {
+                trail1.transform.parent = null;
+                trail1 = null;
+            }
+
+            if (trail2 != null)
+            {
+                trail2.transform.parent = null;
+                trail2 = null;
+            }
+        }
     }
 
     private void OnPlayerCrash(Transform crashDetector)
     {
+        GameManager.instance.gameState = GameState.Crashed;
         Instantiate(fireParticles, crashDetector.position, fireParticles.transform.rotation, crashDetector);
         stopHandleInputs = true;
         vehicleMovement.Brake();

@@ -39,7 +39,7 @@ public class RoadBuilder : MonoBehaviour
 
         for (int i = 0; i <= roadCount; i++)
         {
-            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0,0,30) - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
+            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0,0,120) - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
         }
         
         playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
@@ -54,7 +54,7 @@ public class RoadBuilder : MonoBehaviour
 
         foreach (Transform road in roads)
         {
-            if ((player.position.z - road.position.z) < -maxDistance)
+            if ((player.position.z - road.position.z) < (-maxDistance * 3))
             {
                 var pos = (player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount));
                 road.position = new Vector3(pos.x, pos.y, farDistance - maxDistance);

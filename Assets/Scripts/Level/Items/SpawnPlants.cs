@@ -91,6 +91,9 @@ public class SpawnPlants : MonoBehaviour
     public IEnumerator DeleteAfter(float time, GameObject obj, bool bol)
     {
         yield return new WaitForSeconds(time);
+
+        yield return new WaitUntil(() => { return (GameManager.instance.gameState == GameState.Playing); });
+
         if(bol)
         {
             for (int i = 0; i < obj.transform.childCount; i++)

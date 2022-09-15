@@ -179,7 +179,8 @@ MonoBehaviour:
     - obj: {fileID: 687897096709896781}
     - obj: {fileID: 687897095902501456}
   cinemachineVirtualCamera: {fileID: 0}
-  trailRenderer: {fileID: 0}
+  trailRenderer: {fileID: 8891912921363133248, guid: 51c33b4173395ff4583ee6f65009c866,
+    type: 3}
   crashDetectors:
     defaultModel: {fileID: 687897097576101087}
     crashBoxes:
@@ -355,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3998217810120182355}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.358, z: -0.855}
+  m_LocalPosition: {x: 0, y: 0.139, z: -0.855}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1068,7 +1069,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8e048c49f55a5034aaf616c2f0fae597,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.358
+      value: 0.139
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e048c49f55a5034aaf616c2f0fae597,
         type: 3}
