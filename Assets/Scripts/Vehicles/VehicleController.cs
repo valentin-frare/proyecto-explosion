@@ -54,6 +54,11 @@ public class VehicleController : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if (stopHandleInputs)
+        {
+            return;
+        }
+
         vehicleMovement.FixedUpdate();
     }
 
