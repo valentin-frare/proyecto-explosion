@@ -65,7 +65,7 @@ public class SpawnPlants : MonoBehaviour
         }
 
         position = new Vector3(NotSoRandom(left, right), 1, player.transform.position.z - 70);
-        positionObstacle = new Vector3((position.x >= 0 ? -4.5f : 4.5f), 1, player.transform.position.z - 75);
+        positionObstacle = new Vector3((position.x >= 0 ? -8f : 8f), 1, player.transform.position.z - 75);
         StartCoroutine(DeleteAfter(20f, poolingManager.GetPooledObject(position), true));
         StartCoroutine(DeleteAfter(20f, poolingManagerObstacles.GetPooledObject(positionObstacle), false));
     }
