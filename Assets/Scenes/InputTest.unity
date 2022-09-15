@@ -476,6 +476,40 @@ PrefabInstance:
       propertyPath: truck
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: maxDistance
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: roadPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: roadPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1842074791330882852, guid: 16104aab7651fac41b6edb1cf7718077,
+        type: 3}
+    - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: roadPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3480145003947038381, guid: d6bb307adbd2a9245b41f14811e5e011,
+        type: 3}
+    - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: roadPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4326228245377926969, guid: b91cc3fbcd85a8c4eb8c6a30117ba15d,
+        type: 3}
+    - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: roadPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 2140613512039213297, guid: 22a34130fa236a141bea2f3a685147b2,
+        type: 3}
     - target: {fileID: 5963810425803470486, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
         type: 3}
       propertyPath: speed

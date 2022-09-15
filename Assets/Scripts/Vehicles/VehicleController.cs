@@ -17,6 +17,7 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private CrashDetectors crashDetectors;
+    [SerializeField] private GameObject fireParticles;
 
     private CameraControl cameraControl;
     private TrailController trailController;
@@ -83,8 +84,9 @@ public class VehicleController : MonoBehaviour
         }
     }
 
-    private void OnPlayerCrash()
+    private void OnPlayerCrash(Transform crashDetector)
     {
+        Instantiate(fireParticles, crashDetector.position, fireParticles.transform.rotation, crashDetector);
         stopHandleInputs = true;
         vehicleMovement.Brake();
     }

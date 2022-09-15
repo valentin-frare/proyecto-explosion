@@ -18,7 +18,7 @@ public class CrashDetectors
     [SerializeField] public CrashBoxes[] crashBoxes;
     [SerializeField] private LayerMask layerMask;
 
-    public Action OnVehicleCrashed;
+    public Action<Transform> OnVehicleCrashed;
 
     public void Update()
     {
@@ -29,7 +29,7 @@ public class CrashDetectors
                 crashBox.crashedModel.SetActive(true);
                 defaultModel.SetActive(false);
                 crashBox.isCrashed = true;
-                OnVehicleCrashed.Invoke();
+                OnVehicleCrashed.Invoke(crashBox.detectorBox);
                 return;
             }
         }
