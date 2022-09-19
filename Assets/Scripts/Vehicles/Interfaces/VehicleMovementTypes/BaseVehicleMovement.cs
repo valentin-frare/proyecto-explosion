@@ -15,8 +15,7 @@ public class BaseVehicleMovement : IVehicleMovement
     protected float torque;
     protected float normalDrag;
     protected float alignToGroundTime;
-
-    Quaternion startRot;
+    protected Quaternion startRot;
 
     public BaseVehicleMovement(Transform transform, Rigidbody sphereMotor, VehicleWheels vehicleWheels, VehicleConfig vehicleConfig, float alignToGroundTime = 20f)
     {
@@ -54,7 +53,7 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Accel()
     {
-        
+        SetMotorTorque(vehicleConfig.torque);
     }
 
     public virtual void Brake()
@@ -71,12 +70,12 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SteerLeft()
     {
-        
+        SetSteeringAngle(.8f);
     }
 
     public virtual void SteerRight()
     {
-        
+        SetSteeringAngle(-.8f);
     }
 
     public virtual void Idle()
@@ -95,7 +94,6 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SetSteeringAngle(float input)
     {
-
         float newRot = input * vehicleConfig.steeringSpeed * Time.deltaTime;
         
         if (isCarGrounded)

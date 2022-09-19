@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Side
+{
+    Left,
+    Right
+}
+
 public static class Vector3Extensions
 {
     public static Vector3 XoZ(this Vector3 value) => new Vector3(value.x, 0f, value.z);

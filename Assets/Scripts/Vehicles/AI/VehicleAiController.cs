@@ -13,13 +13,15 @@ public class VehicleAiController : MonoBehaviour
     private IVehicleMovement vehicleMovement;
     private Transform player;
     private StateMachine stateMachine;
-    [SerializeField] private Sensors sensors;
+    private IBehaviour currentBehaviour;
 
+    [SerializeField] private Sensors sensors;
     [SerializeField] private Transform vehicle; 
     [SerializeField] private Rigidbody sphere; 
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private SensorsConfig sensorsConfig;
+    [SerializeField] private LayerMask layerMask;
 
     private List<IState> states = new List<IState>();
 
@@ -37,24 +39,15 @@ public class VehicleAiController : MonoBehaviour
 
     private void Init()
     {
-        sensors = new Sensors(gameObject, sensorsConfig);
+        sensors = new Sensors(gameObject, sensorsConfig, layerMask);
 
         sensors.Init();
 
         vehicleMovement = new EnemyVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
 
-        FollowPlayerState followPlayerState = new FollowPlayerState(transform, vehicleMovement, player, 25f);
-        NormalDriveState normalDriveState = new NormalDriveState(transform, vehicleMovement, sensors);
-        CrashingPlayerState crashingPlayerState = new CrashingPlayerState(transform, vehicleMovement, player);
+        currentBehaviour = new StandardNpcBehaviour(transform, vehicleMovement, player, sensors);
 
-        followPlayerState.onPlayerReached += OnPlayerReached;
-
-        states.Add(normalDriveState);
-        states.Add(followPlayerState);
-        
-        states.Add(crashingPlayerState);
-
-        stateMachine = new StateMachine(states);
+        stateMachine = new StateMachine(currentBehaviour.GetStates());
     }
 
     private void OnPlayerReached()
@@ -75,5 +68,11 @@ public class VehicleAiController : MonoBehaviour
         #if UNITY_EDITOR
         sensors.DebugMode();
         #endif
+    }
+
+    private void FixedUpdate() {
+        if (stateMachine == null) return;
+
+        vehicleMovement.FixedUpdate();
     }
 }

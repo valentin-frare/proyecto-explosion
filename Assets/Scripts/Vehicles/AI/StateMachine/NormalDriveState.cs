@@ -18,48 +18,50 @@ public class NormalDriveState : IState
     {   
         if (sensors.vehicleInFront && sensors.vehicleFarInFront) 
         {
+            enemyMovement.Idle();
+
             if (sensors.vehicleOnLeft)
             {
-                enemyMovement.Brake();
                 enemyMovement.SteerRight();
             }
             else if (sensors.vehicleOnRight)
             {
-                enemyMovement.Brake();
                 enemyMovement.SteerLeft();
             }
             else if (sensors.vehicleOnLeft && sensors.vehicleOnRight)
             {
-                enemyMovement.Brake();
+                // uwu
             }
             else
             {
-                enemyMovement.Brake();
-                enemyMovement.SteerLeft();
+                enemyMovement.SteerRight();
             }
         }
         else if (sensors.vehicleFarInFront && !sensors.vehicleInFront)
         {
             enemyMovement.Accel();
 
-            if (Mathf.Abs(LaneHelper.instance.GetLeftLanePosition().x - enemy.position.x) <= 0.7) 
+            if (Mathf.Abs(LaneHelper.instance.GetCloserRightLane(enemy.position).x - enemy.position.x) <= 0.3) 
             {
                 enemyMovement.SteerToCenter();
             }
             else
             {
-                var steerAngle = -(LaneHelper.instance.GetLeftLanePosition().x - enemy.position.x);
-                if (steerAngle < 0 && !sensors.vehicleOnLeft) 
+                if (sensors.vehicleOnLeft)
                 {
-                    enemyMovement.SetSteeringAngle(steerAngle);
+                    enemyMovement.SteerRight();
                 }
-                else if (steerAngle > 0 && !sensors.vehicleOnRight)
+                else if (sensors.vehicleOnRight)
                 {
-                    enemyMovement.SetSteeringAngle(steerAngle);
+                    enemyMovement.SteerLeft();
+                }
+                else if (sensors.vehicleOnLeft && sensors.vehicleOnRight)
+                {
+                    // uwu
                 }
                 else
                 {
-                    enemyMovement.SteerToCenter();
+                    enemyMovement.SteerRight();
                 }
             }
         }
@@ -67,27 +69,32 @@ public class NormalDriveState : IState
         {
             enemyMovement.Accel();
 
-            if (Mathf.Abs(LaneHelper.instance.GetLeftLanePosition().x - enemy.position.x) <= 0.7) 
+            if (Mathf.Abs(LaneHelper.instance.GetCloserRightLane(enemy.position).x - enemy.position.x) <= 0.3) 
             {
                 enemyMovement.SteerToCenter();
             }
             else
             {
-                var steerAngle = -(LaneHelper.instance.GetLeftLanePosition().x - enemy.position.x);
-                if (steerAngle < 0 && !sensors.vehicleOnLeft) 
-                {
-                    enemyMovement.SetSteeringAngle(steerAngle);
-                }
-                else if (steerAngle > 0 && !sensors.vehicleOnRight)
-                {
-                    enemyMovement.SetSteeringAngle(steerAngle);
-                }
-                else
-                {
-                    enemyMovement.SteerToCenter();
-                }
+                SteerToClosestLane();
             }
         }
         
+    }
+
+    private void SteerToClosestLane()
+    {
+        var steerAngle = -(LaneHelper.instance.GetCloserRightLane(enemy.position).x - enemy.position.x);
+        if (steerAngle < 0 && !sensors.vehicleOnLeft)
+        {
+            enemyMovement.SetSteeringAngle(steerAngle);
+        }
+        else if (steerAngle > 0 && !sensors.vehicleOnRight)
+        {
+            enemyMovement.SetSteeringAngle(steerAngle);
+        }
+        else
+        {
+            enemyMovement.SteerToCenter();
+        }
     }
 }
