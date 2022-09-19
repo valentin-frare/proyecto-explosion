@@ -22,7 +22,7 @@ public class CameraControl
 
     public void VehicleOnCenter()
     {
-        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z > -5.3f)
+        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z > 5.3f)
         {
             cinemachineFramingTransposer.m_TrackedObjectOffset.z -= Time.fixedDeltaTime;
         }

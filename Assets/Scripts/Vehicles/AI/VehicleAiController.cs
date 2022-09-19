@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class VehicleAiController : MonoBehaviour 
 {
-    private enum EnemyStates
-    {
-        FollowPlayer,
-        NormalDrive,
-        CrashingPlayer
-    }
-
     private IVehicleMovement vehicleMovement;
     private Transform player;
     private StateMachine stateMachine;
@@ -22,8 +15,6 @@ public class VehicleAiController : MonoBehaviour
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private SensorsConfig sensorsConfig;
     [SerializeField] private LayerMask layerMask;
-
-    private List<IState> states = new List<IState>();
 
     private void Awake() 
     {
@@ -48,11 +39,8 @@ public class VehicleAiController : MonoBehaviour
         currentBehaviour = new StandardNpcBehaviour(transform, vehicleMovement, player, sensors);
 
         stateMachine = new StateMachine(currentBehaviour.GetStates());
-    }
 
-    private void OnPlayerReached()
-    {
-        stateMachine.SetCurrentState((int)EnemyStates.NormalDrive);
+        Debug.Log(stateMachine.GetCurrentState());
     }
 
     private void Update()

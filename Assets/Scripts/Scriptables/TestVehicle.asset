@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestVehicle
   m_EditorClassIdentifier: 
   drag: 1
-  torque: 200
+  torque: 0
   torqueReverse: 50
   brakeForce: 2000
   steeringSpeed: 300

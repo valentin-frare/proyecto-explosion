@@ -19,4 +19,9 @@ public class StateMachine
     {
         currentState = index;
     }
+
+    public IState GetCurrentState()
+    {
+        return states[currentState];
+    }
 }
