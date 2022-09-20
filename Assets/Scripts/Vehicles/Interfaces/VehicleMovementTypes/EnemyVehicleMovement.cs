@@ -6,6 +6,11 @@ public class EnemyVehicleMovement : BaseVehicleMovement
     {
     }
 
+    public override void Idle()
+    {
+        this.torque = vehicleConfig.torque/4;
+    }
+
     public override void SteerLeft()
     {
         steering -= .5f * Time.deltaTime;

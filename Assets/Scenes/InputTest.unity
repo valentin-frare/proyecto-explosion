@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15308198}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -7.09, y: 1.1, z: -156.86}
+  m_LocalPosition: {x: -7.09, y: 0.748, z: -156.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1634,6 +1634,11 @@ PrefabInstance:
       propertyPath: truck
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5431447561954127520, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5900974220598254795, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
         type: 3}
       propertyPath: roadCount
@@ -1763,6 +1768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155839434461992192, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7269619633368014964, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
         type: 3}
@@ -2211,7 +2221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143737315}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -7.09, y: 1.1, z: -170.21}
+  m_LocalPosition: {x: -7.09, y: 0.748, z: -170.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2672,7 +2682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381274427407667407}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -3.45, y: 1.1, z: -145.6}
+  m_LocalPosition: {x: -3.45, y: 0.748, z: -145.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

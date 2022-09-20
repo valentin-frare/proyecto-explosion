@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class VehicleAiController : MonoBehaviour 
 {
@@ -36,7 +37,7 @@ public class VehicleAiController : MonoBehaviour
 
         vehicleMovement = new EnemyVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
 
-        currentBehaviour = new StandardNpcBehaviour(transform, vehicleMovement, player, sensors);
+        currentBehaviour = new StandardNpcBehaviour(transform, vehicleMovement, player, sensors, this as VehicleAiController, this as MonoBehaviour);
 
         stateMachine = new StateMachine(currentBehaviour.GetStates());
 
@@ -58,9 +59,15 @@ public class VehicleAiController : MonoBehaviour
         #endif
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate() 
+    {
         if (stateMachine == null) return;
 
         vehicleMovement.FixedUpdate();
+    }
+
+    public void ChangeState(string state)
+    {
+        stateMachine.SetCurrentState( stateMachine.States.FindIndex( st => st.ToString() == state ) );
     }
 }
