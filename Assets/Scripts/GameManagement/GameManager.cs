@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum GameState
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance {get; private set;}
 
     public GameState gameState;
+
+    public Action<GameState> OnGameStateChanged;
 
     private void Awake() {
         instance = this;
@@ -33,5 +36,12 @@ public class GameManager : MonoBehaviour
     private void OnGameEnd()
     {
 
+    }
+
+    public void SetGameState(GameState state)
+    {
+        gameState = state;
+
+        OnGameStateChanged.Invoke(state);
     }
 }
