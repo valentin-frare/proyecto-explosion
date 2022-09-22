@@ -12,6 +12,7 @@ TagManager:
   - LeftLane
   - RightLane
   - FinishLine
+  - GeneralMenu
   layers:
   - Default
   - TransparentFX
