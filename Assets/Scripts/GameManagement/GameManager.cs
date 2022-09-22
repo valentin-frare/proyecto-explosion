@@ -42,6 +42,6 @@ public class GameManager : MonoBehaviour
     {
         gameState = state;
 
-        OnGameStateChanged.Invoke(state);
+        OnGameStateChanged?.Invoke(state);
     }
 }

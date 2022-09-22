@@ -48,4 +48,12 @@ public class PoolingManager
         }
         return null;
     }
+
+    public void DeactivateObjects()
+    {
+        for (int i = 0; i < amountToPool; i++)
+        {
+            pooledObjects[i].SetActive(false);
+        }
+    }
 }

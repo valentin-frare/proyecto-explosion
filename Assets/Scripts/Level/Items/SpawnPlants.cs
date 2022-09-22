@@ -13,10 +13,9 @@ public class SpawnPlants : MonoBehaviour
     private PoolingManager poolingManager;
     private PoolingManager poolingManagerObstacles;
     private Camera cam;
-    private Transform route;
     private Transform anyRoute;
     private Transform player;
-    private Transform finishLine;
+    private Vector3 finishLine;
     
     private void Awake()
     {
@@ -29,19 +28,32 @@ public class SpawnPlants : MonoBehaviour
         poolingManagerObstacles.Init();
     
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
+        GameManager.instance.OnGameStateChanged += ClearObjects;
+    }
+
+    private void Start()
+    {
+        var originalRoute = GameObject.FindGameObjectWithTag("Road").transform;
+        anyRoute = new GameObject("TerribleRoad").transform;
+        anyRoute.position = originalRoute.position;
+        anyRoute.localScale = originalRoute.localScale;
     }
 
     private void OnPlayerSpawn(GameObject player)
     {
-        route = GameObject.FindGameObjectWithTag("Route").transform;        
-        anyRoute = GameObject.FindGameObjectWithTag("Road").transform;
+        CancelInvoke();
         this.player = player.transform;
-        finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
+        finishLine = new Vector3(0, 0, this.player.position.z - GameObject.FindObjectOfType<PlayerPointUpdate>(true).final);
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
     private void ActivateObject()
     {
+        if (GameManager.instance.gameState != GameState.Playing)
+        {
+            return;
+        }
+
         Vector3 position = new Vector3();
         Vector3 positionObstacle = new Vector3();
 
@@ -55,12 +67,12 @@ public class SpawnPlants : MonoBehaviour
         }
 
         float leftRoute = anyRoute.position.x - (anyRoute.localScale.x/(Mathf.Sign(anyRoute.localScale.x) >= 0 ? -2 : 2) - anyRoute.localScale.x*0.1f);
-        if(left > leftRoute)
+        if (left > leftRoute)
         {
             left = leftRoute;
         }
 
-        if((player.transform.position.z - 70) <= (finishLine.position.z)){
+        if ((player.transform.position.z - 70) <= (finishLine.z)){
             return;
         }
 
@@ -74,7 +86,7 @@ public class SpawnPlants : MonoBehaviour
     {
         float steer = swipeCtrl.Steering;
 
-        if(steer == 0)
+        if (steer == 0)
         {
             return Random.Range(left, right);
         }
@@ -94,7 +106,7 @@ public class SpawnPlants : MonoBehaviour
 
         yield return new WaitUntil(() => { return (GameManager.instance.gameState == GameState.Playing); });
 
-        if(bol)
+        if (bol)
         {
             for (int i = 0; i < obj.transform.childCount; i++)
             {
@@ -103,5 +115,14 @@ public class SpawnPlants : MonoBehaviour
             }
         }
         obj.SetActive(false);
+    }
+
+    public void ClearObjects(GameState state)
+    {
+        if (state == GameState.Playing)
+        {
+            poolingManager.DeactivateObjects();
+            poolingManagerObstacles.DeactivateObjects();
+        }
     }
 }

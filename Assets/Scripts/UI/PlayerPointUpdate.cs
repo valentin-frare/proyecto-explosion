@@ -19,13 +19,17 @@ public class PlayerPointUpdate : MonoBehaviour
     {
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
     }
+
+    private void Start()
+    {
+        maxWidth = playerPointInvisible.position.x - playerPoint.position.x;
+        playerPointStart = playerPoint.position.x;
+    }
     
     private void OnPlayerSpawn(GameObject player)
     {
         playerPosition = player.transform;
         playerVehicle = player.GetComponent<VehicleController>();
-        maxWidth = playerPointInvisible.position.x - playerPoint.position.x;
-        playerPointStart = playerPoint.position.x;
         start = playerPosition.position.z;
     }
 

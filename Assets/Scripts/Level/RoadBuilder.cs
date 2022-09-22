@@ -28,10 +28,21 @@ public class RoadBuilder : MonoBehaviour
     {
         this.player = player.GetComponent<VehicleController>().roadBuilderHelper;
         playerSpawnZ = this.player.position.z;
+        InitRoad();
     }
 
-    private void Start() 
+    private void Start()
     {
+        InitRoad();
+    }
+
+    private void InitRoad()
+    {
+        if(roadsContainer != null)
+        {
+            Destroy(roadsContainer.gameObject);
+            roads = new List<Transform>();
+        }
         levelContainer = GameObject.FindGameObjectWithTag("LvlContainer").transform;
 
         roadsContainer = new GameObject("RoadsContainer").transform;
@@ -39,11 +50,11 @@ public class RoadBuilder : MonoBehaviour
 
         for (int i = 0; i <= roadCount; i++)
         {
-            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0,0,120) - new Vector3(0,0,maxDistance * i),  transform.rotation, roadsContainer).transform);
+            roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0, 0, 120) - new Vector3(0, 0, maxDistance * i), transform.rotation, roadsContainer).transform);
         }
-        
+
         playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
-        Instantiate(finishLine, new Vector3(0,0,playerSpawnZ-playerPointUpdate.final),  transform.rotation, roadsContainer);
+        Instantiate(finishLine, new Vector3(0, 0, playerSpawnZ - playerPointUpdate.final), transform.rotation, roadsContainer);
 
         farDistance = ((int)roads[roads.Count - 1].position.z);
     }
@@ -54,6 +65,11 @@ public class RoadBuilder : MonoBehaviour
 
         foreach (Transform road in roads)
         {
+            if(road == null)
+            {
+                break;
+            }
+            
             if ((player.position.z - road.position.z) < (-maxDistance * 3))
             {
                 var pos = (player.position.ooZ_Rounded() - new Vector3(0,0,maxDistance * roadCount));

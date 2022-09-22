@@ -8,6 +8,7 @@ public class RespawnManager : MonoBehaviour {
 
     private GameObject playerPrefab;
     private Transform spawnPoint;
+    private GameObject player;
 
     [SerializeField] private SwipeControl swipeControl;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
@@ -26,7 +27,11 @@ public class RespawnManager : MonoBehaviour {
 
     public void SpawnPlayer()
     {
-        var player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        if(player != null)
+        {
+            Destroy(player.GetComponent<VehicleController>());
+        }
+        player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
         player.GetComponent<VehicleController>().Init(swipeControl, cinemachineVirtualCamera);
 
@@ -34,4 +39,6 @@ public class RespawnManager : MonoBehaviour {
 
         GameEvents.OnPlayerSpawn.Invoke(player);
     }
+
+    
 }

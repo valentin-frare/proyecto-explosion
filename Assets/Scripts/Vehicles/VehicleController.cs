@@ -125,6 +125,13 @@ public class VehicleController : MonoBehaviour
         Instantiate(fireParticles, crashDetector.position, fireParticles.transform.rotation, crashDetector);
         stopHandleInputs = true;
         vehicleMovement.Brake();
+        StartCoroutine(AbrirMenu(2f));
+    }
+
+    private IEnumerator AbrirMenu(float time){
+        yield return new WaitForSeconds(time);
+        GameObject.FindGameObjectWithTag("GeneralMenu").transform.GetChild(0).gameObject.SetActive(true);
+        
     }
 
     public void StopVehicle()
