@@ -16,6 +16,8 @@ public class SpawnPlants : MonoBehaviour
     private Transform anyRoute;
     private Transform player;
     private Vector3 finishLine;
+    private List<Vector3> positionCoins = new List<Vector3>();
+    private List<Transform> lanes = new List<Transform>();
     
     private void Awake()
     {
@@ -37,6 +39,11 @@ public class SpawnPlants : MonoBehaviour
         anyRoute = new GameObject("TerribleRoad").transform;
         anyRoute.position = originalRoute.position;
         anyRoute.localScale = originalRoute.localScale;
+        Transform generalLane = GameObject.FindGameObjectWithTag("Lanes").transform;
+        for (int i = 0; i < generalLane.childCount; i++)
+        {
+            lanes.Add(generalLane.GetChild(i).transform);
+        }
     }
 
     private void OnPlayerSpawn(GameObject player)
@@ -44,7 +51,23 @@ public class SpawnPlants : MonoBehaviour
         CancelInvoke();
         this.player = player.transform;
         finishLine = new Vector3(0, 0, this.player.position.z - GameObject.FindObjectOfType<PlayerPointUpdate>(true).final);
+        //AlignObjects();
         InvokeRepeating("ActivateObject", 1.0f, 3.0f);
+    }
+
+    private void AlignObjects()
+    {
+        float x = this.player.position.z - 80;
+        while (x > finishLine.z)
+        {
+            positionCoins.Add(new Vector3(lanes[Random.Range(0,lanes.Count)].position.x, 1, x));
+            x -= 80;
+        }
+
+        for (int i = 0; i < positionCoins.Count; i++)
+        {
+            poolingManager.GetPooledObject(positionCoins[i]);
+        }
     }
 
     private void ActivateObject()

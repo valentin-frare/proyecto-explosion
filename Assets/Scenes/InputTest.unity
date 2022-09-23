@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 657900301}
   m_Layer: 0
   m_Name: Lanes
-  m_TagString: Untagged
+  m_TagString: Lanes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
