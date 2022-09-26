@@ -17,7 +17,9 @@ public class SpawnPlants : MonoBehaviour
     private Transform player;
     private Vector3 finishLine;
     private List<Vector3> positionCoins = new List<Vector3>();
+    private List<bool> activeCoins = new List<bool>();
     private List<Transform> lanes = new List<Transform>();
+    private bool dontDoAnything = true;
     
     private void Awake()
     {
@@ -48,11 +50,11 @@ public class SpawnPlants : MonoBehaviour
 
     private void OnPlayerSpawn(GameObject player)
     {
-        CancelInvoke();
+        //CancelInvoke();
         this.player = player.transform;
         finishLine = new Vector3(0, 0, this.player.position.z - GameObject.FindObjectOfType<PlayerPointUpdate>(true).final);
-        //AlignObjects();
-        InvokeRepeating("ActivateObject", 1.0f, 3.0f);
+        AlignObjects();
+        //InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
     private void AlignObjects()
@@ -66,8 +68,9 @@ public class SpawnPlants : MonoBehaviour
 
         for (int i = 0; i < positionCoins.Count; i++)
         {
-            poolingManager.GetPooledObject(positionCoins[i]);
+            activeCoins.Add(false);
         }
+        dontDoAnything = false;
     }
 
     private void ActivateObject()
@@ -146,6 +149,45 @@ public class SpawnPlants : MonoBehaviour
         {
             poolingManager.DeactivateObjects();
             poolingManagerObstacles.DeactivateObjects();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (dontDoAnything)
+        {
+            return;
+        }
+
+        if (GameManager.instance.gameState == GameState.Crashed)
+        {
+            dontDoAnything = true;
+        }
+
+        for (int i = 0; i < positionCoins.Count; i++)
+        {
+            if (!activeCoins[i])
+            {
+                if (positionCoins[i].z >= (player.position.z - 150))
+                {
+                    activeCoins[i] = true;
+                    poolingManager.GetPooledObject(positionCoins[i]);
+                }
+            }
+        }
+
+        for (int i = 0; i < poolingManager.pooledObjects.Count; i++)
+        {
+            GameObject go = poolingManager.pooledObjects[i];
+            if  (go.transform.position.z >= (player.position.z + 50))
+            {
+                for (int x = 0; x < go.transform.childCount; x++)
+                {
+                    go.transform.GetChild(x).gameObject.SetActive(false);
+                    go.transform.GetChild(x).GetChild(0).gameObject.SetActive(true);
+                }
+                go.SetActive(false);
+            }
         }
     }
 }
