@@ -19,7 +19,7 @@ public class SpawnPlants : MonoBehaviour
     private List<Vector3> positionCoins = new List<Vector3>();
     private List<bool> activeCoins = new List<bool>();
     private List<Transform> lanes = new List<Transform>();
-    private bool dontDoAnything = true;
+    private bool dontDoAnything = false;
     
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class SpawnPlants : MonoBehaviour
         {
             activeCoins.Add(false);
         }
-        dontDoAnything = false;
+        //dontDoAnything = false;
     }
 
     private void ActivateObject()
@@ -179,14 +179,17 @@ public class SpawnPlants : MonoBehaviour
         for (int i = 0; i < poolingManager.pooledObjects.Count; i++)
         {
             GameObject go = poolingManager.pooledObjects[i];
-            if  (go.transform.position.z >= (player.position.z + 50))
+            if (go.activeSelf)
             {
-                for (int x = 0; x < go.transform.childCount; x++)
+                if (go.transform.position.z >= (player.position.z + 50))
                 {
-                    go.transform.GetChild(x).gameObject.SetActive(false);
-                    go.transform.GetChild(x).GetChild(0).gameObject.SetActive(true);
+                    for (int x = 0; x < go.transform.childCount; x++)
+                    {
+                        go.transform.GetChild(x).gameObject.SetActive(false);
+                        go.transform.GetChild(x).GetChild(0).gameObject.SetActive(true);
+                    }
+                    go.SetActive(false);
                 }
-                go.SetActive(false);
             }
         }
     }
