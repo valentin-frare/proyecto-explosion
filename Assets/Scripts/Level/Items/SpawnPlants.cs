@@ -147,8 +147,9 @@ public class SpawnPlants : MonoBehaviour
     {
         if (state == GameState.Playing)
         {
-            poolingManager.DeactivateObjects();
-            poolingManagerObstacles.DeactivateObjects();
+            dontDoAnything = false;
+            //poolingManager.DeactivateObjects();
+            //poolingManagerObstacles.DeactivateObjects();
         }
     }
 
@@ -161,6 +162,9 @@ public class SpawnPlants : MonoBehaviour
 
         if (GameManager.instance.gameState == GameState.Crashed)
         {
+            positionCoins.Clear();
+            activeCoins.Clear();
+            poolingManager.DeactivateObjects();
             dontDoAnything = true;
         }
 
