@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 
 public class VehicleController : MonoBehaviour
@@ -130,8 +131,9 @@ public class VehicleController : MonoBehaviour
 
     private IEnumerator AbrirMenu(float time){
         yield return new WaitForSeconds(time);
-        GameObject.FindGameObjectWithTag("GeneralMenu").transform.GetChild(0).gameObject.SetActive(true);
-        
+        Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
+        go.GetChild(0).gameObject.SetActive(true);
+        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
     }
 
     public void StopVehicle()

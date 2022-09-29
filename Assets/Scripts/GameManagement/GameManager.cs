@@ -8,7 +8,8 @@ public enum GameState
     Playing,
     Crashed,
     MainMenu,
-    Paused
+    Paused,
+    Victory
 }
 
 public class GameManager : MonoBehaviour
