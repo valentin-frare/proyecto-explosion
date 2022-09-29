@@ -52,6 +52,14 @@ public class SpawnPlants : MonoBehaviour
 
     private void OnPlayerSpawn(GameObject player)
     {
+        positionCoins.Clear();
+        activeCoins.Clear();
+        poolingManager.DeactivateObjects();
+        positionBrokenVehicles.Clear();
+        activeBrokenVehicles.Clear();
+        poolingManagerObstacles.DeactivateObjects();
+        dontDoAnything = false;
+
         //CancelInvoke();
         this.player = player.transform;
         finishLine = new Vector3(0, 0, this.player.position.z - GameObject.FindObjectOfType<PlayerPointUpdate>(true).final);
@@ -172,17 +180,6 @@ public class SpawnPlants : MonoBehaviour
         if (dontDoAnything)
         {
             return;
-        }
-
-        if (GameManager.instance.gameState == GameState.Crashed)
-        {
-            positionCoins.Clear();
-            activeCoins.Clear();
-            poolingManager.DeactivateObjects();
-            positionBrokenVehicles.Clear();
-            activeBrokenVehicles.Clear();
-            poolingManagerObstacles.DeactivateObjects();
-            dontDoAnything = true;
         }
 
         for (int i = 0; i < positionCoins.Count; i++)
