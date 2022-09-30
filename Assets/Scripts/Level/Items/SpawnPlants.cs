@@ -34,7 +34,6 @@ public class SpawnPlants : MonoBehaviour
         poolingManagerObstacles.Init();
     
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
-        GameManager.instance.OnGameStateChanged += ClearObjects;
     }
 
     private void Start()
@@ -58,13 +57,10 @@ public class SpawnPlants : MonoBehaviour
         positionBrokenVehicles.Clear();
         activeBrokenVehicles.Clear();
         poolingManagerObstacles.DeactivateObjects();
-        dontDoAnything = false;
 
-        //CancelInvoke();
         this.player = player.transform;
         finishLine = new Vector3(0, 0, this.player.position.z - GameObject.FindObjectOfType<PlayerPointUpdate>(true).final);
         AlignObjects();
-        //InvokeRepeating("ActivateObject", 1.0f, 3.0f);
     }
 
     private void AlignObjects()
@@ -92,7 +88,6 @@ public class SpawnPlants : MonoBehaviour
             activeCoins.Add(false);
             activeBrokenVehicles.Add(false);
         }
-        //dontDoAnything = false;
     }
 
     private void ActivateObject()
@@ -165,23 +160,8 @@ public class SpawnPlants : MonoBehaviour
         obj.SetActive(false);
     }
 
-    public void ClearObjects(GameState state)
-    {
-        if (state == GameState.Playing)
-        {
-            dontDoAnything = false;
-            //poolingManager.DeactivateObjects();
-            //poolingManagerObstacles.DeactivateObjects();
-        }
-    }
-
     private void LateUpdate()
     {
-        if (dontDoAnything)
-        {
-            return;
-        }
-
         for (int i = 0; i < positionCoins.Count; i++)
         {
             if (!activeCoins[i])
