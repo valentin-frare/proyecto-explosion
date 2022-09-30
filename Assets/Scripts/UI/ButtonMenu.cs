@@ -7,8 +7,18 @@ public class ButtonMenu : MonoBehaviour
     
     public void SpawnAgain()
     {
-        RespawnManager.instance.SpawnPlayer();
-        GameManager.instance.SetGameState(GameState.Playing);
+        switch (GameManager.instance.gameState)
+        {
+            case GameState.Crashed:
+                RespawnManager.instance.SpawnPlayer();
+                GameManager.instance.SetGameState(GameState.Playing);
+                break;
+            case GameState.Playing:
+                //
+                break;
+            default:
+            break;
+        }
     }
 
 }
