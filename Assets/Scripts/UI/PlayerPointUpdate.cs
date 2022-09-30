@@ -13,7 +13,7 @@ public class PlayerPointUpdate : MonoBehaviour
     public float final = 500f;
     private float start;
     private float playerPointStart;
-    private float porcentaje = 0;
+    private float porcentaje;
     private VehicleController playerVehicle;
 
     private void Awake() 
@@ -32,6 +32,7 @@ public class PlayerPointUpdate : MonoBehaviour
         playerPosition = player.transform;
         playerVehicle = player.GetComponent<VehicleController>();
         start = playerPosition.position.z;
+        porcentaje = 0;
     }
 
     private void LateUpdate()
@@ -59,5 +60,6 @@ public class PlayerPointUpdate : MonoBehaviour
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
+        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
     }
 }
