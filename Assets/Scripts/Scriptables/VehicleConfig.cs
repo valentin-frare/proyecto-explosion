@@ -18,4 +18,21 @@ public class VehicleConfig : ScriptableObject {
 
     [Header("Debug Settings")]
     public Vector3 defaultDirection;
+
+    [Header("Shop Settings")]
+    public float price;
+    public float originalSpeed;
+    public float originalEndurance;
+    public float originalHandling;
+
+    [Header("Shop Upgrades Measurements")]
+    public float upgradeSpeed;
+    public float upgradeEndurance;
+    public float upgradeHandling;
+
+    [Header("Shop Upgrades Prices")]
+    
+    public float priceUpgradeSpeed;
+    public float priceUpgradeEndurance;
+    public float priceUpgradeHandLing;
 }
