@@ -4390,7 +4390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPoint: {fileID: 834260699048467062}
   playerPointInvisible: {fileID: 1193677109060714762}
-  final: 500
+  final: 100
 --- !u!1 &7152496050057746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,6 +5355,7 @@ GameObject:
   - component: {fileID: 7172058479565130872}
   - component: {fileID: 1022994617621586310}
   - component: {fileID: 7491964187724046391}
+  - component: {fileID: 3340949918784999849}
   m_Layer: 5
   m_Name: ButtonExitMenu
   m_TagString: Untagged
@@ -5464,7 +5465,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1022994617621586310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7152496050057746968}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3340949918784999849}
+        m_TargetAssemblyTypeName: ButtonMenu, Assembly-CSharp
+        m_MethodName: SpawnAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3340949918784999849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8176490684938684039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d264cce26140574fbb27d18552e1821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8516308097943026995
 GameObject:
   m_ObjectHideFlags: 0

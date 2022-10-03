@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class RespawnManager : MonoBehaviour {
     private GameObject playerPrefab;
     private Transform spawnPoint;
     private GameObject player;
+    private List<GameObject> players = new List<GameObject>();
 
     [SerializeField] private SwipeControl swipeControl;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
@@ -37,8 +39,16 @@ public class RespawnManager : MonoBehaviour {
 
         Instantiate(roadFollow, transform.position, transform.rotation).GetComponent<RoadFollow>().Init(player);
 
+        players.Add(player);
+
         GameEvents.OnPlayerSpawn.Invoke(player);
     }
 
-    
+    public void DeleteAllPlayers(){
+        foreach (GameObject obj in players)
+        {
+            Destroy(obj);
+        }
+        players.Clear();
+    }    
 }
