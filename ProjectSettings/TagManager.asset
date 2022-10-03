@@ -15,6 +15,7 @@ TagManager:
   - GeneralMenu
   - Lanes
   - ServiceStationMenu
+  - Coins
   layers:
   - Default
   - TransparentFX

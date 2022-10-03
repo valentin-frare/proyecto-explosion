@@ -21,7 +21,7 @@ public class PoolingManager
 
         pooledObjects = new List<GameObject>();
         GameObject tmp;
-        for(int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < amountToPool; i++)
         {
             tmp = GameObject.Instantiate(objectToPool);
             tmp.SetActive(false);
@@ -32,12 +32,12 @@ public class PoolingManager
 
     public GameObject GetPooledObject(Vector3 position, Quaternion rotation = default(Quaternion))
     {
-        for(int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < amountToPool; i++)
         {
-            if(!pooledObjects[i].activeInHierarchy)
+            if (!pooledObjects[i].activeInHierarchy)
             {
                 pooledObjects[i].SetActive(true);
-                if(pooledObjects[i].transform.childCount > 0)
+                if (pooledObjects[i].transform.childCount > 0)
                 {
                     pooledObjects[i].transform.GetChild(Random.Range(0,pooledObjects[i].transform.childCount)).gameObject.SetActive(true);
                 }
@@ -53,6 +53,14 @@ public class PoolingManager
     {
         for (int i = 0; i < amountToPool; i++)
         {
+            if (pooledObjects[i].tag == "Coins")
+            {
+                for (int x = 0; x < pooledObjects[i].transform.childCount; x++)
+                {
+                    pooledObjects[i].transform.GetChild(x).gameObject.SetActive(false);
+                    pooledObjects[i].transform.GetChild(x).GetChild(0).gameObject.SetActive(true);
+                }
+            }
             pooledObjects[i].SetActive(false);
         }
     }

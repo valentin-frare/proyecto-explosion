@@ -10,11 +10,10 @@ public class RespawnManager : MonoBehaviour {
     private GameObject playerPrefab;
     private Transform spawnPoint;
     private GameObject player;
-    private List<GameObject> players = new List<GameObject>();
+    private List<VehicleController> players = new List<VehicleController>();
 
     [SerializeField] private SwipeControl swipeControl;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private GameObject roadFollow;
 
     private void Awake() {
         instance = this;
@@ -37,17 +36,15 @@ public class RespawnManager : MonoBehaviour {
 
         player.GetComponent<VehicleController>().Init(swipeControl, cinemachineVirtualCamera);
 
-        Instantiate(roadFollow, transform.position, transform.rotation).GetComponent<RoadFollow>().Init(player);
-
-        players.Add(player);
+        players.Add(player.GetComponent<VehicleController>());
 
         GameEvents.OnPlayerSpawn.Invoke(player);
     }
 
     public void DeleteAllPlayers(){
-        foreach (GameObject obj in players)
+        foreach (VehicleController obj in players)
         {
-            Destroy(obj);
+            obj.DestroyVehicle();
         }
         players.Clear();
     }    

@@ -26,6 +26,7 @@ public class VehicleController : MonoBehaviour
 
     private GameObject trail1;
     private GameObject trail2;
+    private List<GameObject> allTrails = new List<GameObject>();
 
     public void Init(SwipeControl swipeControl, CinemachineVirtualCamera cinemachineVirtualCamera)
     {
@@ -97,11 +98,13 @@ public class VehicleController : MonoBehaviour
             if (trail1 == null)
             {
                 trail1 = Instantiate(trailRenderer, vehicleWheels.backWheels[0].obj.transform.position, vehicleWheels.backWheels[0].obj.transform.rotation, vehicleWheels.backWheels[0].obj.transform);
+                allTrails.Add(trail1);
             }
 
             if (trail2 == null)
             {
                 trail2 = Instantiate(trailRenderer, vehicleWheels.backWheels[1].obj.transform.position, vehicleWheels.backWheels[1].obj.transform.rotation, vehicleWheels.backWheels[1].obj.transform);
+                allTrails.Add(trail2);
             }
         }
         else 
@@ -141,5 +144,15 @@ public class VehicleController : MonoBehaviour
     {
         stopHandleInputs = true;
         vehicleMovement.Brake();
+    }
+
+    public void DestroyVehicle()
+    {
+        foreach (GameObject item in allTrails)
+        {
+            Destroy(item);
+        }
+        Destroy(sphere.gameObject);
+        Destroy(this.gameObject);
     }
 }

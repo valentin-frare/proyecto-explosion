@@ -10,13 +10,12 @@ public class CameraInit : MonoBehaviour
     private CinemachineVirtualCamera cinemachineVirtualCamera;
 
     private void Awake() {
+        referenceObject = new GameObject("CamReference").transform;
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
     }
 
     void OnPlayerSpawn(GameObject player)
     {
-        referenceObject = new GameObject("CamReference").transform;
-
         this.player = player.transform;
 
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
