@@ -47,13 +47,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
-  price: 0
-  originalSpeed: 0.1
-  originalEndurance: 0.1
-  originalHandling: 0.1
-  upgradeSpeed: 0.2
-  upgradeEndurance: 0.2
-  upgradeHandling: 0.2
-  priceUpgradeSpeed: 100
-  priceUpgradeEndurance: 100
-  priceUpgradeHandLing: 100
+  price: 1900
+  originalSpeed: 0.5
+  originalEndurance: 0.5
+  originalHandling: 0.5
+  upgradeSpeed: 0.65
+  upgradeEndurance: 0.65
+  upgradeHandling: 0.65
+  priceUpgradeSpeed: 250
+  priceUpgradeEndurance: 250
+  priceUpgradeHandLing: 250

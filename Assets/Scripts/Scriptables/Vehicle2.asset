@@ -51,9 +51,9 @@ MonoBehaviour:
   originalSpeed: 0.2
   originalEndurance: 0.2
   originalHandling: 0.2
-  upgradeSpeed: 0.3
-  upgradeEndurance: 0.3
-  upgradeHandling: 0.3
+  upgradeSpeed: 0.35
+  upgradeEndurance: 0.35
+  upgradeHandling: 0.35
   priceUpgradeSpeed: 100
   priceUpgradeEndurance: 100
   priceUpgradeHandLing: 100

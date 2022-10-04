@@ -48,12 +48,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
   price: 1250
-  originalSpeed: 0.1
-  originalEndurance: 0.1
-  originalHandling: 0.1
-  upgradeSpeed: 0.2
-  upgradeEndurance: 0.2
-  upgradeHandling: 0.2
+  originalSpeed: 0.4
+  originalEndurance: 0.4
+  originalHandling: 0.4
+  upgradeSpeed: 0.55
+  upgradeEndurance: 0.55
+  upgradeHandling: 0.55
   priceUpgradeSpeed: 200
   priceUpgradeEndurance: 200
   priceUpgradeHandLing: 200
