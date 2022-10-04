@@ -14,7 +14,7 @@ public class CameraControl
 
     public void VehicleOnTop()
     {
-        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z < 30.66f)
+        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z < 60.66f)
         {
             cinemachineFramingTransposer.m_TrackedObjectOffset.z += Time.fixedDeltaTime;
         }
@@ -22,7 +22,7 @@ public class CameraControl
 
     public void VehicleOnCenter()
     {
-        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z > 15.3f)
+        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z > 30.3f)
         {
             cinemachineFramingTransposer.m_TrackedObjectOffset.z -= Time.fixedDeltaTime;
         }
@@ -30,7 +30,7 @@ public class CameraControl
 
     public void VehicleOnBotton()
     {
-        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z > 6.66f)
+        if (cinemachineFramingTransposer.m_TrackedObjectOffset.z > 15.66f)
         {
             cinemachineFramingTransposer.m_TrackedObjectOffset.z -= Time.fixedDeltaTime;
         }

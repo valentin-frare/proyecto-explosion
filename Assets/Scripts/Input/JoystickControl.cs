@@ -24,7 +24,5 @@ public class JoystickControl : InputControl
         acceleration = -joystick.Vertical;
 
         delta.y = -joystick.Vertical;
-
-        Debug.Log(joystick.Vertical);
     }
 }
