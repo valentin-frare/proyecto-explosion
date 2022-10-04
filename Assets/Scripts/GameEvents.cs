@@ -9,4 +9,7 @@ public static class GameEvents
     public static Action OnGameStart;
     public static Action OnGameEnd;
     public static Action<GameObject> OnPlayerSpawn;
+
+    // Collision Events
+    public static Action<ContactPoint[], ColliderType> OnCarCollision;
 }

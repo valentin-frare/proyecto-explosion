@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8607254080596691193}
+  - component: {fileID: 8066080037378348657}
   - component: {fileID: 1468377091994966426}
   m_Layer: 0
   m_Name: SwipeController
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 6069603103408384439}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1468377091994966426
+--- !u!114 &8066080037378348657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +41,20 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521545338043461773}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762f3906b66b32443ba2a623e585993b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDragging: 0
+  joystick: {fileID: 0}
+--- !u!114 &1468377091994966426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521545338043461773}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fecc727688cb149b00f97a7eb039e7, type: 3}
   m_Name: 
@@ -392,9 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c055c60faac0d44bf01d5d83b26bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeControl: {fileID: 1468377091994966426}
+  players: []
+  inputControl: {fileID: 0}
   cinemachineVirtualCamera: {fileID: 8721641362525112936}
-  roadFollow: {fileID: 0}
 --- !u!1 &5425985435390336413
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +459,6 @@ MonoBehaviour:
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}
   amountObstacles: 8
-  swipeCtrl: {fileID: 1468377091994966426}
 --- !u!1 &6069603103408384432
 GameObject:
   m_ObjectHideFlags: 0

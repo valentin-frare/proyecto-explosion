@@ -12,7 +12,7 @@ public class RespawnManager : MonoBehaviour {
     private GameObject player;
     [SerializeField] private List<GameObject> players = new List<GameObject>();
 
-    [SerializeField] private SwipeControl swipeControl;
+    [SerializeField] private InputControl inputControl;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
     private void Awake() {
@@ -35,7 +35,7 @@ public class RespawnManager : MonoBehaviour {
 
         player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        player.GetComponent<VehicleController>().Init(swipeControl, cinemachineVirtualCamera);
+        player.GetComponent<VehicleController>().Init(inputControl, cinemachineVirtualCamera);
 
         players.Add(player);
 

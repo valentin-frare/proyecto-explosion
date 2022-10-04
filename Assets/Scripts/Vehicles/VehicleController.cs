@@ -4,13 +4,13 @@ using Cinemachine;
 using TMPro;
 using UnityEngine;
 
-public class VehicleController : MonoBehaviour
+public class VehicleController : MonoBehaviour, IDamageable
 {
     public Transform roadBuilderHelper;
 
     private IVehicleMovement vehicleMovement;
 
-    [SerializeField] private SwipeControl swipeControl;
+    [SerializeField] private InputControl inputControl;
     [SerializeField] private Transform vehicle; 
     [SerializeField] private Rigidbody sphere; 
     [SerializeField] private VehicleConfig vehicleConfig; 
@@ -28,16 +28,16 @@ public class VehicleController : MonoBehaviour
     private GameObject trail2;
     private List<GameObject> allTrails = new List<GameObject>();
 
-    public void Init(SwipeControl swipeControl, CinemachineVirtualCamera cinemachineVirtualCamera)
+    public void Init(InputControl inputControl, CinemachineVirtualCamera cinemachineVirtualCamera)
     {
-        this.swipeControl = swipeControl;
+        this.inputControl = inputControl;
         this.cinemachineVirtualCamera = cinemachineVirtualCamera;
     }
 
     void Start()
     {
         vehicleMovement = new PlayerVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
-        swipeControl.Init();
+        inputControl.Init();
         cameraControl = new CameraControl(cinemachineVirtualCamera);
         crashDetectors.OnVehicleCrashed += OnPlayerCrash;
     }
@@ -53,7 +53,7 @@ public class VehicleController : MonoBehaviour
             return;
         }
 
-        crashDetectors.Update();
+        //crashDetectors.Update();
 
         HandleInputs();
     }
@@ -69,13 +69,13 @@ public class VehicleController : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (swipeControl.onDragging)
+        if (inputControl.onDragging)
         {
-            vehicleMovement.SetSteeringAngle(-swipeControl.Steering);
+            vehicleMovement.SetSteeringAngle(-inputControl.Steering);
 
-            vehicleMovement.SetMotorTorque(-swipeControl.Acceleration);
+            vehicleMovement.SetMotorTorque(-inputControl.Acceleration);
 
-            if (swipeControl.deltaY < 0) 
+            if (inputControl.deltaY < 0) 
             {
                 cameraControl.VehicleOnTop();
             }
@@ -93,7 +93,7 @@ public class VehicleController : MonoBehaviour
             cameraControl.VehicleOnCenter();
         }
 
-        if (Mathf.Abs(swipeControl.Steering) > .5f && swipeControl.onDragging)
+        if (Mathf.Abs(inputControl.Steering) > .5f && inputControl.onDragging)
         {
             if (trail1 == null)
             {
@@ -121,6 +121,11 @@ public class VehicleController : MonoBehaviour
                 trail2 = null;
             }
         }
+    }
+    
+    public void Damage(int damage = 1)
+    {
+        Debug.Log("Auch");
     }
 
     private void OnPlayerCrash(Transform crashDetector)

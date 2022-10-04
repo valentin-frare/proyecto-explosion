@@ -2,21 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeControl : MonoBehaviour
+public class SwipeControl : InputControl
 {
-    public bool onDragging;
-
-    private bool returnToZeroAfterStopDragging;
-    private Vector3 startPos;
-    private Vector3 delta;
-    private float steering;
-    private float acceleration;
-
-    public float Steering => steering;
-    public float Acceleration => acceleration;
-    public float deltaY => delta.y;
-
-    public void Init(bool returnToZeroAfterStopDragging = false)
+    public override void Init(bool returnToZeroAfterStopDragging = false)
     {
         this.returnToZeroAfterStopDragging = returnToZeroAfterStopDragging;
     }
