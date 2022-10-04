@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31dbeeea40ab0ab43858eb66f0652fff, type: 3}
-  m_Name: TestVehicle
+  m_Name: Vehicle1
   m_EditorClassIdentifier: 
   drag: 1
   torque: 200
@@ -47,13 +47,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
-  price: 0
-  originalSpeed: 0.1
-  originalEndurance: 0.1
-  originalHandling: 0.1
-  upgradeSpeed: 0.2
-  upgradeEndurance: 0.2
-  upgradeHandling: 0.2
-  priceUpgradeSpeed: 50
-  priceUpgradeEndurance: 50
-  priceUpgradeHandLing: 50
+  price: 175
+  originalSpeed: 0.15
+  originalEndurance: 0.15
+  originalHandling: 0.15
+  upgradeSpeed: 0.25
+  upgradeEndurance: 0.25
+  upgradeHandling: 0.25
+  priceUpgradeSpeed: 75
+  priceUpgradeEndurance: 75
+  priceUpgradeHandLing: 75

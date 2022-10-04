@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31dbeeea40ab0ab43858eb66f0652fff, type: 3}
-  m_Name: TestVehicle
+  m_Name: Vehicle8
   m_EditorClassIdentifier: 
   drag: 1
   torque: 200
@@ -54,6 +54,6 @@ MonoBehaviour:
   upgradeSpeed: 0.2
   upgradeEndurance: 0.2
   upgradeHandling: 0.2
-  priceUpgradeSpeed: 50
-  priceUpgradeEndurance: 50
-  priceUpgradeHandLing: 50
+  priceUpgradeSpeed: 100
+  priceUpgradeEndurance: 100
+  priceUpgradeHandLing: 100
