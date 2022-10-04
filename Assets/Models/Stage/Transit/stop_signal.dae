@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+<asset>
+<contributor>
+<author>VoxelShop User</author>
+<authoring_tool>VoxelShop V1.8.26
+</authoring_tool>
+</contributor>
+<created>2022-10-03T12:10:09</created>
+<modified>2022-10-03T12:10:09</modified>
+<unit meter="1" name="meter"/>
+<up_axis>Z_UP</up_axis>
+</asset>
+<library_images>
+<image id="stop_signal_texture0-image" name="stop_signal_texture0-image">
+<init_from>file://stop_signal_texture0.png</init_from>
+</image>
+</library_images>
+<library_effects>
+<effect id="lambert0-fx">
+<profile_COMMON>
+<newparam sid="stop_signal_texture0-surface">
+<surface type="2D">
+<init_from>stop_signal_texture0-image</init_from>
+</surface>
+</newparam>
+<newparam sid="stop_signal_texture0-sampler">
+<sampler2D>
+<source>stop_signal_texture0-surface</source>
+<wrap_s>WRAP</wrap_s>
+<wrap_t>WRAP</wrap_t>
+<minfilter>NEAREST</minfilter>
+<magfilter>NEAREST</magfilter>
+</sampler2D>
+</newparam>
+<technique sid="common">
+<lambert>
+<emission>
+<color>0 0 0 1</color>
+</emission>
+<ambient>
+<color>0 0 0 1</color>
+</ambient>
+<diffuse>
+<texture texcoord="TEX0" texture="stop_signal_texture0-sampler"/>
+</diffuse>
+</lambert>
+</technique>
+</profile_COMMON>
+</effect>
+</library_effects>
+<library_materials>
+<material id="lambert0-material" name="lambert0">
+<instance_effect url="#lambert0-fx"/>
+</material>
+</library_materials>
+<library_geometries>
+<geometry id="Plane-tex-mesh-0" name="Plane-tex">
+<mesh>
+<source id="Plane-tex-mesh-0-positions">
+<float_array count="144" id="Plane-tex-mesh-0-positions-array">-1 -1 7 -1 1 -21 -1 -1 -21 -1 1 7 -3 -1 21 -3 1 19 -3 -1 19 -3 1 21 -3 -1 9 -3 1 7 -3 -1 7 -3 1 9 -5 -1 19 -5 1 17 -5 -1 17 -5 1 19 -5 -1 11 -5 1 9 -5 -1 9 -5 1 11 -7 -1 17 -7 1 11 -7 -1 11 -7 1 17 7 -1 17 7 1 11 7 -1 11 7 1 17 5 -1 19 5 1 17 5 -1 17 5 1 19 5 -1 11 5 1 9 5 -1 9 5 1 11 3 -1 21 3 1 19 3 -1 19 3 1 21 3 -1 9 3 1 7 3 -1 7 3 1 9 1 -1 7 1 1 -21 1 -1 -21 1 1 7</float_array>
+<technique_common>
+<accessor count="48" source="#Plane-tex-mesh-0-positions-array" stride="3">
+<param name="X" type="float"/>
+<param name="Y" type="float"/>
+<param name="Z" type="float"/>
+</accessor>
+</technique_common>
+</source>
+<source id="Plane-tex-mesh-0-uvs">
+<float_array count="42" id="Plane-tex-mesh-0-uvs-array">0.6250884 0.8332155 0.7498232 0.8332155 0.6250884 0.66690236 0.3750884 0.33321548 0.49982324 0.33321548 0.3750884 0.16690236 0.12519565 0.33318427 0.2499441 0.33318427 0.2915269 0.16696481 0.12514015 0.66655594 0.28115657 0.66655594 0.24995328 0.4446659 0.12519565 0.44459352 0.2499441 0.44459352 0.2915269 0.66636854 0.7915226 0.33322662 0.62504804 0.16688006 0.58342934 0.33322662 0.2915269 0.3330352 0.2499441 0.16681574 0.12519565 0.16681574</float_array>
+<technique_common>
+<accessor count="21" source="#Plane-tex-mesh-0-uvs-array" stride="2">
+<param name="S" type="float"/>
+<param name="T" type="float"/>
+</accessor>
+</technique_common>
+</source>
+<vertices id="Plane-tex-mesh-0-vertices">
+<input semantic="POSITION" source="#Plane-tex-mesh-0-positions"/>
+</vertices>
+<triangles count="92" material="Plane-tex-mesh-0-lambert0-material">
+<input offset="0" semantic="VERTEX" source="#Plane-tex-mesh-0-vertices"/>
+<input offset="1" semantic="TEXCOORD" set="0" source="#Plane-tex-mesh-0-uvs"/>
+<p>0 0 1 1 2 2 0 0 3 1 1 2 4 3 5 4 6 5 4 3 7 4 5 5 8 3 9 4 10 5 8 3 11 4 9 5 12 3 13 4 14 5 12 3 15 4 13 5 16 3 17 4 18 5 16 3 19 4 17 5 20 3 21 4 22 5 20 3 23 4 21 5 25 4 24 3 26 5 27 4 24 3 25 5 29 4 28 3 30 5 31 4 28 3 29 5 33 4 32 3 34 5 35 4 32 3 33 5 37 4 36 3 38 5 39 4 36 3 37 5 41 4 40 3 42 5 43 4 40 3 41 5 45 1 44 0 46 2 47 1 44 0 45 2 1 1 46 0 2 2 45 1 46 0 1 2 47 4 42 3 44 5 41 4 42 3 47 5 9 4 0 3 10 5 3 4 0 3 9 5 43 4 34 3 40 5 33 4 34 3 43 5 17 4 8 3 18 5 11 4 8 3 17 5 35 4 26 3 32 5 25 4 26 3 35 5 21 4 16 3 22 5 19 4 16 3 21 5 24 3 29 4 30 5 24 3 27 4 29 5 14 3 23 4 20 5 14 3 13 4 23 5 28 3 37 4 38 5 28 3 31 4 37 5 6 3 15 4 12 5 6 3 5 4 15 5 36 3 7 4 4 5 36 3 39 4 7 5 26 3 30 4 32 5 32 6 30 7 38 8 26 3 24 4 30 5 30 3 28 4 38 5 16 9 32 10 38 11 38 12 6 13 16 14 16 15 40 16 32 17 6 18 14 19 16 20 38 3 4 4 6 5 32 3 40 4 34 5 8 19 40 20 16 18 16 3 14 4 20 5 6 3 12 4 14 5 38 3 36 4 4 5 8 3 16 4 18 5 8 3 44 4 40 5 16 3 20 4 22 5 44 3 42 4 40 5 0 3 44 4 8 5 0 3 8 4 10 5 46 0 44 1 0 2 46 0 0 1 2 2 29 4 25 3 35 5 29 7 35 6 37 8 27 4 25 3 29 5 31 4 29 3 37 5 35 10 19 9 37 11 5 13 37 12 19 14 43 16 19 15 35 17 13 19 5 18 19 20 7 4 37 3 5 5 43 4 35 3 33 5 43 20 11 19 19 18 13 4 19 3 23 5 15 4 5 3 13 5 39 4 37 3 7 5 19 4 11 3 17 5 47 4 11 3 43 5 23 4 19 3 21 5 41 4 47 3 43 5 47 4 3 3 11 5 11 4 3 3 9 5 47 1 45 0 3 2 3 1 45 0 1 2</p>
+</triangles>
+</mesh>
+</geometry>
+</library_geometries>
+<library_visual_scenes>
+<visual_scene id="Scene" name="Scene">
+<node id="stop_signal.merged" name="stop_signal.Merged" type="NODE">
+<translate sid="location">-0.3 -0.0 1.0</translate>
+<rotate sid="rotationZ">0 0 1 0</rotate>
+<rotate sid="rotationY">0 1 0 0</rotate>
+<rotate sid="rotationX">1 0 0 0</rotate>
+<scale sid="scale">0.05 0.05 0.05</scale>
+<instance_geometry name="Merged" sid="stop_signal.merged" url="#Plane-tex-mesh-0">
+<bind_material>
+<technique_common>
+<instance_material symbol="lambert0-material" target="#lambert0-material">
+<bind_vertex_input input_semantic="TEXCOORD" input_set="0" semantic="TEX0"/>
+</instance_material>
+</technique_common>
+</bind_material>
+</instance_geometry>
+</node>
+</visual_scene>
+</library_visual_scenes>
+<scene>
+<instance_visual_scene url="#Scene"/>
+</scene>
+</COLLADA>
