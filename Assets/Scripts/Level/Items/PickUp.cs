@@ -7,7 +7,7 @@ public class PickUp : MonoBehaviour
     public int points = 100;
     private void OnTriggerEnter()
     {
-        Debug.Log("Puntos: " + points);
+        EndLevelCoins.instance.AddCoins(points);
         gameObject.SetActive(false);
     }
 }

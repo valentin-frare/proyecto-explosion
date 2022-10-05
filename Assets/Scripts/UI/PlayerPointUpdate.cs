@@ -15,6 +15,7 @@ public class PlayerPointUpdate : MonoBehaviour
     private float playerPointStart;
     private float porcentaje;
     private VehicleController playerVehicle;
+    private float timer = 0;
 
     private void Awake() 
     {
@@ -44,6 +45,7 @@ public class PlayerPointUpdate : MonoBehaviour
             return;
         }
 
+        timer += Time.deltaTime;
         porcentaje = (start-playerPosition.position.z)*100/final;
         playerPoint.position = new Vector2(playerPointStart + (porcentaje*maxWidth/100),playerPoint.position.y);
 
@@ -61,5 +63,7 @@ public class PlayerPointUpdate : MonoBehaviour
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
         go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
+        EndLevelCoins.instance.GenerateCoinsEndLevel(final, 200, timer);
+        Debug.Log(EndLevelCoins.instance.levelCoins);
     }
 }
