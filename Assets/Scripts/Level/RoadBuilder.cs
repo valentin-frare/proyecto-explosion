@@ -52,7 +52,7 @@ public class RoadBuilder : MonoBehaviour
         {
             roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0, 0, 120) - new Vector3(0, 0, maxDistance * i), transform.rotation, roadsContainer).transform);
         }
-
+        Debug.Log(playerSpawnZ);
         playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
         Instantiate(finishLine, new Vector3(0, 0, playerSpawnZ - playerPointUpdate.final), transform.rotation, roadsContainer);
 

@@ -10,6 +10,11 @@ public class EndLevelCoins : MonoBehaviour
     public int levelCoins = 0;
     private const float crazyNumber = 4.4f;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void GenerateCoinsEndLevel(float finishLine, float torque, float timer)
     {
         float minTime = 0;
@@ -23,29 +28,22 @@ public class EndLevelCoins : MonoBehaviour
         int minCoin = 1;
         int midCoin = 25;
         int maxCoin = 100;
-        float differenceCoin = 0;
-        float differenceTimer = 0;
-        float numberCoinTimer = 0;
+
+        float lerp = 0;
 
         if (timer <= minTime && timer >= midTime)
         {
-            differenceCoin = midCoin - minCoin;
-            differenceTimer = (minTime - midTime);
-            numberCoinTimer = differenceTimer / differenceCoin;
-
-            levelCoins = levelCoins + midCoin - (int)Mathf.Floor(timer/numberCoinTimer);
+            lerp = Mathf.Lerp(minCoin,midCoin,Mathf.Clamp01(((minTime - timer) / midTime)));
+            levelCoins = levelCoins + Mathf.CeilToInt(lerp);
         }
-        else if (timer <= midTime && timer >= maxTime)
+        else if (timer < midTime && timer >= maxTime)
         {
-            differenceCoin = maxCoin - midCoin;
-            differenceTimer = (midTime - maxTime);
-            numberCoinTimer = differenceTimer / differenceCoin;
-
-            levelCoins = levelCoins + maxCoin - (int)Mathf.Floor(timer/numberCoinTimer);
+            lerp = Mathf.Lerp(midCoin,maxCoin,Mathf.Clamp01(((midTime - timer) / maxTime)));
+            levelCoins = levelCoins + Mathf.CeilToInt(lerp);
         }
         else if (timer < maxTime)
         {
-            levelCoins = levelCoins + minCoin;
+            levelCoins = levelCoins + maxCoin;
         }
         else if (timer > minTime)
         {
@@ -56,6 +54,7 @@ public class EndLevelCoins : MonoBehaviour
     public void AddCoins(int n)
     {
         levelCoins = levelCoins + n;
+        Debug.Log("agarraste: " + n);
     }
 
     public void AddTotalCoins()

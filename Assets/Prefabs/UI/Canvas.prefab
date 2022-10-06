@@ -4309,7 +4309,7 @@ GameObject:
   - component: {fileID: 6295844047595832172}
   - component: {fileID: 4080725404934468504}
   - component: {fileID: 3950542022689390300}
-  - component: {fileID: 1383480050268285739}
+  - component: {fileID: 2726786543129459399}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -4377,7 +4377,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &1383480050268285739
+--- !u!114 &2726786543129459399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

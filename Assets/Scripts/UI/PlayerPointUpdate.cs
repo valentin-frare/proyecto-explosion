@@ -10,7 +10,7 @@ public class PlayerPointUpdate : MonoBehaviour
     public Transform playerPointInvisible;
     private Transform playerPosition;
     private float maxWidth;
-    public float final = 500f;
+    public float final = 100f;
     private float start;
     private float playerPointStart;
     private float porcentaje;
@@ -33,6 +33,7 @@ public class PlayerPointUpdate : MonoBehaviour
         playerPosition = player.transform;
         playerVehicle = player.GetComponent<VehicleController>();
         start = playerPosition.position.z;
+        Debug.Log(start);
         porcentaje = 0;
     }
 
@@ -63,7 +64,8 @@ public class PlayerPointUpdate : MonoBehaviour
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
         go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
+        Debug.Log("Tiempo final: " + timer);
         EndLevelCoins.instance.GenerateCoinsEndLevel(final, 200, timer);
-        Debug.Log(EndLevelCoins.instance.levelCoins);
+        Debug.Log("Coin final:" + EndLevelCoins.instance.levelCoins);
     }
 }
