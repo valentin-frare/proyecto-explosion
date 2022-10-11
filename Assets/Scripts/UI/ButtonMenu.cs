@@ -10,6 +10,7 @@ public class ButtonMenu : MonoBehaviour
         switch (GameManager.instance.gameState)
         {
             case GameState.Crashed:
+                EndLevelCoins.instance.RestartCoins();
                 RespawnManager.instance.SpawnPlayer();
                 GameManager.instance.SetGameState(GameState.Playing);
                 break;
@@ -19,6 +20,7 @@ public class ButtonMenu : MonoBehaviour
                 GameManager.instance.SetGameState(GameState.Victory);
                 break;
             case GameState.Victory:
+                EndLevelCoins.instance.RestartCoins();
                 RespawnManager.instance.DeleteAllPlayers();
                 RespawnManager.instance.SpawnPlayer();
                 GameManager.instance.SetGameState(GameState.Playing);
@@ -27,5 +29,4 @@ public class ButtonMenu : MonoBehaviour
             break;
         }
     }
-
 }

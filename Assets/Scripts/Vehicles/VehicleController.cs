@@ -134,15 +134,7 @@ public class VehicleController : MonoBehaviour, IDamageable
         Instantiate(fireParticles, crashDetector.position, fireParticles.transform.rotation, crashDetector);
         stopHandleInputs = true;
         vehicleMovement.Brake();
-        StartCoroutine(AbrirMenu(2f));
-    }
-
-    private IEnumerator AbrirMenu(float time){
-        yield return new WaitForSeconds(time);
-        Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
-        go.GetChild(0).gameObject.SetActive(true);
-        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
-        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "REINICIAR";
+        StartCoroutine(GameManager.instance.Defeat(2f));
     }
 
     public void StopVehicle()

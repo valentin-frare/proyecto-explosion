@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public enum GameState
 {
@@ -44,5 +45,28 @@ public class GameManager : MonoBehaviour
         gameState = state;
 
         OnGameStateChanged?.Invoke(state);
+    }
+
+    public IEnumerator Victory(float x, float final, float timer, float torque = 200)
+    {
+        yield return new WaitForSeconds(x);
+        Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
+        go.GetChild(0).gameObject.SetActive(true);
+        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
+        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
+        go.GetChild(0).GetChild(2).gameObject.SetActive(true);
+        EndLevelCoins.instance.GenerateCoinsEndLevel(final, torque, timer);
+        go.GetChild(0).GetChild(2).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "OBJETOS: $" + EndLevelCoins.instance.objectCoins;
+        go.GetChild(0).GetChild(2).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "TIEMPO: $" + EndLevelCoins.instance.timerCoins;
+        go.GetChild(0).GetChild(2).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = "TOTAL: $" + EndLevelCoins.instance.levelCoins;
+    }
+
+    public IEnumerator Defeat(float time){
+        yield return new WaitForSeconds(time);
+        Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
+        go.GetChild(0).gameObject.SetActive(true);
+        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
+        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "REINICIAR";
+        go.GetChild(0).GetChild(2).gameObject.SetActive(false);
     }
 }

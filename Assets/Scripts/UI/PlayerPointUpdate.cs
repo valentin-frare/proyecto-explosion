@@ -33,7 +33,6 @@ public class PlayerPointUpdate : MonoBehaviour
         playerPosition = player.transform;
         playerVehicle = player.GetComponent<VehicleController>();
         start = playerPosition.position.z;
-        Debug.Log(start);
         porcentaje = 0;
     }
 
@@ -53,19 +52,8 @@ public class PlayerPointUpdate : MonoBehaviour
         if (porcentaje >= 100)
         {
             playerVehicle.StopVehicle();
-            StartCoroutine(VictoryMenu(2f));
+            StartCoroutine(GameManager.instance.Victory(2f, final, timer));
+            timer = 0;
         }
-    }
-
-    private IEnumerator VictoryMenu(float x)
-    {
-        yield return new WaitForSeconds(x);
-        Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
-        go.GetChild(0).gameObject.SetActive(true);
-        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
-        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
-        Debug.Log("Tiempo final: " + timer);
-        EndLevelCoins.instance.GenerateCoinsEndLevel(final, 200, timer);
-        Debug.Log("Coin final:" + EndLevelCoins.instance.levelCoins);
     }
 }

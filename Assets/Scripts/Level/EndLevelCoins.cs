@@ -8,6 +8,8 @@ public class EndLevelCoins : MonoBehaviour
     public static EndLevelCoins instance {get; private set;}
     public int totalCoins = 0;
     public int levelCoins = 0;
+    public int objectCoins = 0;
+    public int timerCoins = 0;
     private const float crazyNumber = 4.4f;
 
     private void Awake()
@@ -34,31 +36,41 @@ public class EndLevelCoins : MonoBehaviour
         if (timer <= minTime && timer >= midTime)
         {
             lerp = Mathf.Lerp(minCoin,midCoin,Mathf.Clamp01(((minTime - timer) / midTime)));
-            levelCoins = levelCoins + Mathf.CeilToInt(lerp);
+            timerCoins = Mathf.CeilToInt(lerp);
         }
         else if (timer < midTime && timer >= maxTime)
         {
             lerp = Mathf.Lerp(midCoin,maxCoin,Mathf.Clamp01(((midTime - timer) / maxTime)));
-            levelCoins = levelCoins + Mathf.CeilToInt(lerp);
+            timerCoins = Mathf.CeilToInt(lerp);
         }
         else if (timer < maxTime)
         {
-            levelCoins = levelCoins + maxCoin;
+            timerCoins = maxCoin;
         }
         else if (timer > minTime)
         {
-            levelCoins = levelCoins + minCoin;
+            timerCoins = minCoin;
         }
+        levelCoins += timerCoins;
+
+        AddTotalCoins();
     }
 
     public void AddCoins(int n)
     {
-        levelCoins = levelCoins + n;
-        Debug.Log("agarraste: " + n);
+        objectCoins += n;
+        levelCoins += n;
     }
 
     public void AddTotalCoins()
     {
-        totalCoins = totalCoins + levelCoins;
+        totalCoins += levelCoins;
+    }
+
+    public void RestartCoins()
+    {
+        levelCoins = 0;
+        objectCoins = 0;
+        timerCoins = 0;
     }
 }

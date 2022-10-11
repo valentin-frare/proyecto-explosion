@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Vehicle2
   m_EditorClassIdentifier: 
   drag: 1
+  id: 2
   torque: 200
   torqueReverse: 50
   brakeForce: 2000
