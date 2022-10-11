@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonMenu : MonoBehaviour
 {
+    [SerializeField]
+    private Toggle vehicleOne;
+    [SerializeField]
+    private ToggleGroup switchOff;
     
     public void SpawnAgain()
     {
@@ -18,6 +23,8 @@ public class ButtonMenu : MonoBehaviour
                 Transform go = GameObject.FindGameObjectWithTag("ServiceStationMenu").transform;
                 go.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.SetGameState(GameState.Victory);
+                vehicleOne.isOn = true;
+                switchOff.allowSwitchOff = false;
                 break;
             case GameState.Victory:
                 EndLevelCoins.instance.RestartCoins();
