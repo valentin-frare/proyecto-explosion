@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ButtonMenu : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ButtonMenu : MonoBehaviour
     private Toggle vehicleOne;
     [SerializeField]
     private ToggleGroup switchOff;
+    [SerializeField]
+    private GameObject grid;
+    [SerializeField]
+    private BuyAndUpgrade bau;
     
     public void SpawnAgain()
     {
@@ -19,12 +24,13 @@ public class ButtonMenu : MonoBehaviour
                 RespawnManager.instance.SpawnPlayer();
                 GameManager.instance.SetGameState(GameState.Playing);
                 break;
-            case GameState.Playing:
+            case GameState.Menu:
                 Transform go = GameObject.FindGameObjectWithTag("ServiceStationMenu").transform;
                 go.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.SetGameState(GameState.Victory);
                 vehicleOne.isOn = true;
                 switchOff.allowSwitchOff = false;
+                VehiclePrices();
                 break;
             case GameState.Victory:
                 EndLevelCoins.instance.RestartCoins();
@@ -33,7 +39,16 @@ public class ButtonMenu : MonoBehaviour
                 GameManager.instance.SetGameState(GameState.Playing);
                 break;
             default:
-            break;
+                break;
+        }
+    }
+
+    private void VehiclePrices()
+    {
+        for (int i = 0; i < bau.scriptVeh.Count; i++)
+        {
+            //grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = (bau.scriptVeh[i].price > 0 ? (""+bau.scriptVeh[i].price) : "COGIDO");
+            grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = bau.scriptVeh[i].price.ToString();
         }
     }
 }

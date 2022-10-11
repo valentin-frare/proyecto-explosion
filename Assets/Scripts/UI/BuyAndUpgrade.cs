@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyAndUpgrade : MonoBehaviour
 {
@@ -15,8 +16,7 @@ public class BuyAndUpgrade : MonoBehaviour
     private Slider sliderEndurance;
     [SerializeField]
     private Slider sliderHandling;
-    [SerializeField]
-    private List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
+    public List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
 
     private VehicleConfig selectedVehicle;
     
@@ -43,6 +43,10 @@ public class BuyAndUpgrade : MonoBehaviour
             sliderSpeed.value = selectedVehicle.originalSpeed;
             sliderEndurance.value = selectedVehicle.originalEndurance;
             sliderHandling.value = selectedVehicle.originalHandling;
+
+            upgrades.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = selectedVehicle.priceUpgradeSpeed.ToString();
+            upgrades.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = selectedVehicle.priceUpgradeEndurance.ToString();
+            upgrades.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = selectedVehicle.priceUpgradeHandLing.ToString();
         }
     }
 

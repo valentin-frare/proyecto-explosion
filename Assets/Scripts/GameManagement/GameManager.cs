@@ -10,7 +10,8 @@ public enum GameState
     Crashed,
     MainMenu,
     Paused,
-    Victory
+    Victory,
+    Menu
 }
 
 public class GameManager : MonoBehaviour
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator Victory(float x, float final, float timer, float torque = 200)
     {
         yield return new WaitForSeconds(x);
+        GameManager.instance.SetGameState(GameState.Menu);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Defeat(float time){
         yield return new WaitForSeconds(time);
+        GameManager.instance.SetGameState(GameState.Menu);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
