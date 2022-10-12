@@ -48,9 +48,9 @@ public class ButtonMenu : MonoBehaviour
     private void VehiclePrices()
     {
         allMoney.GetComponent<TextMeshProUGUI>().text = "$ " + EndLevelCoins.instance.totalCoins;
-        for (int i = 0; i < bau.scriptVeh.Count; i++)
+        for (int i = 0; i < bau.trueScriptVeh.Count; i++)
         {
-            grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = bau.scriptVeh[i].price.ToString();
+            grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = bau.trueScriptVeh[i].price.ToString();
         }
     }
 }

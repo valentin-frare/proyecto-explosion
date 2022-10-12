@@ -19,8 +19,8 @@ public class BuyAndUpgrade : MonoBehaviour
     [SerializeField]
     private Slider sliderHandling;
     public List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
-
-    private VehicleConfig selectedVehicle;
+    public List<VehicleNonScriptable> trueScriptVeh = new List<VehicleNonScriptable>();
+    private VehicleNonScriptable selectedVehicle;
     private GameObject vehicleToBuy;
     private int vehiclePrice;
     private GameObject upgradeToBuy;
@@ -28,7 +28,13 @@ public class BuyAndUpgrade : MonoBehaviour
     
     void Start()
     {
-        
+        for (int i = 0; i < scriptVeh.Count; i++)
+        {
+            VehicleConfig vc = scriptVeh[i];
+            trueScriptVeh.Add(new VehicleNonScriptable(vc.price, vc.originalSpeed, vc.originalEndurance, vc.originalHandling, vc.upgradeSpeed, vc.upgradeEndurance, vc.upgradeHandling, vc.priceUpgradeSpeed, vc.priceUpgradeEndurance, vc.priceUpgradeHandLing));
+        }
+        Debug.Log(trueScriptVeh[0].price);
+        Debug.Log(trueScriptVeh[1].price);
     }
 
     void Update()
@@ -47,7 +53,7 @@ public class BuyAndUpgrade : MonoBehaviour
             {
                 obj.gameObject.GetComponent<Toggle>().isOn = false;
             }
-            selectedVehicle = scriptVeh[go.transform.GetSiblingIndex()];
+            selectedVehicle = trueScriptVeh[go.transform.GetSiblingIndex()];
             sliderSpeed.value = selectedVehicle.originalSpeed;
             sliderEndurance.value = selectedVehicle.originalEndurance;
             sliderHandling.value = selectedVehicle.originalHandling;
@@ -60,7 +66,14 @@ public class BuyAndUpgrade : MonoBehaviour
             {
                 foreach (Transform obj in up)
                 {
-                    obj.gameObject.GetComponent<Toggle>().interactable = true;
+                    if (int.Parse(obj.GetChild(1).GetComponent<TextMeshProUGUI>().text) > 0)
+                    {
+                        obj.gameObject.GetComponent<Toggle>().interactable = true;
+                    }
+                    else
+                    {
+                        obj.gameObject.GetComponent<Toggle>().interactable = false;
+                    }
                 }
             }
             else
@@ -117,6 +130,7 @@ public class BuyAndUpgrade : MonoBehaviour
     public void BuyThings()
     {
         Transform up = upgrades.transform;
+        int index = vehicleToBuy.transform.GetSiblingIndex();
 
         if (vehiclePrice > 0)
         {
@@ -125,6 +139,7 @@ public class BuyAndUpgrade : MonoBehaviour
                 EndLevelCoins.instance.totalCoins -= vehiclePrice;
                 vehicleToBuy.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = 0.ToString();
                 textSt.GetComponent<TextMeshProUGUI>().text = EndLevelCoins.instance.totalCoins.ToString();
+                trueScriptVeh[index].price = 0;
                 foreach (Transform obj in up)
                 {
                     obj.gameObject.GetComponent<Toggle>().interactable = true;
@@ -149,6 +164,24 @@ public class BuyAndUpgrade : MonoBehaviour
                     upgradeToBuy.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = 0.ToString();
                     textSt.GetComponent<TextMeshProUGUI>().text = EndLevelCoins.instance.totalCoins.ToString();
                     upgradeToBuy.GetComponent<Toggle>().interactable = false;
+
+                    switch (upgradeToBuy.name)
+                    {
+                        case "U0":
+                            trueScriptVeh[index].priceUpgradeSpeed = 0;
+                            trueScriptVeh[index].originalSpeed = trueScriptVeh[index].upgradeSpeed;
+                            break;
+                        case "U1":
+                            trueScriptVeh[index].priceUpgradeEndurance = 0;
+                            trueScriptVeh[index].originalEndurance = trueScriptVeh[index].upgradeEndurance;
+                            break;
+                        case "U2":
+                            trueScriptVeh[index].priceUpgradeHandLing = 0;
+                            trueScriptVeh[index].originalHandling = trueScriptVeh[index].upgradeHandling;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
