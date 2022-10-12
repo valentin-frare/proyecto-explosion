@@ -25,13 +25,15 @@ public class Sensors
 
     public void Init()
     {
-
+        
     }
 
     public void Update()
     {
-        vehicleInFront = Physics.Raycast(transform.position + new Vector3(0.5f,0,0), Vector3.back, out var hitFront, sensorsConfig.frontMax, layerMask) || Physics.Raycast(transform.position - new Vector3(0.5f,0,0), Vector3.back, out var hitFront2, sensorsConfig.frontMax, layerMask);
-        vehicleFarInFront = Physics.Raycast(transform.position + new Vector3(0.5f,0,0), Vector3.back, out var hitFrontFar, sensorsConfig.frontFarMax, layerMask) || Physics.Raycast(transform.position - new Vector3(0.5f,0,0), Vector3.back, out var hitFrontFar2, sensorsConfig.frontFarMax, layerMask);
+        vehicleInFront = Physics.Raycast(transform.position + new Vector3(0.5f,0,0), Vector3.back, out var hitFront, sensorsConfig.frontMax, layerMask) 
+                       || Physics.Raycast(transform.position - new Vector3(0.5f,0,0), Vector3.back, out var hitFront2, sensorsConfig.frontMax, layerMask);
+        vehicleFarInFront = Physics.Raycast(transform.position + new Vector3(0.5f,0,0), Vector3.back, out var hitFrontFar, sensorsConfig.frontFarMax, layerMask) 
+                          || Physics.Raycast(transform.position - new Vector3(0.5f,0,0), Vector3.back, out var hitFrontFar2, sensorsConfig.frontFarMax, layerMask);
         vehicleBehind = Physics.Raycast(transform.position, Vector3.forward, out var hitBehind, sensorsConfig.backMax, layerMask);
         vehicleOnRight = Physics.Raycast(transform.position,Vector3.right, out var hitRight, sensorsConfig.rightMax, layerMask);
         vehicleOnLeft = Physics.Raycast(transform.position, Vector3.left, out var hitLeft, sensorsConfig.leftMax, layerMask);

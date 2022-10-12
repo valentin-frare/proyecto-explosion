@@ -68,6 +68,7 @@ public class VehicleAiController : MonoBehaviour
 
     public void ChangeState(string state)
     {
+        Debug.Log(state);
         stateMachine.SetCurrentState( stateMachine.States.FindIndex( st => st.ToString() == state ) );
     }
 }

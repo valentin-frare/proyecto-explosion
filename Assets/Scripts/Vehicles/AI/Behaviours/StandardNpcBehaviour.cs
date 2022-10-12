@@ -15,7 +15,7 @@ public class StandardNpcBehaviour : IBehaviour
         NormalDriveState normalDriveState = new NormalDriveState(transform, vehicleMovement, sensors);
         StraightDriveState straightDriveState = new StraightDriveState(transform, vehicleMovement, sensors);
         CrashingPlayerState crashingPlayerState = new CrashingPlayerState(transform, vehicleMovement, player);
-        HornState hornState = new HornState(coroutineHelper);
+        HornState hornState = new HornState(coroutineHelper, vehicleMovement);
 
         followPlayerState.onPlayerReached += OnPlayerReached;
         straightDriveState.OnVehicleOnFront += OnVehicleOnFront;
