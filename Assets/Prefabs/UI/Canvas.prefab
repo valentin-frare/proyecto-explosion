@@ -2446,6 +2446,7 @@ MonoBehaviour:
   switchOff: {fileID: 4606709100537361594}
   grid: {fileID: 6123373363669049855}
   bau: {fileID: 2509820159605363980}
+  allMoney: {fileID: 1407950712057105887}
 --- !u!1 &2374880471789731558
 GameObject:
   m_ObjectHideFlags: 0
@@ -9155,6 +9156,7 @@ MonoBehaviour:
   switchOff: {fileID: 0}
   grid: {fileID: 0}
   bau: {fileID: 0}
+  allMoney: {fileID: 0}
 --- !u!1 &8227640306292880985
 GameObject:
   m_ObjectHideFlags: 0

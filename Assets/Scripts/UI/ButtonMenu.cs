@@ -14,6 +14,8 @@ public class ButtonMenu : MonoBehaviour
     private GameObject grid;
     [SerializeField]
     private BuyAndUpgrade bau;
+    [SerializeField]
+    private GameObject allMoney;
     
     public void SpawnAgain()
     {
@@ -45,9 +47,9 @@ public class ButtonMenu : MonoBehaviour
 
     private void VehiclePrices()
     {
+        allMoney.GetComponent<TextMeshProUGUI>().text = "$ " + EndLevelCoins.instance.totalCoins;
         for (int i = 0; i < bau.scriptVeh.Count; i++)
         {
-            //grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = (bau.scriptVeh[i].price > 0 ? (""+bau.scriptVeh[i].price) : "COGIDO");
             grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = bau.scriptVeh[i].price.ToString();
         }
     }
