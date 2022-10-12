@@ -8181,7 +8181,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6797936395108507671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2509820159605363980}
+        m_TargetAssemblyTypeName: BuyAndUpgrade, Assembly-CSharp
+        m_MethodName: BuyThings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7733219816098891261
 GameObject:
   m_ObjectHideFlags: 0
@@ -9405,6 +9417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9f9c74b9f361144ab924d6f35f014c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textSt: {fileID: 1407950712057105887}
   vehicles: {fileID: 6123373363669049855}
   upgrades: {fileID: 1874241276162686168}
   sliderSpeed: {fileID: 2091216375447965288}
