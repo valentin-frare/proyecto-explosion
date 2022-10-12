@@ -40,6 +40,8 @@ public class VehicleController : MonoBehaviour, IDamageable
         inputControl.Init();
         cameraControl = new CameraControl(cinemachineVirtualCamera);
         crashDetectors.OnVehicleCrashed += OnPlayerCrash;
+
+        cameraControl.ResetView();
     }
 
     void Update()

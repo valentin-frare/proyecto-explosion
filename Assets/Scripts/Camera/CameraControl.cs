@@ -35,4 +35,9 @@ public class CameraControl
             cinemachineFramingTransposer.m_TrackedObjectOffset.z -= Time.fixedDeltaTime;
         }
     }
+
+    public void ResetView()
+    {
+        cinemachineFramingTransposer.m_TrackedObjectOffset.z = 15.66f;
+    }
 }
