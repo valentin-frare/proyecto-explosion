@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Plants
   m_TagString: Coins
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -41,6 +41,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3178041524120142474}
     m_Modifications:
+    - target: {fileID: 1964089589965616214, guid: e0a43e72513f4444fadabeded2781f2e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1976046418344678505, guid: e0a43e72513f4444fadabeded2781f2e,
         type: 3}
       propertyPath: m_RootOrder
@@ -98,6 +103,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274502809276218343, guid: e0a43e72513f4444fadabeded2781f2e,
         type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 7274502809276218343, guid: e0a43e72513f4444fadabeded2781f2e,
+        type: 3}
       propertyPath: m_Name
       value: PlantaCircularRoja
       objectReference: {fileID: 0}
@@ -121,6 +132,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3178041524120142474}
     m_Modifications:
+    - target: {fileID: 672004124993207919, guid: b45a1fa431ef44b4e8d1c1efe1260234,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 684259745090920016, guid: b45a1fa431ef44b4e8d1c1efe1260234,
         type: 3}
       propertyPath: m_RootOrder
@@ -178,6 +194,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8567694636110131678, guid: b45a1fa431ef44b4e8d1c1efe1260234,
         type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 8567694636110131678, guid: b45a1fa431ef44b4e8d1c1efe1260234,
+        type: 3}
       propertyPath: m_Name
       value: PlantaCircularVerde
       objectReference: {fileID: 0}
@@ -201,6 +223,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3178041524120142474}
     m_Modifications:
+    - target: {fileID: 901965894831507842, guid: 8035698e15550b644a67e3075d6c7493,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 901965894831507842, guid: 8035698e15550b644a67e3075d6c7493,
         type: 3}
       propertyPath: m_Name
@@ -265,6 +293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8300571598285375027, guid: 8035698e15550b644a67e3075d6c7493,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8035698e15550b644a67e3075d6c7493, type: 3}

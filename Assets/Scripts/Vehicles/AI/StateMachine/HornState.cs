@@ -10,22 +10,30 @@ public class HornState : IState
     private bool onPlaySound;
     private bool onEndSound;
     private MonoBehaviour coroutineHelper;
+    private IVehicleMovement enemyMovement;
 
-    public HornState(MonoBehaviour coroutineHelper)
+    public HornState(MonoBehaviour coroutineHelper, IVehicleMovement enemyMovement)
     {
         this.coroutineHelper = coroutineHelper;
+        this.enemyMovement = enemyMovement;
     }
 
     public void Update()
     {
+        enemyMovement.Idle();
+
         if (onPlaySound == false)
         {
-            SoundManager.instance?.StartSound("car_horn_01");
+            //SoundManager.instance?.StartSound("car_horn_01");
             coroutineHelper.StartCoroutine(WaitForSound(1f));
         }
 
         if (onEndSound)
+        {
+            onEndSound = false;
+            onPlaySound = false;
             OnHorn.Invoke();
+        }
     }
 
     IEnumerator WaitForSound(float seconds)

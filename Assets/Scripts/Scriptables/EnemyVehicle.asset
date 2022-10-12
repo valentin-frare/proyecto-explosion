@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyVehicle
   m_EditorClassIdentifier: 
   drag: 1
-  torque: 100
+  torque: 200
   torqueReverse: 50
   brakeForce: 2000
   steeringSpeed: 10
@@ -47,3 +47,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
+  price: 0
+  originalSpeed: 0
+  originalEndurance: 0
+  originalHandling: 0
+  upgradeSpeed: 0
+  upgradeEndurance: 0
+  upgradeHandling: 0
+  priceUpgradeSpeed: 0
+  priceUpgradeEndurance: 0
+  priceUpgradeHandLing: 0
