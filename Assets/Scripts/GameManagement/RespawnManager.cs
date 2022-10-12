@@ -42,6 +42,8 @@ public class RespawnManager : MonoBehaviour {
         GameEvents.OnPlayerSpawn.Invoke(player);
     }
 
+    public GameObject GetActualPlayer() => player;
+
     public void DeleteAllPlayers(){
         foreach (GameObject obj in players)
         {

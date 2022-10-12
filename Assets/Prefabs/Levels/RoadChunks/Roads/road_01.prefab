@@ -530,6 +530,48 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7332151107366540318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7566154320112838991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d0a18bb246cc23c49bf075049c4b7b8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7332151107366540318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2218959633653120820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566154320112838991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bda15fcc65cef488b140d2a3285a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &8272101234482311156
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 31264729669348800}
   - component: {fileID: 8249127519092374942}
   - component: {fileID: 6017364358445397628}
+  - component: {fileID: 234968513781072659}
   m_Layer: 0
   m_Name: Modelos Autos-2
   m_TagString: Untagged
@@ -510,6 +511,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &234968513781072659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445964934934205151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bda15fcc65cef488b140d2a3285a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1495338647158470073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -722,3 +759,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2504786425789325982}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3315669854524645327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 160f4a1ffc511914f842ede81e1380ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2504786425789325982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &105326306045093593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315669854524645327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bda15fcc65cef488b140d2a3285a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
