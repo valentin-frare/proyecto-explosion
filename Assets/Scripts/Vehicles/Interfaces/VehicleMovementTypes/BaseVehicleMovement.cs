@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 
 public class BaseVehicleMovement : IVehicleMovement
@@ -38,7 +36,7 @@ public class BaseVehicleMovement : IVehicleMovement
         RaycastHit hit;
         isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, vehicleConfig.groundLayer);
         
-        torque *= torque > 0 ? vehicleConfig.torque : vehicleConfig.torqueReverse;
+        torque *= torque > 0 ? (vehicleConfig.torque / GameManager.instance.multiplyTorque) : vehicleConfig.torqueReverse;
         
         sphereMotor.drag = isCarGrounded ? normalDrag : vehicleConfig.drag;
     }
@@ -53,7 +51,7 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Accel()
     {
-        SetMotorTorque(vehicleConfig.torque);
+        SetMotorTorque(vehicleConfig.torque / GameManager.instance.multiplyTorque);
     }
 
     public virtual void Brake()
@@ -80,7 +78,7 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Idle()
     {
-        this.torque = vehicleConfig.torque/4;
+        this.torque = (vehicleConfig.torque / GameManager.instance.multiplyTorque)/4;
     }
 
     public virtual void SteerToCenter()
@@ -116,7 +114,7 @@ public class BaseVehicleMovement : IVehicleMovement
         if (isBraked)
             this.torque = 0f;
         else
-            this.torque = Mathf.Clamp(torque * vehicleConfig.torque, vehicleConfig.torque/4, vehicleConfig.torque);
+            this.torque = Mathf.Clamp(torque * (vehicleConfig.torque / GameManager.instance.multiplyTorque), (vehicleConfig.torque / GameManager.instance.multiplyTorque)/4, (vehicleConfig.torque / GameManager.instance.multiplyTorque));
     }
 
     public virtual void SetBrakeForce(float brake)

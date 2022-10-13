@@ -52,5 +52,10 @@ public class RespawnManager : MonoBehaviour {
             }
         }
         players.Clear();
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
     }    
 }

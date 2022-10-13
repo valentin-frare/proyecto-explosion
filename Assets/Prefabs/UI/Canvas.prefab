@@ -2295,7 +2295,6 @@ GameObject:
   - component: {fileID: 7405677818166015939}
   - component: {fileID: 8265989569380251256}
   - component: {fileID: 858224428674846787}
-  - component: {fileID: 5575399795395849246}
   m_Layer: 5
   m_Name: ButtonMenu
   m_TagString: Untagged
@@ -2418,7 +2417,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5575399795395849246}
+      - m_Target: {fileID: 2321254178840881072}
         m_TargetAssemblyTypeName: ButtonMenu, Assembly-CSharp
         m_MethodName: SpawnAgain
         m_Mode: 1
@@ -2430,23 +2429,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5575399795395849246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2317656816396619123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d264cce26140574fbb27d18552e1821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleOne: {fileID: 8127843972959779582}
-  switchOff: {fileID: 4606709100537361594}
-  grid: {fileID: 6123373363669049855}
-  bau: {fileID: 2509820159605363980}
-  allMoney: {fileID: 1407950712057105887}
 --- !u!1 &2374880471789731558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7417,6 +7399,7 @@ GameObject:
   - component: {fileID: 246788929148699406}
   - component: {fileID: 8461121872362537447}
   - component: {fileID: 8562851134037759578}
+  - component: {fileID: 2321254178840881072}
   m_Layer: 5
   m_Name: GeneralMenu
   m_TagString: GeneralMenu
@@ -7480,6 +7463,23 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &2321254178840881072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7229723790501904079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d264cce26140574fbb27d18552e1821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleOne: {fileID: 8127843972959779582}
+  switchOff: {fileID: 4606709100537361594}
+  grid: {fileID: 6123373363669049855}
+  bau: {fileID: 2509820159605363980}
+  allMoney: {fileID: 1407950712057105887}
 --- !u!1 &7348235618769609050
 GameObject:
   m_ObjectHideFlags: 0
@@ -9017,7 +9017,6 @@ GameObject:
   - component: {fileID: 7172058479565130872}
   - component: {fileID: 1022994617621586310}
   - component: {fileID: 7491964187724046391}
-  - component: {fileID: 3340949918784999849}
   m_Layer: 5
   m_Name: ButtonExitMenu
   m_TagString: Untagged
@@ -9128,6 +9127,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2321254178840881072}
+        m_TargetAssemblyTypeName: ButtonMenu, Assembly-CSharp
+        m_MethodName: SpawnAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7152496050057746968}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -9140,35 +9151,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3340949918784999849}
-        m_TargetAssemblyTypeName: ButtonMenu, Assembly-CSharp
-        m_MethodName: SpawnAgain
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3340949918784999849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8176490684938684039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d264cce26140574fbb27d18552e1821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleOne: {fileID: 0}
-  switchOff: {fileID: 0}
-  grid: {fileID: 0}
-  bau: {fileID: 0}
-  allMoney: {fileID: 0}
 --- !u!1 &8227640306292880985
 GameObject:
   m_ObjectHideFlags: 0

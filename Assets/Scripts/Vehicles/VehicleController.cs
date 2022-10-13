@@ -13,7 +13,7 @@ public class VehicleController : MonoBehaviour, IDamageable
     [SerializeField] private InputControl inputControl;
     [SerializeField] private Transform vehicle; 
     [SerializeField] private Rigidbody sphere; 
-    [SerializeField] private VehicleConfig vehicleConfig; 
+    public VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private GameObject trailRenderer;

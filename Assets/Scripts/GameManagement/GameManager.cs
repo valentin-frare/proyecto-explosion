@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
 
     public Action<GameState> OnGameStateChanged;
+    public float multiplyTorque = 1f;
 
     private void Awake() {
         instance = this;
@@ -72,4 +73,6 @@ public class GameManager : MonoBehaviour
         go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "REINICIAR";
         go.GetChild(0).GetChild(2).gameObject.SetActive(false);
     }
+
+     
 }
