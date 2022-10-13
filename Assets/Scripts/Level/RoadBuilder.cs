@@ -12,7 +12,6 @@ public class RoadBuilder : MonoBehaviour
     private List<Transform> roads = new List<Transform>();
     private Transform levelContainer;
     private Transform roadsContainer;
-    private PlayerPointUpdate playerPointUpdate;
     private float playerSpawnZ;
 
     private int generaciones = 0;
@@ -52,8 +51,7 @@ public class RoadBuilder : MonoBehaviour
         {
             roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0, 0, 120) - new Vector3(0, 0, maxDistance * i), transform.rotation, roadsContainer).transform);
         }
-        playerPointUpdate = GameObject.FindObjectOfType<PlayerPointUpdate>(true);
-        Instantiate(finishLine, new Vector3(0, 0, playerSpawnZ - maxDistance - playerPointUpdate.final), transform.rotation, roadsContainer);
+        Instantiate(finishLine, new Vector3(0, 0, playerSpawnZ - maxDistance - GameManager.instance.finishLine), transform.rotation, roadsContainer);
 
         farDistance = ((int)roads[roads.Count - 1].position.z);
     }

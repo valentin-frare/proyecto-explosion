@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drag: 1
   id: 8
-  torque: 200
+  torque: 1500
   torqueReverse: 50
   brakeForce: 2000
   steeringSpeed: 300

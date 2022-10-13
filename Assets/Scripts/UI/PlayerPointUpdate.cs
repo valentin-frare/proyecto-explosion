@@ -10,7 +10,7 @@ public class PlayerPointUpdate : MonoBehaviour
     public Transform playerPointInvisible;
     private Transform playerPosition;
     private float maxWidth;
-    public float final = 100f;
+    private float final;
     private float start;
     private float playerPointStart;
     private float porcentaje;
@@ -34,6 +34,7 @@ public class PlayerPointUpdate : MonoBehaviour
         playerVehicle = player.GetComponent<VehicleController>();
         start = playerPosition.position.z;
         porcentaje = 0;
+        final = GameManager.instance.finishLine;
     }
 
     private void LateUpdate()
