@@ -38,6 +38,6 @@ public class CameraControl
 
     public void ResetView()
     {
-        cinemachineFramingTransposer.m_TrackedObjectOffset.z = 15.66f;
+        cinemachineFramingTransposer.m_TrackedObjectOffset.z = 30f;
     }
 }

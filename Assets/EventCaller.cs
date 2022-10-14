@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EventCaller : MonoBehaviour
 {
-    public void OnGameStart() => GameEvents.OnGameStart.Invoke();
+    public void OnGameStart()
+    {
+        GameManager.instance.SetGameState(GameState.Playing);
+        GameEvents.OnGameStart.Invoke();
+    }
     public void OnGameEnd() => GameEvents.OnGameEnd.Invoke();
 }
