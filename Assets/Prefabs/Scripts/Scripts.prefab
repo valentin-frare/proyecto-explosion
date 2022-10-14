@@ -74,7 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onDragging: 0
-  joystick: {fileID: 0}
+  joystick: {fileID: 8135886326569738823, guid: 56fae09712773584fb63896d473a98ee,
+    type: 3}
 --- !u!1 &1969112479291789972
 GameObject:
   m_ObjectHideFlags: 0

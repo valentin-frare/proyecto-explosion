@@ -23,7 +23,5 @@ MonoBehaviour:
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}
   lanes:
-  - -7.02
-  - -3.19
-  - 3.19
-  - 7.02
+  - -2
+  - 2
