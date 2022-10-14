@@ -18,6 +18,8 @@ public class BuyAndUpgrade : MonoBehaviour
     private Slider sliderEndurance;
     [SerializeField]
     private Slider sliderHandling;
+    [SerializeField]
+    private Button buyButton;
     public List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
     public List<VehicleNonScriptable> trueScriptVeh = new List<VehicleNonScriptable>();
     private VehicleNonScriptable selectedVehicle;
@@ -81,6 +83,15 @@ public class BuyAndUpgrade : MonoBehaviour
                     obj.gameObject.GetComponent<Toggle>().interactable = false;
                 }
             }
+
+            if (int.Parse(go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text) <= EndLevelCoins.instance.totalCoins && int.Parse(go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text) > 0)
+            {
+                buyButton.interactable = true;
+            }
+            else
+            {
+                buyButton.interactable = false;
+            }
         }
     }
 
@@ -104,6 +115,10 @@ public class BuyAndUpgrade : MonoBehaviour
                 default:
                     break;
             }
+            if (int.Parse(go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text) <= EndLevelCoins.instance.totalCoins)
+            {
+                buyButton.interactable = true;
+            }
         }
 
         if (GameManager.instance.gameState == GameState.Victory && go.GetComponent<Toggle>().isOn == false)
@@ -121,6 +136,10 @@ public class BuyAndUpgrade : MonoBehaviour
                     break;
                 default:
                     break;
+            }
+            if (go == upgradeToBuy)
+            {
+                buyButton.interactable = false;
             }
         }
     }
