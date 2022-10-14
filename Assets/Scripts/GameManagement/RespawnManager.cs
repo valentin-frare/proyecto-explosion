@@ -33,6 +33,12 @@ public class RespawnManager : MonoBehaviour {
             player.GetComponent<VehicleController>().enabled = false;
         }
 
+        spawnPoint.position = new Vector3(
+            GameManager.instance.GetActualLevel().lanes.Find(lane => lane < 0), 
+            spawnPoint.position.y, 
+            spawnPoint.position.z
+        );
+
         player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
         player.GetComponent<VehicleController>().Init(inputControl, cinemachineVirtualCamera);
