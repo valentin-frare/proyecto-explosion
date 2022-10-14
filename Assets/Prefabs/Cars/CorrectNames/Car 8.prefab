@@ -172,7 +172,7 @@ MonoBehaviour:
   inputControl: {fileID: 0}
   vehicle: {fileID: 381274427281227268}
   sphere: {fileID: 381274427232096219}
-  vehicleConfig: {fileID: 11400000, guid: 53cfca6acdf5f9447b700bf9215dbf35, type: 2}
+  vehicleConfig: {fileID: 11400000, guid: b649d8f7d929a8f43aec1e2c536d7045, type: 2}
   vehicleWheels:
     frontLeftWheel: {fileID: 3807241821455810977}
     frontRightWheel: {fileID: 2514790228834093771}

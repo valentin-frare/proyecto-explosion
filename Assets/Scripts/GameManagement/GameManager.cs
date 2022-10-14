@@ -14,10 +14,20 @@ public enum GameState
     Menu
 }
 
+public enum Level
+{
+    Level1,
+    Level2,
+    Level3,
+    Level4,
+    Level5
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance {get; private set;}
     public GameState gameState;
+    public Level level;
     public Action<GameState> OnGameStateChanged;
     public float multiplyTorque = 1f;
     public float finishLine;
