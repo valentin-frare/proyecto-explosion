@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter()
     {
         EndLevelCoins.instance.AddCoins(points);
+        SoundManager.instance?.StartSound("coin_pickup_01");
         gameObject.SetActive(false);
     }
 }

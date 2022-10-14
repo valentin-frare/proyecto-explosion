@@ -394,6 +394,8 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: b33cf68b354735b48956eef8b8022438, type: 3}
   - title: car_beep_02
     sound: {fileID: 8300000, guid: 749ec0a5fd08b6d468e416d090154412, type: 3}
+  - title: coin_pickup_01
+    sound: {fileID: 8300000, guid: 348811c7d6940ff479ab4adc3d5f6742, type: 3}
   mixer: {fileID: 24300002, guid: 9b9cd2e453b15474ebd931c9d54d6879, type: 2}
 --- !u!1 &3915610730548294064
 GameObject:
@@ -713,6 +715,7 @@ MonoBehaviour:
   level: 0
   multiplyTorque: 1
   finishLine: 100
+  levels: []
 --- !u!1 &8008240812513091278
 GameObject:
   m_ObjectHideFlags: 0
