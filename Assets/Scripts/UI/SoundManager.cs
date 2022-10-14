@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Linq;
 using System;
 
@@ -9,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     [SerializeField] private SoundType[] sounds;
+    [SerializeField] private AudioMixerGroup mixer;
 
     private AudioSource audioSource;
 
@@ -17,6 +19,7 @@ public class SoundManager : MonoBehaviour
         instance = this;
 
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = mixer;
     }
 
     public void StartSound(string soundKey, bool oneShot = true)
@@ -43,6 +46,7 @@ public class SoundManager : MonoBehaviour
             if (audioSource.isPlaying)
             {
                 var _tempAs = gameObject.AddComponent<AudioSource>();
+                _tempAs.outputAudioMixerGroup = mixer;
                 StartCoroutine(DestroyComponentAfter(_tempAs, clip.length));
                 _tempAs.PlayOneShot(clip);
             }
@@ -56,6 +60,7 @@ public class SoundManager : MonoBehaviour
             if (audioSource.isPlaying)
             {
                 var _tempAs = gameObject.AddComponent<AudioSource>();
+                _tempAs.outputAudioMixerGroup = mixer;
                 StartCoroutine(DestroyComponentAfter(_tempAs, clip.length));
                 _tempAs.PlayOneShot(clip);
             }
