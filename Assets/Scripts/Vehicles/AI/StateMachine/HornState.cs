@@ -24,8 +24,8 @@ public class HornState : IState
 
         if (onPlaySound == false)
         {
-            //SoundManager.instance?.StartSound("car_horn_01");
-            coroutineHelper.StartCoroutine(WaitForSound(1f));
+            SoundManager.instance?.StartSound("car_beep_01");
+            coroutineHelper.StartCoroutine(WaitForSound(3f));
         }
 
         if (onEndSound)

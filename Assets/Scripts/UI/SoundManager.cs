@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     private void Awake() 
     {
         instance = this;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void StartSound(string soundKey, bool oneShot = true)
@@ -38,22 +40,36 @@ public class SoundManager : MonoBehaviour
 
         if (oneShot)
         {
-            audioSource.PlayOneShot(clip);
+            if (audioSource.isPlaying)
+            {
+                var _tempAs = gameObject.AddComponent<AudioSource>();
+                StartCoroutine(DestroyComponentAfter(_tempAs, clip.length));
+                _tempAs.PlayOneShot(clip);
+            }
+            else
+            {
+                audioSource.PlayOneShot(clip);
+            }
         }
         else 
         {
-            audioSource.clip = clip;
-            audioSource.Play();
+            if (audioSource.isPlaying)
+            {
+                var _tempAs = gameObject.AddComponent<AudioSource>();
+                StartCoroutine(DestroyComponentAfter(_tempAs, clip.length));
+                _tempAs.PlayOneShot(clip);
+            }
+            else
+            {
+                audioSource.clip = clip;
+                audioSource.Play();
+            }
         }
     }
 
-    public void PauseSound()
+    public IEnumerator DestroyComponentAfter(AudioSource audioSource, float seconds)
     {
-
-    }
-
-    public void StopSound()
-    {
-
+        yield return new WaitForSeconds(seconds);
+        Destroy(audioSource);
     }
 }
