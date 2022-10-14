@@ -121,6 +121,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftLanes: []
   rightLanes: []
+--- !u!1 &2641053178764879624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151819545484306022}
+  - component: {fileID: 7856017690628329208}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151819545484306022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641053178764879624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6069603103408384439}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7856017690628329208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641053178764879624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0119efa89cd6d24a925081e5893b98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musics:
+  - level: 1
+    state: 0
+    music: {fileID: 8300000, guid: 2111225060203ea488c672837c8dd784, type: 3}
+  - level: 1
+    state: 5
+    music: {fileID: 8300000, guid: 976c669f1e2308142b449019e24f49e6, type: 3}
+  mixer: {fileID: 8056732712760916687, guid: 9b9cd2e453b15474ebd931c9d54d6879, type: 2}
 --- !u!1 &2660589027735010396
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +630,7 @@ Transform:
   - {fileID: 1707028215500618241}
   - {fileID: 7137507920643602914}
   - {fileID: 4490684874906666248}
+  - {fileID: 151819545484306022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -713,6 +766,7 @@ MonoBehaviour:
   level: 0
   multiplyTorque: 1
   finishLine: 100
+  levels: []
 --- !u!1 &8008240812513091278
 GameObject:
   m_ObjectHideFlags: 0
