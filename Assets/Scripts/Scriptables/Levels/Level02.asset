@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b417602d39c3846bb31dcd2ea3e47f, type: 3}
   m_Name: Level02
   m_EditorClassIdentifier: 
-  level: 0
+  level: 1
   roadChunks:
   - {fileID: 2529273007883808284, guid: 83728b0a385f534458ccd4841f8363a3, type: 3}
   - {fileID: 5015349217937154992, guid: 59f35ea7b03fea5478538650a332d420, type: 3}
@@ -22,6 +22,7 @@ MonoBehaviour:
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}
+  finishLine: 500
   lanes:
   - -7.02
   - -3.19

@@ -18,6 +18,7 @@ public class SpawnPlants : MonoBehaviour
     private List<Vector3> positionBrokenVehicles = new List<Vector3>();
     private List<bool> activeBrokenVehicles = new List<bool>();
     private List<Transform> lanes = new List<Transform>();
+    private Transform generalLane;
     
     private void Awake()
     {        
@@ -32,11 +33,7 @@ public class SpawnPlants : MonoBehaviour
 
     private void Start()
     {
-        Transform generalLane = GameObject.FindGameObjectWithTag("Lanes").transform;
-        for (int i = 0; i < generalLane.childCount; i++)
-        {
-            lanes.Add(generalLane.GetChild(i).transform);
-        }
+        generalLane = GameObject.FindGameObjectWithTag("Lanes").transform;
     }
 
     private void OnPlayerSpawn(GameObject player)
@@ -50,10 +47,39 @@ public class SpawnPlants : MonoBehaviour
         positionBrokenVehicles.Clear();
         activeBrokenVehicles.Clear();
         poolingManagerObstacles.DeactivateObjects();
+        TransformLanes();
 
         this.player = player.transform;
         finishLine = new Vector3(0, 0, this.player.position.z - GameManager.instance.GetActualLevel().finishLine);
         AlignObjects();
+    }
+
+    private void TransformLanes()
+    {
+        lanes.Clear();
+
+        if (GameManager.instance.GetActualLevel().lanes.Count == 4)
+        {
+            for (int i = 0; i < generalLane.childCount; i++)
+            {
+                generalLane.GetChild(i).position = new Vector3 (GameManager.instance.GetActualLevel().lanes[i], generalLane.GetChild(i).position.y, generalLane.GetChild(i).position.z);
+            }
+        }
+        else if (GameManager.instance.GetActualLevel().lanes.Count == 2)
+        {
+            int x = 0;
+            for (int i = 0; i < generalLane.childCount; i = i + 2)
+            {
+                generalLane.GetChild(i).position = new Vector3 (GameManager.instance.GetActualLevel().lanes[x], generalLane.GetChild(i).position.y, generalLane.GetChild(i).position.z);
+                generalLane.GetChild(i+1).position = new Vector3 (GameManager.instance.GetActualLevel().lanes[x], generalLane.GetChild(i).position.y, generalLane.GetChild(i).position.z);
+                x++;
+            }
+        }
+
+        for (int i = 0; i < generalLane.childCount; i++)
+        {
+            lanes.Add(generalLane.GetChild(i).transform);
+        }
     }
 
     private void AlignObjects()
