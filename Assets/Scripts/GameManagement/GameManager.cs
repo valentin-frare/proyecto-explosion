@@ -4,6 +4,12 @@ using UnityEngine;
 using System;
 using TMPro;
 
+public class LevelConfig
+{
+    public Level level;
+    public LevelData data;
+}
+
 public enum GameState
 {
     Playing,
@@ -32,6 +38,8 @@ public class GameManager : MonoBehaviour
     public float multiplyTorque = 1f;
     public float finishLine;
 
+    [SerializeField] private List<LevelData> levels;
+
     private void Awake() {
         instance = this;
 
@@ -58,6 +66,11 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(state);
     }
 
+    public LevelData GetActualLevel()
+    {
+        return levels.Find(l => l.level == level);
+    }
+
     public IEnumerator Victory(float x, float final, float timer, float torque = 200)
     {
         yield return new WaitForSeconds(x);
@@ -81,5 +94,16 @@ public class GameManager : MonoBehaviour
         go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
         go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "REINICIAR";
         go.GetChild(0).GetChild(2).gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos() 
+    {
+        var l = levels.Find(l => l.level == level);
+        
+        foreach (var lane in l.lanes)
+        {
+            Gizmos.color = (lane >= 0) ? Color.blue : Color.red;
+            Gizmos.DrawRay(new Vector3(lane,5,0), Vector3.forward * -50);
+        }
     }
 }

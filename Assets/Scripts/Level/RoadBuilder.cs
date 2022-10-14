@@ -25,6 +25,8 @@ public class RoadBuilder : MonoBehaviour
 
     private void OnPlayerSpawn(GameObject player)
     {
+        roadPrefabs = GameManager.instance?.GetActualLevel().roadChunks;
+
         this.player = player.GetComponent<VehicleController>().roadBuilderHelper;
         playerSpawnZ = this.player.position.z;
         InitRoad();

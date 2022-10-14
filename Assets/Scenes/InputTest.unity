@@ -653,6 +653,28 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 763091205}
+    - target: {fileID: 527002483834924145, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 527002483834924145, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: levels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 527002483834924145, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 01f68fea3c53d5740830738e4778d333,
+        type: 2}
+    - target: {fileID: 527002483834924145, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+        type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ab28aa7654309348bfc1914054c7261,
+        type: 2}
     - target: {fileID: 6069603103408384432, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
         type: 3}
       propertyPath: m_Name

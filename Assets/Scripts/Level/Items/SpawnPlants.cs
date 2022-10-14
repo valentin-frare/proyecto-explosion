@@ -41,6 +41,9 @@ public class SpawnPlants : MonoBehaviour
 
     private void OnPlayerSpawn(GameObject player)
     {
+        plants = GameManager.instance?.GetActualLevel().plants;
+        obstacles = GameManager.instance?.GetActualLevel().obstacles;
+
         positionCoins.Clear();
         activeCoins.Clear();
         poolingManager.DeactivateObjects();

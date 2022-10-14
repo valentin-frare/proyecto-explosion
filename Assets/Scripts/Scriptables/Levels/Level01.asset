@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b417602d39c3846bb31dcd2ea3e47f, type: 3}
+  m_Name: Level01
+  m_EditorClassIdentifier: 
+  level: 0
+  roadChunks:
+  - {fileID: 2529273007883808284, guid: 83728b0a385f534458ccd4841f8363a3, type: 3}
+  - {fileID: 5015349217937154992, guid: 59f35ea7b03fea5478538650a332d420, type: 3}
+  - {fileID: 5069729452447697306, guid: dce52a7011bd9a14b8f8e034793783d8, type: 3}
+  - {fileID: 2251810717893751502, guid: dfff429f9aa778845a9ae3c5efcc0ad9, type: 3}
+  - {fileID: 2504786424869421816, guid: e021be059d6cf8b4b80b5f88075a43e5, type: 3}
+  plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
+  obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
+    type: 3}
+  lanes:
+  - -7.02
+  - -3.19
+  - 3.19
+  - 7.02
