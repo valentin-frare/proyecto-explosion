@@ -37,11 +37,6 @@ public class BuyAndUpgrade : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     public void SelectVehicle(GameObject go)
     {
         if (GameManager.instance.gameState == GameState.Victory && go.GetComponent<Toggle>().isOn == true)
@@ -157,10 +152,12 @@ public class BuyAndUpgrade : MonoBehaviour
                 vehicleToBuy.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = 0.ToString();
                 textSt.GetComponent<TextMeshProUGUI>().text = EndLevelCoins.instance.totalCoins.ToString();
                 trueScriptVeh[index].price = 0;
+                vehiclePrice = 0;
                 foreach (Transform obj in up)
                 {
                     obj.gameObject.GetComponent<Toggle>().interactable = true;
                 }
+                buyButton.interactable = false;
             }
         }
         else
@@ -199,6 +196,7 @@ public class BuyAndUpgrade : MonoBehaviour
                         default:
                             break;
                     }
+                    buyButton.interactable = false;
                 }
             }
         }

@@ -77,13 +77,13 @@ public class GameManager : MonoBehaviour
         GameManager.instance.SetGameState(GameState.Menu);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
-        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "GANASTE";
-        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
-        go.GetChild(0).GetChild(2).gameObject.SetActive(true);
+        go.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "GANASTE";
+        go.GetChild(0).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
+        go.GetChild(0).GetChild(3).gameObject.SetActive(true);
         EndLevelCoins.instance.GenerateCoinsEndLevel(final, torque, timer);
-        go.GetChild(0).GetChild(2).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "OBJETOS: $ " + EndLevelCoins.instance.objectCoins;
-        go.GetChild(0).GetChild(2).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "TIEMPO: $ " + EndLevelCoins.instance.timerCoins;
-        go.GetChild(0).GetChild(2).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = "TOTAL: $ " + EndLevelCoins.instance.levelCoins;
+        go.GetChild(0).GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "OBJETOS: $ " + EndLevelCoins.instance.objectCoins;
+        go.GetChild(0).GetChild(3).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "TIEMPO: $ " + EndLevelCoins.instance.timerCoins;
+        go.GetChild(0).GetChild(3).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = "TOTAL: $ " + EndLevelCoins.instance.levelCoins;
     }
 
     public IEnumerator Defeat(float time){
@@ -104,6 +104,21 @@ public class GameManager : MonoBehaviour
         {
             Gizmos.color = (lane >= 0) ? Color.blue : Color.red;
             Gizmos.DrawRay(new Vector3(lane,5,0), Vector3.forward * -50);
+        }
+    }
+
+    public Level NextLevel()
+    {
+        switch (GameManager.instance.level)
+        {
+            case Level.Level1:
+                return Level.Level2;
+            case Level.Level2:
+                return Level.Level3;
+            case Level.Level3:
+                return Level.Level3;
+            default:
+                return Level.Level3;
         }
     }
 }

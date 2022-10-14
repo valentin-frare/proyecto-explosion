@@ -52,7 +52,7 @@ public class SpawnPlants : MonoBehaviour
         poolingManagerObstacles.DeactivateObjects();
 
         this.player = player.transform;
-        finishLine = new Vector3(0, 0, this.player.position.z - GameManager.instance.finishLine);
+        finishLine = new Vector3(0, 0, this.player.position.z - GameManager.instance.GetActualLevel().finishLine);
         AlignObjects();
     }
 

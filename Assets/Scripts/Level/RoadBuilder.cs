@@ -53,7 +53,7 @@ public class RoadBuilder : MonoBehaviour
         {
             roads.Add(Instantiate(roadPrefabs[Random.Range(0, roadPrefabs.Count)], new Vector3(0, 0, 120) - new Vector3(0, 0, maxDistance * i), transform.rotation, roadsContainer).transform);
         }
-        Instantiate(finishLine, new Vector3(0, 0, playerSpawnZ - maxDistance - GameManager.instance.finishLine), transform.rotation, roadsContainer);
+        Instantiate(finishLine, new Vector3(0, 0, playerSpawnZ - maxDistance - GameManager.instance.GetActualLevel().finishLine), transform.rotation, roadsContainer);
 
         farDistance = ((int)roads[roads.Count - 1].position.z);
     }

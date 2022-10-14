@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b417602d39c3846bb31dcd2ea3e47f, type: 3}
   m_Name: Level03
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   roadChunks:
-  - {fileID: 2529273007883808284, guid: 5ec0213f82b24104f8308889499f7a18, type: 3}
-  - {fileID: 5015349217937154992, guid: d44eabf1880d28e4fa7a27b03d321305, type: 3}
-  - {fileID: 5069729452447697306, guid: 47fcd5f337358cd4ca1ed4e341328fdb, type: 3}
-  - {fileID: 2251810717893751502, guid: 4b5399ece95ccb34b9c4b6affdd4e85c, type: 3}
-  - {fileID: 2504786424869421816, guid: 4aa790ad788abad47b4f6d6eed870d7e, type: 3}
+  - {fileID: 5761019812433220405, guid: 57a97b6830c17fa40b73ecc7af199b43, type: 3}
+  - {fileID: 5761019812433220405, guid: d7b113ac94f69b04abb754076ab6a92a, type: 3}
+  - {fileID: 5761019812433220405, guid: f4e906aeb8551704c828f8fa6b1c7853, type: 3}
+  - {fileID: 5761019812433220405, guid: df218a567e7dd18438aa972822040abe, type: 3}
+  - {fileID: 5761019812433220405, guid: 0c07dcc4dc38ff8408a329ec3110348f, type: 3}
+  - {fileID: 5761019812433220405, guid: e2ebf9f9e5f8f0d44b7b79a80ace3555, type: 3}
+  - {fileID: 5761019812433220405, guid: 7603ac5fe9ad2d249b8c2872e8543772, type: 3}
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}
   lanes:
-  - -2
-  - 2
+  - -7.02
+  - -3.19
+  - 3.19
+  - 7.02

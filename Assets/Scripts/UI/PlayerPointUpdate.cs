@@ -34,7 +34,7 @@ public class PlayerPointUpdate : MonoBehaviour
         playerVehicle = player.GetComponent<VehicleController>();
         start = playerPosition.position.z;
         porcentaje = 0;
-        final = GameManager.instance.finishLine;
+        final = GameManager.instance.GetActualLevel().finishLine;
     }
 
     private void LateUpdate()

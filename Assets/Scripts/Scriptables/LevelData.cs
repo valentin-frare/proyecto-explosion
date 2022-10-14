@@ -19,5 +19,6 @@ public class LevelData : ScriptableObject
 
     [Space]
     [Header("Lane Helper Settings")]
+    public float finishLine;
     public List<float> lanes;
 }

@@ -714,13 +714,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 2
-  level: 1
+  level: 0
   multiplyTorque: 1
   finishLine: 100
   levels:
+  - {fileID: 11400000, guid: e390c3401eccdb24abd891727f64252d, type: 2}
   - {fileID: 11400000, guid: 01f68fea3c53d5740830738e4778d333, type: 2}
   - {fileID: 11400000, guid: 1ab28aa7654309348bfc1914054c7261, type: 2}
-  - {fileID: 11400000, guid: e390c3401eccdb24abd891727f64252d, type: 2}
 --- !u!1 &7860004419328118326
 GameObject:
   m_ObjectHideFlags: 0

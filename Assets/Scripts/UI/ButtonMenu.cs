@@ -30,6 +30,7 @@ public class ButtonMenu : MonoBehaviour
                 Transform go = GameObject.FindGameObjectWithTag("ServiceStationMenu").transform;
                 go.GetChild(0).gameObject.SetActive(true);
                 GameManager.instance.SetGameState(GameState.Victory);
+                GameManager.instance.level = GameManager.instance.NextLevel();
                 VehiclePrices();
                 break;
             case GameState.Victory:
