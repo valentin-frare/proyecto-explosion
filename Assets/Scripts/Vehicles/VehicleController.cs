@@ -37,6 +37,7 @@ public class VehicleController : MonoBehaviour, IDamageable
     void Start()
     {
         vehicleMovement = new PlayerVehicleMovement(vehicle, sphere, vehicleWheels, vehicleConfig);
+        sphere.gameObject.AddComponent<DamageReciver>().vehicle = this;
         inputControl.Init();
         cameraControl = new CameraControl(cinemachineVirtualCamera);
         crashDetectors.OnVehicleCrashed += OnPlayerCrash;

@@ -30,8 +30,6 @@ public class PropSpawnByDistance : MonoBehaviour
             return;
         }
 
-        Debug.Log(Vector3.Distance(player.transform.position, transform.position));
-
         transform.localScale = Vector3.Lerp(new Vector3(0,0,0), originalScale, spawnCurve.Evaluate(
             Mathf.Clamp01(
                 Vector3.Distance(player.transform.position, transform.position)-90
