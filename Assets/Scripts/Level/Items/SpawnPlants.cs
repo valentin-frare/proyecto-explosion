@@ -87,7 +87,7 @@ public class SpawnPlants : MonoBehaviour
         List<float> lanesBrokenVehicles = new List<float>();
         lanesBrokenVehicles.Add(lanes[0].position.x - 2);
         lanesBrokenVehicles.Add(lanes[lanes.Count-1].position.x + 2);
-        if (lanes.Count > 2)
+        if (GameManager.instance.GetActualLevel().lanes.Count > 2)
         {
             lanesBrokenVehicles.Add(0);
         }

@@ -27,6 +27,7 @@ public class VehicleController : MonoBehaviour, IDamageable
     private GameObject trail1;
     private GameObject trail2;
     private List<GameObject> allTrails = new List<GameObject>();
+    private int totalDamage = 0;
 
     public void Init(InputControl inputControl, CinemachineVirtualCamera cinemachineVirtualCamera)
     {
@@ -55,8 +56,6 @@ public class VehicleController : MonoBehaviour, IDamageable
         {
             return;
         }
-
-        //crashDetectors.Update();
 
         HandleInputs();
     }
@@ -129,11 +128,16 @@ public class VehicleController : MonoBehaviour, IDamageable
     public void Damage(int damage = 1)
     {
         Debug.Log("Auch");
+        totalDamage += damage;
+        if (totalDamage >= 3)
+        {
+            OnPlayerCrash(sphere.transform);
+        }
     }
 
     private void OnPlayerCrash(Transform crashDetector)
     {
-        GameManager.instance.gameState = GameState.Crashed;
+        //GameManager.instance.gameState = GameState.Crashed;
         Instantiate(fireParticles, crashDetector.position, fireParticles.transform.rotation, crashDetector);
         stopHandleInputs = true;
         vehicleMovement.Brake();

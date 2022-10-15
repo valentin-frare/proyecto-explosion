@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   roadChunks:
-  - {fileID: 2529273007883808284, guid: 57a97b6830c17fa40b73ecc7af199b43, type: 3}
+  - {fileID: 2529273007883808284, guid: 83728b0a385f534458ccd4841f8363a3, type: 3}
   - {fileID: 5015349217937154992, guid: 59f35ea7b03fea5478538650a332d420, type: 3}
   - {fileID: 5069729452447697306, guid: dce52a7011bd9a14b8f8e034793783d8, type: 3}
   - {fileID: 2251810717893751502, guid: dfff429f9aa778845a9ae3c5efcc0ad9, type: 3}

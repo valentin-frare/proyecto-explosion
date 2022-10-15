@@ -13,7 +13,6 @@ public class DestroyFallingProp : BaseDestructibleProp
 
     public override void Destroy()
     {
-        Debug.Log("awa");
         if (isDestroying) return;
 
         isDestroying = true;

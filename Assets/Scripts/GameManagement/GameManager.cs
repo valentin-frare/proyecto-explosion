@@ -88,12 +88,12 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Defeat(float time){
         yield return new WaitForSeconds(time);
-        GameManager.instance.SetGameState(GameState.Menu);
+        GameManager.instance.SetGameState(GameState.Crashed);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
-        go.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
-        go.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "REINICIAR";
-        go.GetChild(0).GetChild(2).gameObject.SetActive(false);
+        go.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
+        go.GetChild(0).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "REINICIAR";
+        go.GetChild(0).GetChild(3).gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos() 

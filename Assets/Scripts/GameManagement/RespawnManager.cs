@@ -51,7 +51,6 @@ public class RespawnManager : MonoBehaviour {
     public void DeleteAllPlayers(){
         foreach (GameObject obj in players)
         {
-            Debug.Log(obj.GetComponent<VehicleController>());
             if (obj != null)
             {
                 obj.GetComponent<VehicleController>().DestroyVehicle();

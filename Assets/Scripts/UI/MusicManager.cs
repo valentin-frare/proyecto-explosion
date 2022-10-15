@@ -41,8 +41,6 @@ public class MusicManager : MonoBehaviour
 
         clip ??= musics.Find(music => music.state == state)?.music;
 
-        Debug.Log(clip);
-
         if (clip == null) return;
 
         if (clip == audioSource.clip) return;
