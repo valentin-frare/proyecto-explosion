@@ -40,6 +40,7 @@ public class Explosion : MonoBehaviour
         }
         LeanTween.alpha(smokeRing, 1, 0);
 
+        BloomController.instance?.ExplosionBloom();
         LeanTween.scale(fireball, new Vector3(fireballScaleTarget, fireballScaleTarget, fireballScaleTarget), fireballScaleTime).setEase(fireballEase).setOnComplete(() => {
             for (var i = 0; i < fireball.transform.childCount; i++)
             {
@@ -50,6 +51,7 @@ public class Explosion : MonoBehaviour
         LeanTween.scale(smokeRing, new Vector3(smokeScaleTarget, smokeScaleTarget, smokeScaleTarget), smokeRingScaleTime).setEase(smokeRingEase);
         LeanTween.alpha(smokeRing, 0, smokeRingFadeTime).setOnComplete(() => {
             particles.gameObject.transform.parent = null;
+            //BloomController.instance?.ExplosionBloomOff();
             Destroy(gameObject);
         });
     }

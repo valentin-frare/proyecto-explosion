@@ -158,7 +158,7 @@ public class VehicleController : MonoBehaviour, IDamageable
         {
             Destroy(item);
         }
-        Destroy(sphere.gameObject);
+        //Destroy(sphere.gameObject);
         Destroy(this.gameObject);
     }
 }
