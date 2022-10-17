@@ -16,6 +16,7 @@ public class LevelData : ScriptableObject
     [Header("Spawn Plants Settings")]
     public GameObject plants;
     public GameObject obstacles;
+    public GameObject civilCars;
 
     [Space]
     [Header("Lane Helper Settings")]

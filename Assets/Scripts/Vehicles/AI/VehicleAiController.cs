@@ -24,7 +24,7 @@ public class VehicleAiController : MonoBehaviour
 
     private void OnPlayerSpawn(GameObject player)
     {
-        this.player = player.transform;
+        //this.player = player.transform;
 
         Init();
     }

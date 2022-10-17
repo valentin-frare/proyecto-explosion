@@ -8,15 +8,20 @@ public class SpawnPlants : MonoBehaviour
     [SerializeField] private int amount;
     [SerializeField] private GameObject obstacles;
     [SerializeField] private int amountObstacles;
+    [SerializeField] private GameObject civilCars;
+    [SerializeField] private int amountCivilCars;
 
     private PoolingManager poolingManager;
     private PoolingManager poolingManagerObstacles;
+    private PoolingManager poolingManagerCivilCars;
     private Transform player;
     private Vector3 finishLine;
     private List<Vector3> positionCoins = new List<Vector3>();
     private List<bool> activeCoins = new List<bool>();
     private List<Vector3> positionBrokenVehicles = new List<Vector3>();
     private List<bool> activeBrokenVehicles = new List<bool>();
+    private List<Vector3> positionCivilVeh = new List<Vector3>();
+    private List<bool> activeCivilVeh = new List<bool>();
     private List<Transform> lanes = new List<Transform>();
     private Transform generalLane;
     
@@ -27,6 +32,9 @@ public class SpawnPlants : MonoBehaviour
 
         poolingManagerObstacles = new PoolingManager(obstacles, amountObstacles);
         poolingManagerObstacles.Init();
+
+        poolingManagerCivilCars = new PoolingManager(civilCars, amountCivilCars);
+        poolingManagerCivilCars.Init();
     
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
     }
@@ -40,6 +48,7 @@ public class SpawnPlants : MonoBehaviour
     {
         plants = GameManager.instance?.GetActualLevel().plants;
         obstacles = GameManager.instance?.GetActualLevel().obstacles;
+        civilCars = GameManager.instance?.GetActualLevel().civilCars;
 
         positionCoins.Clear();
         activeCoins.Clear();
@@ -47,6 +56,9 @@ public class SpawnPlants : MonoBehaviour
         positionBrokenVehicles.Clear();
         activeBrokenVehicles.Clear();
         poolingManagerObstacles.DeactivateObjects();
+        positionCivilVeh.Clear();
+        activeCivilVeh.Clear();
+        poolingManagerCivilCars.DeactivateObjects();
         TransformLanes();
 
         this.player = player.transform;
@@ -96,16 +108,17 @@ public class SpawnPlants : MonoBehaviour
         float x = this.player.position.z - 80;
         while (x > finishLine.z)
         {
-            positionCoins.Add(new Vector3(lanes[Random.Range(0,lanes.Count)].position.x, 1, x));
+            positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, x));
             positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, x));
+            positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, x));
             x -= 80;
         }
-
 
         for (int i = 0; i < positionCoins.Count; i++)
         {
             activeCoins.Add(false);
             activeBrokenVehicles.Add(false);
+            activeCivilVeh.Add(false);
         }
     }
 
@@ -155,6 +168,30 @@ public class SpawnPlants : MonoBehaviour
         for (int i = 0; i < poolingManagerObstacles.pooledObjects.Count; i++)
         {
             GameObject go = poolingManagerObstacles.pooledObjects[i];
+            if (go.activeSelf)
+            {
+                if (go.transform.position.z >= (player.position.z + 50))
+                {
+                    go.SetActive(false);
+                }
+            }
+        }
+
+        for (int i = 0; i < positionCivilVeh.Count; i++)
+        {
+            if (!activeCivilVeh[i])
+            {
+                if (positionCivilVeh[i].z >= (player.position.z - 150))
+                {
+                    activeCivilVeh[i] = true;
+                    poolingManagerCivilCars.GetPooledObject(positionCivilVeh[i]);
+                }
+            }
+        }
+
+        for (int i = 0; i < poolingManagerCivilCars.pooledObjects.Count; i++)
+        {
+            GameObject go = poolingManagerCivilCars.pooledObjects[i];
             if (go.activeSelf)
             {
                 if (go.transform.position.z >= (player.position.z + 50))
