@@ -799,6 +799,29 @@ Transform:
   m_Father: {fileID: 657900301}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2108686990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2745236779317231215, guid: 1ae28ce3acffdf94cbfb1dc1a1f41ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 339930721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2108686995
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108686990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!4 &1447340362082300733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6266318511605749415, guid: e5cc70abeee8b7a4c9fa6e47073f3dfa,

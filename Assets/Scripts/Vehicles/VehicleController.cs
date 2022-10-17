@@ -12,8 +12,6 @@ public class VehicleController : MonoBehaviour, IDamageable
 
     [SerializeField] private InputControl inputControl;
     [SerializeField] private Transform vehicle; 
-    [SerializeField] private Rigidbody sphere; 
-    public VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private GameObject trailRenderer;
@@ -28,6 +26,9 @@ public class VehicleController : MonoBehaviour, IDamageable
     private GameObject trail2;
     private List<GameObject> allTrails = new List<GameObject>();
     private int totalDamage = 0;
+
+    public Rigidbody sphere; 
+    public VehicleConfig vehicleConfig; 
 
     public void Init(InputControl inputControl, CinemachineVirtualCamera cinemachineVirtualCamera)
     {
@@ -138,9 +139,10 @@ public class VehicleController : MonoBehaviour, IDamageable
     private void OnPlayerCrash(Transform crashDetector)
     {
         //GameManager.instance.gameState = GameState.Crashed;
-        Instantiate(fireParticles, crashDetector.position, fireParticles.transform.rotation, crashDetector);
+        Instantiate(fireParticles, crashDetector.position, Quaternion.identity);
         stopHandleInputs = true;
         vehicleMovement.Brake();
+        sphere.constraints = RigidbodyConstraints.FreezeAll;
         StartCoroutine(GameManager.instance.Defeat(2f));
     }
 

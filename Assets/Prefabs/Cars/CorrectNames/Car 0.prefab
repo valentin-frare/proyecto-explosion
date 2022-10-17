@@ -188,7 +188,7 @@ MonoBehaviour:
     layerMask:
       serializedVersion: 2
       m_Bits: 247
-  fireParticles: {fileID: 203324375461985309, guid: ac04cdbf550e61e43a9c3d0c36d5e471,
+  fireParticles: {fileID: 1255361533500236847, guid: 92e227c906619c64c8fe199818624868,
     type: 3}
 --- !u!65 &5191609468536172925
 BoxCollider:
