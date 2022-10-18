@@ -4,7 +4,8 @@ using System.Linq;
 
 public class VehicleAiController : MonoBehaviour 
 {
-    private IVehicleMovement vehicleMovement;
+    public IVehicleMovement vehicleMovement;
+    
     private Transform player;
     private StateMachine stateMachine;
     private IBehaviour currentBehaviour;

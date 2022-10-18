@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IVehicleMovement
 {
     public abstract void Update();
@@ -13,4 +15,5 @@ public interface IVehicleMovement
     public abstract void Brake();
     public abstract void Reverse();
     public abstract void Idle();
+    public abstract void Teleport(Vector3 position, Quaternion rotation);
 }

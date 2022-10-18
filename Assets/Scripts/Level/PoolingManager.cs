@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PoolingManager
 {
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
-    private Transform container;
+    protected List<GameObject> pooledObjects;
+    protected GameObject objectToPool;
+    protected int amountToPool;
+    protected Transform container;
+
+    public List<GameObject> PooledObjects => pooledObjects;
 
     public PoolingManager(GameObject objectToPool, int amountToPool, Transform container = null)
     {
@@ -29,7 +31,7 @@ public class PoolingManager
         }
     }
 
-    public GameObject GetPooledObject(Vector3 position, Quaternion rotation = default(Quaternion))
+    public virtual GameObject GetPooledObject(Vector3 position, Quaternion rotation = default(Quaternion))
     {
         for (int i = 0; i < amountToPool; i++)
         {
@@ -48,7 +50,7 @@ public class PoolingManager
         return null;
     }
 
-    public void DeactivateObjects()
+    public virtual void DeactivateObjects()
     {
         for (int i = 0; i < amountToPool; i++)
         {

@@ -121,4 +121,10 @@ public class BaseVehicleMovement : IVehicleMovement
     {
         
     }
+
+    public virtual void Teleport(Vector3 newPosition, Quaternion newRotation)
+    {
+        this.sphereMotor.transform.position = newPosition;
+        this.sphereMotor.transform.rotation = newRotation;
+    }
 }

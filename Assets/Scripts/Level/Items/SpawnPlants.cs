@@ -34,7 +34,7 @@ public class SpawnPlants : MonoBehaviour
         poolingManagerObstacles = new PoolingManager(obstacles, amountObstacles, container);
         poolingManagerObstacles.Init();
 
-        poolingManagerCivilCars = new PoolingManager(civilCars, amountCivilCars);
+        poolingManagerCivilCars = new VehiclePoolingManager(civilCars, amountCivilCars);
         poolingManagerCivilCars.Init();
     
         GameEvents.OnPlayerSpawn += OnPlayerSpawn;
@@ -137,9 +137,9 @@ public class SpawnPlants : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < poolingManager.pooledObjects.Count; i++)
+        for (int i = 0; i < poolingManager.PooledObjects.Count; i++)
         {
-            GameObject go = poolingManager.pooledObjects[i];
+            GameObject go = poolingManager.PooledObjects[i];
             if (go.activeSelf)
             {
                 if (go.transform.position.z >= (player.position.z + 50))
@@ -166,9 +166,9 @@ public class SpawnPlants : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < poolingManagerObstacles.pooledObjects.Count; i++)
+        for (int i = 0; i < poolingManagerObstacles.PooledObjects.Count; i++)
         {
-            GameObject go = poolingManagerObstacles.pooledObjects[i];
+            GameObject go = poolingManagerObstacles.PooledObjects[i];
             if (go.activeSelf)
             {
                 if (go.transform.position.z >= (player.position.z + 50))
@@ -190,9 +190,9 @@ public class SpawnPlants : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < poolingManagerCivilCars.pooledObjects.Count; i++)
+        for (int i = 0; i < poolingManagerCivilCars.PooledObjects.Count; i++)
         {
-            GameObject go = poolingManagerCivilCars.pooledObjects[i];
+            GameObject go = poolingManagerCivilCars.PooledObjects[i];
             if (go.activeSelf)
             {
                 if (go.transform.position.z >= (player.position.z + 50))
