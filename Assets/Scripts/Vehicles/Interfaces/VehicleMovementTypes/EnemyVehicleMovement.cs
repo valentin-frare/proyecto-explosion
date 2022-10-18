@@ -45,12 +45,17 @@ public class EnemyVehicleMovement : BaseVehicleMovement
 
     public override void SetSteeringAngle(float input)
     {
-        steering = 0f;
+        /* steering = 0f;
 
         float singleStep = vehicleConfig.steeringSpeed * Time.deltaTime;
 
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, singleStep, 0.0f);
 
-        transform.rotation = Quaternion.Slerp(startRot, Quaternion.LookRotation(newDirection), vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)));
+        transform.rotation = Quaternion.Slerp(startRot, Quaternion.LookRotation(newDirection), vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input))); */
+    }
+
+    public override void SteerToCenter()
+    {
+
     }
 }

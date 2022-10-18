@@ -112,7 +112,7 @@ public class SpawnPlants : MonoBehaviour
             positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, x));
             positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, x));
             positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, x));
-            
+            positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, x));
             x -= 80;
         }
 
@@ -120,6 +120,10 @@ public class SpawnPlants : MonoBehaviour
         {
             activeCoins.Add(false);
             activeBrokenVehicles.Add(false);
+        }
+
+        for (int i = 0; i < positionCivilVeh.Count; i++)
+        {
             activeCivilVeh.Add(false);
         }
     }
@@ -186,7 +190,14 @@ public class SpawnPlants : MonoBehaviour
                 if (positionCivilVeh[i].z >= (player.position.z - 150))
                 {
                     activeCivilVeh[i] = true;
-                    poolingManagerCivilCars.GetPooledObject(positionCivilVeh[i]);
+                    if (positionCivilVeh[i].x < 0)
+                    {
+                        poolingManagerCivilCars.GetPooledObject(positionCivilVeh[i], Quaternion.Euler(0, 180, 0));
+                    }
+                    else
+                    {
+                        poolingManagerCivilCars.GetPooledObject(positionCivilVeh[i], Quaternion.Euler(0, 0, 0));
+                    }
                 }
             }
         }
