@@ -9,7 +9,8 @@ public class Sparkles : MonoBehaviour
 
     private void Awake() 
     {
-        poolingManager = new PoolingManager(sparkPrefab, 20);
+        var container = GameObject.FindGameObjectWithTag("LvlContainer").transform;
+        poolingManager = new PoolingManager(sparkPrefab, 20, container);
         poolingManager.Init();
     }
 

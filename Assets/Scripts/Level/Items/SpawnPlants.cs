@@ -26,11 +26,12 @@ public class SpawnPlants : MonoBehaviour
     private Transform generalLane;
     
     private void Awake()
-    {        
-        poolingManager = new PoolingManager(plants, amount);
+    {
+        var container = GameObject.FindGameObjectWithTag("LvlContainer").transform;        
+        poolingManager = new PoolingManager(plants, amount, container);
         poolingManager.Init();
 
-        poolingManagerObstacles = new PoolingManager(obstacles, amountObstacles);
+        poolingManagerObstacles = new PoolingManager(obstacles, amountObstacles, container);
         poolingManagerObstacles.Init();
 
         poolingManagerCivilCars = new PoolingManager(civilCars, amountCivilCars);

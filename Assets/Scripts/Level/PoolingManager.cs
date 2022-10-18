@@ -7,18 +7,17 @@ public class PoolingManager
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
-    private Transform levelContainer;
+    private Transform container;
 
-    public PoolingManager(GameObject objectToPool, int amountToPool)
+    public PoolingManager(GameObject objectToPool, int amountToPool, Transform container = null)
     {
         this.objectToPool = objectToPool;
         this.amountToPool = amountToPool;
+        this.container = container;
     }
 
     public void Init()
     {
-        levelContainer = GameObject.FindGameObjectWithTag("LvlContainer").transform;
-
         pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
@@ -26,7 +25,7 @@ public class PoolingManager
             tmp = GameObject.Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
-            tmp.transform.SetParent(levelContainer);
+            tmp.transform.SetParent(container);
         }
     }
 
