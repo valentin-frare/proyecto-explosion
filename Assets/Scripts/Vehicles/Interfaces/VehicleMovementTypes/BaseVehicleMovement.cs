@@ -78,7 +78,7 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void Idle()
     {
-        this.torque = (vehicleConfig.torque / GameManager.instance.multiplyTorque)/4;
+        this.torque = ((vehicleConfig.torque / GameManager.instance.multiplyTorque)/4);
     }
 
     public virtual void SteerToCenter()

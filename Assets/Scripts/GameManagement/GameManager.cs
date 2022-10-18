@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
     public IEnumerator Victory(float x, float final, float timer, float torque = 200)
     {
         yield return new WaitForSeconds(x);
+        if (GameManager.instance.gameState == GameState.Crashed)
+        {
+            yield break;
+        }
         GameManager.instance.SetGameState(GameState.Menu);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
@@ -88,6 +92,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Defeat(float time){
         yield return new WaitForSeconds(time);
+        if (GameManager.instance.gameState == GameState.Menu)
+        {
+            yield break;
+        }
         GameManager.instance.SetGameState(GameState.Crashed);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);

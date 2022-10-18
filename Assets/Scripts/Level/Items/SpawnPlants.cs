@@ -112,6 +112,7 @@ public class SpawnPlants : MonoBehaviour
             positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, x));
             positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, x));
             positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, x));
+            
             x -= 80;
         }
 
