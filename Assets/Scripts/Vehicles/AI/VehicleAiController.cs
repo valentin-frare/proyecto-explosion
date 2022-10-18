@@ -5,7 +5,7 @@ using System.Linq;
 public class VehicleAiController : MonoBehaviour 
 {
     public IVehicleMovement vehicleMovement;
-    
+
     private Transform player;
     private StateMachine stateMachine;
     private IBehaviour currentBehaviour;
@@ -65,6 +65,16 @@ public class VehicleAiController : MonoBehaviour
         if (stateMachine == null) return;
 
         vehicleMovement.FixedUpdate();
+    }
+
+    private void OnDisable() 
+    {
+        sphere.gameObject.SetActive(false);
+    }
+
+    private void OnEnable() 
+    {
+        sphere.gameObject.SetActive(true);
     }
 
     public void ChangeState(string state)
