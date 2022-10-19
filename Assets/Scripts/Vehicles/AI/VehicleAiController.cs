@@ -16,7 +16,6 @@ public class VehicleAiController : MonoBehaviour
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private SensorsConfig sensorsConfig;
-    [SerializeField] private LayerMask layerMask;
 
     private void Awake() 
     {
@@ -32,7 +31,7 @@ public class VehicleAiController : MonoBehaviour
 
     private void Init()
     {
-        sensors = new Sensors(gameObject, sensorsConfig, layerMask);
+        sensors = new Sensors(gameObject, sensorsConfig);
 
         sensors.Init();
 

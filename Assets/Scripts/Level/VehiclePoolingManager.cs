@@ -17,6 +17,8 @@ public class VehiclePoolingManager : PoolingManager
                 if (movement != null)
                 {
                     pooledObjects[i].SetActive(true);
+                    Debug.Log(i);
+                    Debug.Log(pooledObjects[i]);
 
                     movement.Teleport(position, rotation);
                 }

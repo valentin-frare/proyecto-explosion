@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensors:
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 3831
     vehicleOnLeft: 0
     vehicleOnRight: 0
     vehicleInFront: 0
