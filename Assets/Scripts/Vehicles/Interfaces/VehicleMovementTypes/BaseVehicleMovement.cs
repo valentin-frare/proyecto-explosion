@@ -126,5 +126,6 @@ public class BaseVehicleMovement : IVehicleMovement
     {
         this.sphereMotor.transform.position = newPosition;
         this.transform.rotation = newRotation;
+        this.sphereMotor.transform.rotation = newRotation;
     }
 }
