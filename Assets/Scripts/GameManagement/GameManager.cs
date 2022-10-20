@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         go.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "GANASTE";
         go.GetChild(0).GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "CONTINUAR";
         go.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        torque = RespawnManager.instance.GetPlayer().GetComponent<VehicleController>().vehicleConfig.torque / multiplyTorque;
         EndLevelCoins.instance.GenerateCoinsEndLevel(final, torque, timer);
         go.GetChild(0).GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "OBJETOS: $ " + EndLevelCoins.instance.objectCoins;
         go.GetChild(0).GetChild(3).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "TIEMPO: $ " + EndLevelCoins.instance.timerCoins;
@@ -117,16 +118,12 @@ public class GameManager : MonoBehaviour
 
     public Level NextLevel()
     {
-        switch (GameManager.instance.level)
+        int x = (int)GameManager.instance.level;
+        x++;
+        if (x > 3)
         {
-            case Level.Level1:
-                return Level.Level2;
-            case Level.Level2:
-                return Level.Level3;
-            case Level.Level3:
-                return Level.Level3;
-            default:
-                return Level.Level3;
+            x = 3;
         }
+        return (Level)x;
     }
 }

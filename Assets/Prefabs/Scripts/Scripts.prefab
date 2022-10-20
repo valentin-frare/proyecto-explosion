@@ -544,7 +544,7 @@ MonoBehaviour:
   amountObstacles: 8
   civilCars: {fileID: 5509143493056119399, guid: bac0b1b605d95844b9ed3f71c05f1ce9,
     type: 3}
-  amountCivilCars: 8
+  amountCivilCars: 16
 --- !u!1 &6069603103408384432
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,14 +122,46 @@ public class SpawnPlants : MonoBehaviour
         z = this.player.position.z - GameManager.instance.GetActualLevel().positionCvrStart;
         while (z > finishLine.z + GameManager.instance.GetActualLevel().positionCvrStart)
         {
-            positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, z));
+            if (GameManager.instance.level == Level.Level1)
+            {
+                positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, z));
+            }
+            else
+            {
+                int rand = Random.Range(1, 101);
+                if (rand > 10 && rand <= 40)
+                {
+                    positionCivilVeh.Add(new Vector3(lanes[0].position.x, 1, z));
+                    positionCivilVeh.Add(new Vector3(lanes[1].position.x, 1, z));
+                }
+                else if (rand > 40 && rand <= 100)
+                {
+                    positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, z));
+                }
+            }
             z -= GameManager.instance.GetActualLevel().positionBetweenCvr;
         }
 
         z = this.player.position.z - GameManager.instance.GetActualLevel().positionCvlStart;
         while (z > finishLine.z)
         {
-            positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, z));
+            if (GameManager.instance.level == Level.Level1)
+            {
+                positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, z));
+            }
+            else
+            {
+                int rand = Random.Range(1, 101);
+                if (rand > 10 && rand <= 40)
+                {
+                    positionCivilVeh.Add(new Vector3(lanes[2].position.x, 1, z));
+                    positionCivilVeh.Add(new Vector3(lanes[3].position.x, 1, z));
+                }
+                else if (rand > 40 && rand <= 100)
+                {
+                    positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, z));
+                }
+            }
             z -= GameManager.instance.GetActualLevel().positionBetweenCvl;
         }
 

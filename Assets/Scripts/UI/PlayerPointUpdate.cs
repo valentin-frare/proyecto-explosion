@@ -37,6 +37,11 @@ public class PlayerPointUpdate : MonoBehaviour
         final = GameManager.instance.GetActualLevel().finishLine;
     }
 
+    public void ResetTimer()
+    {
+        timer = 0;
+    }
+
     private void LateUpdate()
     {
         if (playerPosition == null) return;
@@ -45,7 +50,6 @@ public class PlayerPointUpdate : MonoBehaviour
         {
             return;
         }
-
         timer += Time.deltaTime;
         porcentaje = (start-playerPosition.position.z)*100/final;
         playerPoint.position = new Vector2(playerPointStart + (porcentaje*maxWidth/100),playerPoint.position.y);
