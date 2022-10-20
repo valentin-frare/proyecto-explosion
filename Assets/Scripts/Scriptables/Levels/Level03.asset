@@ -32,3 +32,15 @@ MonoBehaviour:
   - -3.19
   - 3.19
   - 7.02
+  positionCoinStart: 70
+  positionBetweenCoins: 70
+  posBetCoinsMinOffset: -10
+  posBetCoinsMaxOffset: 10
+  positionBvStart: 50
+  positionBetweenBv: 80
+  posBetBvMinOffset: -20
+  posBetBvMaxOffset: 20
+  positionCvlStart: 70
+  positionBetweenCvl: 85
+  positionCvrStart: 80
+  positionBetweenCvr: 80

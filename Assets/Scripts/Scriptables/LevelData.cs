@@ -22,4 +22,28 @@ public class LevelData : ScriptableObject
     [Header("Lane Helper Settings")]
     public float finishLine;
     public List<float> lanes;
+
+    [Space]
+    [Header("Spawn Coins")]
+    public float positionCoinStart;
+    public float positionBetweenCoins;
+    public float posBetCoinsMinOffset;
+    public float posBetCoinsMaxOffset;
+
+    [Space]
+    [Header("Spawn Broken Vehicles")]
+    public float positionBvStart;
+    public float positionBetweenBv;
+    public float posBetBvMinOffset;
+    public float posBetBvMaxOffset;
+
+    [Space]
+    [Header("Spawn Civilian Vehicles Left")]
+    public float positionCvlStart;
+    public float positionBetweenCvl;
+
+    [Space]
+    [Header("Spawn Civilian Vehicles Right")]
+    public float positionCvrStart;
+    public float positionBetweenCvr;
 }

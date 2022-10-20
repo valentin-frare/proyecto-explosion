@@ -105,20 +105,41 @@ public class SpawnPlants : MonoBehaviour
             lanesBrokenVehicles.Add(0);
         }
 
-
-        float x = this.player.position.z - 80;
-        while (x > finishLine.z)
+        float z = this.player.position.z - GameManager.instance.GetActualLevel().positionCoinStart;
+        while (z > finishLine.z)
         {
-            positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, x));
-            positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, x));
-            positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, x));
-            positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, x));
-            x -= 80;
+            positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, Random.Range(z + GameManager.instance.GetActualLevel().posBetCoinsMinOffset, z + GameManager.instance.GetActualLevel().posBetCoinsMaxOffset)));
+            z -= GameManager.instance.GetActualLevel().positionBetweenCoins;
+        }
+
+        z = this.player.position.z - GameManager.instance.GetActualLevel().positionBvStart;
+        while (z > finishLine.z)
+        {
+            positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, Random.Range(z + GameManager.instance.GetActualLevel().posBetBvMinOffset, z + GameManager.instance.GetActualLevel().posBetBvMaxOffset)));
+            z -= GameManager.instance.GetActualLevel().positionBetweenBv;
+        }
+
+        z = this.player.position.z - GameManager.instance.GetActualLevel().positionCvrStart;
+        while (z > finishLine.z + GameManager.instance.GetActualLevel().positionCvrStart)
+        {
+            positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, z));
+            z -= GameManager.instance.GetActualLevel().positionBetweenCvr;
+        }
+
+        z = this.player.position.z - GameManager.instance.GetActualLevel().positionCvlStart;
+        while (z > finishLine.z)
+        {
+            positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, z));
+            z -= GameManager.instance.GetActualLevel().positionBetweenCvl;
         }
 
         for (int i = 0; i < positionCoins.Count; i++)
         {
             activeCoins.Add(false);
+        }
+
+        for (int i = 0; i < positionBrokenVehicles.Count; i++)
+        {
             activeBrokenVehicles.Add(false);
         }
 
@@ -183,6 +204,18 @@ public class SpawnPlants : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < poolingManagerCivilCars.PooledObjects.Count; i++)
+        {
+            GameObject go = poolingManagerCivilCars.PooledObjects[i];
+            if (go.activeSelf)
+            {
+                if (go.transform.position.z >= (player.position.z + 50))
+                {
+                    go.SetActive(false);
+                }
+            }
+        }
+
         for (int i = 0; i < positionCivilVeh.Count; i++)
         {
             if (!activeCivilVeh[i])
@@ -201,18 +234,5 @@ public class SpawnPlants : MonoBehaviour
                 }
             }
         }
-
-        for (int i = 0; i < poolingManagerCivilCars.PooledObjects.Count; i++)
-        {
-            GameObject go = poolingManagerCivilCars.PooledObjects[i];
-            if (go.activeSelf)
-            {
-                if (go.transform.position.z >= (player.position.z + 50))
-                {
-                    go.SetActive(false);
-                }
-            }
-        }
-
     }
 }
