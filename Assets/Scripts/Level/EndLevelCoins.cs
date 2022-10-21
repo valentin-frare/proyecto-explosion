@@ -27,9 +27,11 @@ public class EndLevelCoins : MonoBehaviour
         midTime = finishLine / (torque / 2) * crazyNumber;
         maxTime = finishLine / torque * crazyNumber;
 
-        int minCoin = 1;
-        int midCoin = 25;
-        int maxCoin = 100;
+        float multiplierCoin = (1 + ((((int)GameManager.instance.level) + 1) / 10));
+
+        int minCoin = (int)(1 * multiplierCoin);
+        int midCoin = (int)(25 * multiplierCoin);
+        int maxCoin = (int)(100 * multiplierCoin);
 
         float lerp = 0;
 
