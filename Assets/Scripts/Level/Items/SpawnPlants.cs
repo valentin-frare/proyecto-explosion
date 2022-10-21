@@ -100,27 +100,29 @@ public class SpawnPlants : MonoBehaviour
         List<float> lanesBrokenVehicles = new List<float>();
         lanesBrokenVehicles.Add(lanes[0].position.x - 2);
         lanesBrokenVehicles.Add(lanes[lanes.Count-1].position.x + 2);
-        if (GameManager.instance.GetActualLevel().lanes.Count > 2)
+
+        LevelData levelData = GameManager.instance.GetActualLevel();
+        if (levelData.lanes.Count > 2)
         {
             lanesBrokenVehicles.Add(0);
         }
 
-        float z = this.player.position.z - GameManager.instance.GetActualLevel().positionCoinStart;
+        float z = this.player.position.z - levelData.positionCoinStart;
         while (z > finishLine.z)
         {
-            positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, Random.Range(z + GameManager.instance.GetActualLevel().posBetCoinsMinOffset, z + GameManager.instance.GetActualLevel().posBetCoinsMaxOffset)));
-            z -= GameManager.instance.GetActualLevel().positionBetweenCoins;
+            positionCoins.Add(new Vector3(lanes[Random.Range(0, lanes.Count)].position.x, 1, Random.Range(z + levelData.posBetCoinsMinOffset, z + levelData.posBetCoinsMaxOffset)));
+            z -= levelData.positionBetweenCoins;
         }
 
-        z = this.player.position.z - GameManager.instance.GetActualLevel().positionBvStart;
+        z = this.player.position.z - levelData.positionBvStart;
         while (z > finishLine.z)
         {
-            positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, Random.Range(z + GameManager.instance.GetActualLevel().posBetBvMinOffset, z + GameManager.instance.GetActualLevel().posBetBvMaxOffset)));
-            z -= GameManager.instance.GetActualLevel().positionBetweenBv;
+            positionBrokenVehicles.Add(new Vector3(lanesBrokenVehicles[Random.Range(0,lanesBrokenVehicles.Count)], 1, Random.Range(z + levelData.posBetBvMinOffset, z + levelData.posBetBvMaxOffset)));
+            z -= levelData.positionBetweenBv;
         }
 
-        z = this.player.position.z - GameManager.instance.GetActualLevel().positionCvrStart;
-        while (z > finishLine.z + GameManager.instance.GetActualLevel().positionCvrStart)
+        z = this.player.position.z - levelData.positionCvrStart;
+        while (z > finishLine.z + levelData.positionCvrStart)
         {
             if (GameManager.instance.level == Level.Level1)
             {
@@ -139,10 +141,10 @@ public class SpawnPlants : MonoBehaviour
                     positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, z));
                 }
             }
-            z -= GameManager.instance.GetActualLevel().positionBetweenCvr;
+            z -= levelData.positionBetweenCvr;
         }
 
-        z = this.player.position.z - GameManager.instance.GetActualLevel().positionCvlStart;
+        z = this.player.position.z - levelData.positionCvlStart;
         while (z > finishLine.z)
         {
             if (GameManager.instance.level == Level.Level1)
@@ -162,7 +164,7 @@ public class SpawnPlants : MonoBehaviour
                     positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, z));
                 }
             }
-            z -= GameManager.instance.GetActualLevel().positionBetweenCvl;
+            z -= levelData.positionBetweenCvl;
         }
 
         for (int i = 0; i < positionCoins.Count; i++)
