@@ -41,9 +41,13 @@ public class LevelData : ScriptableObject
     [Header("Spawn Civilian Vehicles Left")]
     public float positionCvlStart;
     public float positionBetweenCvl;
+    public int probSpawnOneLeft;
+    public int probSpawnTwoLeft;
 
     [Space]
     [Header("Spawn Civilian Vehicles Right")]
     public float positionCvrStart;
     public float positionBetweenCvr;
+    public int probSpawnOneRight;
+    public int probSpawnTwoRight;
 }

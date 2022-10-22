@@ -42,5 +42,9 @@ MonoBehaviour:
   posBetBvMaxOffset: 20
   positionCvlStart: 70
   positionBetweenCvl: 85
+  probSpawnOneLeft: 60
+  probSpawnTwoLeft: 30
   positionCvrStart: 80
   positionBetweenCvr: 80
+  probSpawnOneRight: 60
+  probSpawnTwoRight: 30

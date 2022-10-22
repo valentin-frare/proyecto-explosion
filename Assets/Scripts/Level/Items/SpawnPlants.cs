@@ -131,12 +131,12 @@ public class SpawnPlants : MonoBehaviour
             else
             {
                 int rand = Random.Range(1, 101);
-                if (rand > 10 && rand <= 40)
+                if (rand > (100 - levelData.probSpawnOneRight - levelData.probSpawnTwoRight) && rand <= (100 - levelData.probSpawnOneRight))
                 {
                     positionCivilVeh.Add(new Vector3(lanes[0].position.x, 1, z));
                     positionCivilVeh.Add(new Vector3(lanes[1].position.x, 1, z));
                 }
-                else if (rand > 40 && rand <= 100)
+                else if (rand > (100 - levelData.probSpawnOneRight) && rand <= 100)
                 {
                     positionCivilVeh.Add(new Vector3(lanes[Random.Range(0, lanes.Count/2)].position.x, 1, z));
                 }
@@ -154,12 +154,12 @@ public class SpawnPlants : MonoBehaviour
             else
             {
                 int rand = Random.Range(1, 101);
-                if (rand > 10 && rand <= 40)
+                if (rand > (100 - levelData.probSpawnOneLeft - levelData.probSpawnTwoLeft) && rand <= (100 - levelData.probSpawnOneLeft))
                 {
                     positionCivilVeh.Add(new Vector3(lanes[2].position.x, 1, z));
                     positionCivilVeh.Add(new Vector3(lanes[3].position.x, 1, z));
                 }
-                else if (rand > 40 && rand <= 100)
+                else if (rand > (100 - levelData.probSpawnOneLeft) && rand <= 100)
                 {
                     positionCivilVeh.Add(new Vector3(lanes[Random.Range(lanes.Count/2, lanes.Count)].position.x, 1, z));
                 }
