@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public Level level;
     public Action<GameState> OnGameStateChanged;
     public float multiplyTorque = 1f;
+    public int addEndurance = 0;
     public float finishLine;
 
     [SerializeField] private List<LevelData> levels;

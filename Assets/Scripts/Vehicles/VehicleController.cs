@@ -130,7 +130,7 @@ public class VehicleController : MonoBehaviour, IDamageable
     {
         Debug.Log("Auch");
         totalDamage += damage;
-        if (totalDamage >= 3)
+        if (totalDamage >= (vehicleConfig.endurance + GameManager.instance.addEndurance))
         {
             OnPlayerCrash(sphere.transform);
         }
@@ -138,7 +138,6 @@ public class VehicleController : MonoBehaviour, IDamageable
 
     private void OnPlayerCrash(Transform crashDetector)
     {
-        //GameManager.instance.gameState = GameState.Crashed;
         Instantiate(fireParticles, crashDetector.position, Quaternion.identity);
         stopHandleInputs = true;
         vehicleMovement.Brake();

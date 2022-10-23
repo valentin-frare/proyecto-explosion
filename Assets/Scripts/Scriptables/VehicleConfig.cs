@@ -7,6 +7,7 @@ public class VehicleConfig : ScriptableObject {
     [Header("Basic Settings")]
     public int id;
     public float torque;
+    public int endurance;
     public float torqueReverse;
     public float brakeForce;
     public float steeringSpeed;

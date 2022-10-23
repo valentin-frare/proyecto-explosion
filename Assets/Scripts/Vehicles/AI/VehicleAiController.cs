@@ -68,7 +68,14 @@ public class VehicleAiController : MonoBehaviour
 
     private void OnDisable() 
     {
-        sphere.gameObject.SetActive(false);
+        try
+        {
+            sphere.gameObject.SetActive(false);
+        }
+        catch (MissingReferenceException)
+        {
+
+        }
     }
 
     private void OnEnable() 

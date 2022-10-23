@@ -71,5 +71,15 @@ public class ButtonMenu : MonoBehaviour
         {
             GameManager.instance.multiplyTorque = 1f;
         }
+
+        if (bau.trueScriptVeh[index].originalEndurance == bau.trueScriptVeh[index].upgradeEndurance)
+        {
+            float highestEndurance = Mathf.Lerp(0, 50, bau.trueScriptVeh[index].upgradeEndurance);
+            GameManager.instance.addEndurance = Mathf.CeilToInt(highestEndurance) - bau.trueScriptVeh[index].theRealOriginalEndurance;
+        }
+        else
+        {
+            GameManager.instance.multiplyTorque = 1f;
+        }
     }
 }

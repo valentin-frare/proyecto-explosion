@@ -33,7 +33,7 @@ public class BuyAndUpgrade : MonoBehaviour
         for (int i = 0; i < scriptVeh.Count; i++)
         {
             VehicleConfig vc = scriptVeh[i];
-            trueScriptVeh.Add(new VehicleNonScriptable(vc.price, vc.originalSpeed, vc.originalEndurance, vc.originalHandling, vc.upgradeSpeed, vc.upgradeEndurance, vc.upgradeHandling, vc.priceUpgradeSpeed, vc.priceUpgradeEndurance, vc.priceUpgradeHandLing, vc.id, vc.torque));
+            trueScriptVeh.Add(new VehicleNonScriptable(vc.price, vc.originalSpeed, vc.originalEndurance, vc.originalHandling, vc.upgradeSpeed, vc.upgradeEndurance, vc.upgradeHandling, vc.priceUpgradeSpeed, vc.priceUpgradeEndurance, vc.priceUpgradeHandLing, vc.id, vc.torque, vc.endurance));
         }
     }
 

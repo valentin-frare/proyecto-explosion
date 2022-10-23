@@ -33,8 +33,7 @@ public class RespawnManager : MonoBehaviour {
             player.GetComponent<VehicleController>().enabled = false;
             Destroy(player.GetComponent<VehicleController>().sphere.gameObject);
         }
-
-        Debug.Log(GameManager.instance.GetActualLevel());
+        
         spawnPoint.position = new Vector3(
             GameManager.instance.GetActualLevel().lanes.Find(lane => lane < 0), 
             spawnPoint.position.y, 

@@ -15,6 +15,7 @@ MonoBehaviour:
   drag: 1
   id: 3
   torque: 600
+  endurance: 15
   torqueReverse: 50
   brakeForce: 2000
   steeringSpeed: 300

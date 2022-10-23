@@ -16,8 +16,9 @@ public class VehicleNonScriptable
     public float priceUpgradeHandLing;
     public int id;
     public float originalTorque;
+    public int theRealOriginalEndurance;
 
-    public VehicleNonScriptable(float price, float originalSpeed, float originalEndurance, float originalHandling, float upgradeSpeed, float upgradeEndurance, float upgradeHandling, float priceUpgradeSpeed, float priceUpgradeEndurance, float priceUpgradeHandLing, int id, float originalTorque)
+    public VehicleNonScriptable(float price, float originalSpeed, float originalEndurance, float originalHandling, float upgradeSpeed, float upgradeEndurance, float upgradeHandling, float priceUpgradeSpeed, float priceUpgradeEndurance, float priceUpgradeHandLing, int id, float originalTorque, int theRealOriginalEndurance)
     {
         this.price = price;
         this.originalSpeed = originalSpeed;
@@ -31,6 +32,7 @@ public class VehicleNonScriptable
         this.priceUpgradeHandLing = priceUpgradeHandLing;
         this.id = id;
         this.originalTorque = originalTorque;
+        this.theRealOriginalEndurance = theRealOriginalEndurance;
     }
     
 }
