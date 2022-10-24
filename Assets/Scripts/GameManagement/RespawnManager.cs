@@ -46,6 +46,12 @@ public class RespawnManager : MonoBehaviour {
 
         players.Add(player);
 
+        if (players.Count > 4)
+        {
+            players[0].GetComponent<VehicleController>().DestroyVehicle();
+            players.RemoveAt(0);
+        }
+
         GameEvents.OnPlayerSpawn.Invoke(player);
     }
 
