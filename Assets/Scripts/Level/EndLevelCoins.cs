@@ -10,6 +10,7 @@ public class EndLevelCoins : MonoBehaviour
     public int levelCoins = 0;
     public int objectCoins = 0;
     public int timerCoins = 0;
+    public int destructionCoins = 0;
     private const float crazyNumber = 4.4f;
 
     private void Awake()
@@ -64,6 +65,12 @@ public class EndLevelCoins : MonoBehaviour
         levelCoins += n;
     }
 
+    public void AddDestructionCoins(int n)
+    {
+        destructionCoins += n;
+        levelCoins += n;
+    }
+
     public void AddTotalCoins()
     {
         totalCoins += levelCoins;
@@ -74,5 +81,6 @@ public class EndLevelCoins : MonoBehaviour
         levelCoins = 0;
         objectCoins = 0;
         timerCoins = 0;
+        destructionCoins = 0;
     }
 }

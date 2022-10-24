@@ -1,9 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum CollisionType
+{
+    CivilCar,
+    Objects
+}
+
 public class OnCollision : MonoBehaviour 
 {
     [SerializeField] private UnityEvent onCollision;
+    [SerializeField] private CollisionType collisionType;
 
     private void OnCollisionEnter(Collision other) 
     {
@@ -13,10 +20,21 @@ public class OnCollision : MonoBehaviour
         {
             IDamageable damageable = contact.otherCollider.gameObject.GetComponentInChildren<IDamageable>();
 
-            Debug.Log(other.collider.gameObject);
-
             if (damageable != null)
+            {
+                switch (collisionType)
+                {
+                    case CollisionType.CivilCar:
+                        EndLevelCoins.instance.AddDestructionCoins(25);
+                        break;
+                    case CollisionType.Objects:
+                        EndLevelCoins.instance.AddDestructionCoins(10);
+                        break;
+                    default:
+                        break;
+                }
                 damageable.Damage();
+            }
         }
     }
 

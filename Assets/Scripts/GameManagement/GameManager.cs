@@ -89,7 +89,8 @@ public class GameManager : MonoBehaviour
         EndLevelCoins.instance.GenerateCoinsEndLevel(final, torque, timer);
         go.GetChild(0).GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "OBJETOS: $ " + EndLevelCoins.instance.objectCoins;
         go.GetChild(0).GetChild(3).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "TIEMPO: $ " + EndLevelCoins.instance.timerCoins;
-        go.GetChild(0).GetChild(3).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = "TOTAL: $ " + EndLevelCoins.instance.levelCoins;
+        go.GetChild(0).GetChild(3).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = "DESTRUCCION: $ " + EndLevelCoins.instance.destructionCoins;
+        go.GetChild(0).GetChild(3).GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>().text = "TOTAL: $ " + EndLevelCoins.instance.levelCoins;
     }
 
     public IEnumerator Defeat(float time){
