@@ -493,6 +493,7 @@ MonoBehaviour:
   levelCoins: 0
   objectCoins: 0
   timerCoins: 0
+  destructionCoins: 0
 --- !u!1 &5425985435390336413
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,10 +720,11 @@ MonoBehaviour:
   gameState: 2
   level: 0
   multiplyTorque: 1
+  addEndurance: 0
   finishLine: 100
   levels:
   - {fileID: 11400000, guid: e390c3401eccdb24abd891727f64252d, type: 2}
-  - {fileID: 11400000, guid: 01f68fea3c53d5740830738e4778d333, type: 2}
+  - {fileID: 11400000, guid: 1ab28aa7654309348bfc1914054c7261, type: 2}
   - {fileID: 11400000, guid: afb6f4d8508ba334d95c61a23fb04828, type: 2}
 --- !u!1 &7860004419328118326
 GameObject:
