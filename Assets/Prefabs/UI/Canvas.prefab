@@ -479,7 +479,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7540573730166571058}
   toggleTransition: 1
   graphic: {fileID: 2795655741440502716}
@@ -1492,7 +1492,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SALIR
+  m_text: 'SELECCIONAR
+
+    Y SALIR'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5388,7 +5390,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8035500400851522658}
   toggleTransition: 1
   graphic: {fileID: 8347493707110088277}
@@ -5775,7 +5777,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8124994884101014179}
   toggleTransition: 1
   graphic: {fileID: 5158839842169653033}
@@ -7057,7 +7059,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1198057257814285239}
   toggleTransition: 1
   graphic: {fileID: 5194399693515271639}
@@ -9281,7 +9283,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7424028782809258904}
   toggleTransition: 1
   graphic: {fileID: 4418135088108681659}
@@ -9820,7 +9822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210, y: -18.320557}
+  m_AnchoredPosition: {x: 210, y: -300}
   m_SizeDelta: {x: 300, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6936573617917258907
@@ -10419,7 +10421,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1421658714062882887}
   toggleTransition: 1
   graphic: {fileID: 1854908603370197958}
@@ -10555,7 +10557,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4989445259847424277}
   toggleTransition: 1
   graphic: {fileID: 4095226254548068586}
@@ -10939,8 +10941,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210.00006, y: -302.32056}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 215, y: -20}
+  m_SizeDelta: {x: 360, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7172058479565130872
 CanvasRenderer:
@@ -11303,6 +11305,7 @@ MonoBehaviour:
   sliderEndurance: {fileID: 6035850018273358490}
   sliderHandling: {fileID: 4705253379731245605}
   buyButton: {fileID: 1827723054716649195}
+  exitButton: {fileID: 7491964187724046391}
   scriptVeh:
   - {fileID: 11400000, guid: 53cfca6acdf5f9447b700bf9215dbf35, type: 2}
   - {fileID: 11400000, guid: 380d338939a182c4ead1e0835041f600, type: 2}

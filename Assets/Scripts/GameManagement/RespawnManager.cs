@@ -10,8 +10,8 @@ public class RespawnManager : MonoBehaviour {
     private GameObject playerPrefab;
     private Transform spawnPoint;
     private GameObject player;
+    //public int actualCar = 0;
     [SerializeField] private List<GameObject> players = new List<GameObject>();
-
     [SerializeField] private InputControl inputControl;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
@@ -53,6 +53,11 @@ public class RespawnManager : MonoBehaviour {
         }
 
         GameEvents.OnPlayerSpawn.Invoke(player);
+    }
+
+    public void ChangePlayerPrefab(int index)
+    {
+        playerPrefab = PlayerPrefabsManager.instance.GetActualPlayerModel(index);
     }
 
     public void DeleteAllPlayers(){

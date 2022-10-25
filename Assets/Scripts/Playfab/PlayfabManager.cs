@@ -41,8 +41,6 @@ public class PlayfabManager : MonoBehaviour
 
     private void OnSuccess(LoginResult result)
     {
-        //Debug.Log("Login");
-
         GetVirtualCurrencies();
 
         UpdateInventory();
@@ -57,8 +55,6 @@ public class PlayfabManager : MonoBehaviour
             inventory = result.Inventory;
             
             isInventoryUpdated = true;
-
-            //Debug.Log(inventory);
         }, OnError);
     }
 
@@ -76,22 +72,18 @@ public class PlayfabManager : MonoBehaviour
     {
         coins = result.VirtualCurrency["CN"];
 
-        //Debug.Log(coins);
-
         GetCatalog();
     }
 
     public void GetCatalog()
     {
         PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), (result) => {
-            //Debug.Log(result.Catalog[0].DisplayName);
+            
         }, OnError);
     }
 
     public ItemInstance PlayerHas(int itemId)
     {
-        //Debug.Log(inventory);
-
         var item = inventory.Find((item) => {
             return int.Parse(item.ItemId) == itemId;
             });

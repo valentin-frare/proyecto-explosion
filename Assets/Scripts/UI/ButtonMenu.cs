@@ -59,7 +59,18 @@ public class ButtonMenu : MonoBehaviour
 
     private void ModifyPlayer()
     {
-        int index = RespawnManager.instance.GetPlayer().GetComponent<VehicleController>().vehicleConfig.id;
+        int index = 0;
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (grid.transform.GetChild(i).GetComponent<Toggle>().isOn == true)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        RespawnManager.instance.ChangePlayerPrefab(index);
         
         if (bau.trueScriptVeh[index].originalSpeed == bau.trueScriptVeh[index].upgradeSpeed)
         {

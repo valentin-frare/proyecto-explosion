@@ -37,5 +37,8 @@ public class PlayerPrefabsManager : MonoBehaviour {
             actualPlayerModel = 0;
     }
 
-    public GameObject GetActualPlayerModel() => playerModels[actualPlayerModel];
+    public GameObject GetActualPlayerModel(int index = 0)
+    {
+        return playerModels[index];
+    }
 }

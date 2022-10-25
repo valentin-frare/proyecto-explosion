@@ -20,6 +20,8 @@ public class BuyAndUpgrade : MonoBehaviour
     private Slider sliderHandling;
     [SerializeField]
     private Button buyButton;
+    [SerializeField]
+    private Button exitButton;
     public List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
     public List<VehicleNonScriptable> trueScriptVeh = new List<VehicleNonScriptable>();
     private VehicleNonScriptable selectedVehicle;
@@ -59,6 +61,7 @@ public class BuyAndUpgrade : MonoBehaviour
 
             if (int.Parse(go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text) == 0)
             {
+                exitButton.interactable = true;
                 foreach (Transform obj in up)
                 {
                     if (int.Parse(obj.GetChild(1).GetComponent<TextMeshProUGUI>().text) > 0)
@@ -73,6 +76,7 @@ public class BuyAndUpgrade : MonoBehaviour
             }
             else
             {
+                exitButton.interactable = false;
                 foreach (Transform obj in up)
                 {
                     obj.gameObject.GetComponent<Toggle>().interactable = false;
@@ -153,6 +157,7 @@ public class BuyAndUpgrade : MonoBehaviour
                 textSt.GetComponent<TextMeshProUGUI>().text = EndLevelCoins.instance.totalCoins.ToString();
                 trueScriptVeh[index].price = 0;
                 vehiclePrice = 0;
+                exitButton.interactable = true;
                 foreach (Transform obj in up)
                 {
                     obj.gameObject.GetComponent<Toggle>().interactable = true;
