@@ -75,11 +75,6 @@ public class GameManager : MonoBehaviour
     public IEnumerator Victory(float x, float final, float timer, float torque = 200)
     {
         yield return new WaitForSeconds(x);
-        if (GameManager.instance.gameState == GameState.Crashed)
-        {
-            yield break;
-        }
-        GameManager.instance.SetGameState(GameState.Menu);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "GANASTE";
@@ -95,11 +90,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Defeat(float time){
         yield return new WaitForSeconds(time);
-        if (GameManager.instance.gameState == GameState.Menu)
-        {
-            yield break;
-        }
-        GameManager.instance.SetGameState(GameState.Crashed);
+        GameManager.instance.SetGameState(GameState.Crashed); 
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "PERDISTE";
@@ -122,9 +113,9 @@ public class GameManager : MonoBehaviour
     {
         int x = (int)GameManager.instance.level;
         x++;
-        if (x > 3)
+        if (x > 2)
         {
-            x = 3;
+            x = 2;
         }
         return (Level)x;
     }

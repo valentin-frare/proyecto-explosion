@@ -47,7 +47,9 @@ public class ButtonMenu : MonoBehaviour
 
     private void VehiclePrices()
     {
-        vehicleOne.isOn = true;
+        int index = RespawnManager.instance.GetPlayer().GetComponent<VehicleController>().vehicleConfig.id;
+
+        grid.transform.GetChild(index).GetComponent<Toggle>().isOn = true;
         switchOff.allowSwitchOff = false;
 
         allMoney.GetComponent<TextMeshProUGUI>().text = "$ " + EndLevelCoins.instance.totalCoins;

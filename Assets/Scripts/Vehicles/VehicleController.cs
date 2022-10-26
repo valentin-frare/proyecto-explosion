@@ -128,6 +128,11 @@ public class VehicleController : MonoBehaviour, IDamageable
     
     public void Damage(int damage = 1)
     {
+        if (GameManager.instance.gameState == GameState.MainMenu)
+        {
+            return;
+        }
+
         Debug.Log("Auch");
         totalDamage += damage;
         if (totalDamage >= (vehicleConfig.endurance + GameManager.instance.addEndurance))

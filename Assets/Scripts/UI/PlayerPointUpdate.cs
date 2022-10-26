@@ -57,6 +57,7 @@ public class PlayerPointUpdate : MonoBehaviour
         if (porcentaje >= 100)
         {
             playerVehicle.StopVehicle();
+            GameManager.instance.SetGameState(GameState.Menu);
             StartCoroutine(GameManager.instance.Victory(2f, final, timer));
             timer = 0;
         }
