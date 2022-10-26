@@ -50,10 +50,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
   price: 0
-  originalSpeed: 0.1
+  originalSpeed: 0.33
   originalEndurance: 0.1
   originalHandling: 0.1
-  upgradeSpeed: 0.2
+  upgradeSpeed: 0.4
   upgradeEndurance: 0.2
   upgradeHandling: 0.2
   priceUpgradeSpeed: 50

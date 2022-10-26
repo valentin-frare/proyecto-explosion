@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drag: 1
   id: 1
-  torque: 300
+  torque: 210
   endurance: 8
   torqueReverse: 50
   brakeForce: 2000
@@ -50,10 +50,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
   price: 175
-  originalSpeed: 0.15
+  originalSpeed: 0.35
   originalEndurance: 0.15
   originalHandling: 0.15
-  upgradeSpeed: 0.25
+  upgradeSpeed: 0.45
   upgradeEndurance: 0.25
   upgradeHandling: 0.25
   priceUpgradeSpeed: 75
