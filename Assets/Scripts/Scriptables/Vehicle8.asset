@@ -15,7 +15,7 @@ MonoBehaviour:
   drag: 1
   id: 8
   torque: 510
-  endurance: 38
+  endurance: 40
   torqueReverse: 50
   brakeForce: 2000
   steeringSpeed: 300
@@ -50,7 +50,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   defaultDirection: {x: 0, y: 0, z: 0}
   price: 6500
-  originalSpeed: 0.85
+  originalSpeed: 0.9
   originalEndurance: 0.75
   originalHandling: 0.75
   upgradeSpeed: 1

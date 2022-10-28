@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db73349f6a529c46b4d5517a44a690a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalCoins: 0
+  totalCoins: 500
   levelCoins: 0
   objectCoins: 0
   timerCoins: 0

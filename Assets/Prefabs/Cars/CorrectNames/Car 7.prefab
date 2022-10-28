@@ -113,7 +113,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 4
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &381274427281227270
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
     layerMask:
       serializedVersion: 2
       m_Bits: 247
-  fireParticles: {fileID: 203324375461985309, guid: ac04cdbf550e61e43a9c3d0c36d5e471,
+  fireParticles: {fileID: 1255361533500236847, guid: 92e227c906619c64c8fe199818624868,
     type: 3}
   sphere: {fileID: 381274427232096219}
   vehicleConfig: {fileID: 11400000, guid: c5cf7e86050f0c14d9740e70779e4cc1, type: 2}

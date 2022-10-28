@@ -63,7 +63,7 @@ public class ButtonMenu : MonoBehaviour
     {
         int index = 0;
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 9; i++)
         {
             if (grid.transform.GetChild(i).GetComponent<Toggle>().isOn == true)
             {

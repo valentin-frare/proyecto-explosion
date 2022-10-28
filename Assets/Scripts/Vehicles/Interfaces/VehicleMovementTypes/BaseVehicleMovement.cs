@@ -92,13 +92,14 @@ public class BaseVehicleMovement : IVehicleMovement
 
     public virtual void SetSteeringAngle(float input)
     {
-        float newRot = input * vehicleConfig.steeringSpeed * Time.deltaTime;
         
         if (isCarGrounded)
         {
-            float singleStep = vehicleConfig.steeringSpeed * Time.deltaTime;
+            float singleStep = vehicleConfig.steeringSpeed * Time.smoothDeltaTime;
 
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)), 0.0f);
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, singleStep, 0.0f);
+
+            //Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)), 0.0f);
 
             transform.rotation = Quaternion.Slerp(startRot, Quaternion.LookRotation(newDirection), vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)));
         }

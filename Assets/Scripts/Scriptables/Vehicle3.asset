@@ -52,10 +52,10 @@ MonoBehaviour:
   price: 750
   originalSpeed: 0.5
   originalEndurance: 0.3
-  originalHandling: 0.3
+  originalHandling: 0.5
   upgradeSpeed: 0.6
   upgradeEndurance: 0.45
-  upgradeHandling: 0.45
+  upgradeHandling: 0.65
   priceUpgradeSpeed: 150
   priceUpgradeEndurance: 150
   priceUpgradeHandLing: 150
