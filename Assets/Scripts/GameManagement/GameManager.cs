@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public float multiplyTorque = 1f;
     public int addEndurance = 0;
     public float finishLine;
+    public bool vibration = true;
 
     [SerializeField] private List<LevelData> levels;
 

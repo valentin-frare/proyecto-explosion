@@ -64,4 +64,16 @@ public class MusicManager : MonoBehaviour
         }
         yield break;
     }
+
+    public void MuteMixer(bool active)
+    {
+        if (active)
+        {
+            mixer.audioMixer.SetFloat("Music", -80f);
+        }
+        else
+        {
+            mixer.audioMixer.SetFloat("Music", 0f);
+        }
+    }
 }

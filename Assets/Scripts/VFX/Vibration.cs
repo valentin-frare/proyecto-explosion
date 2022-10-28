@@ -16,6 +16,8 @@ public static class Vibration
 
     public static void Vibrate()
     {
+        if (!GameManager.instance.vibration) return;
+
         if (isAndroid())
             vibrator.Call("vibrate");
         else
@@ -25,6 +27,8 @@ public static class Vibration
 
     public static void Vibrate(long milliseconds)
     {
+        if (!GameManager.instance.vibration) return;
+
         if (isAndroid())
             vibrator.Call("vibrate", milliseconds);
         else
@@ -33,6 +37,8 @@ public static class Vibration
 
     public static void Vibrate(long[] pattern, int repeat)
     {
+        if (!GameManager.instance.vibration) return;
+
         if (isAndroid())
             vibrator.Call("vibrate", pattern, repeat);
         else

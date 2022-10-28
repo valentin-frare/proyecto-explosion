@@ -77,4 +77,16 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         Destroy(audioSource);
     }
+
+    public void MuteMixer(bool active)
+    {
+        if (active)
+        {
+            mixer.audioMixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            mixer.audioMixer.SetFloat("Master", -21f);
+        }
+    }
 }
