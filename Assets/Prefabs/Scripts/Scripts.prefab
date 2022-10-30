@@ -722,10 +722,12 @@ MonoBehaviour:
   multiplyTorque: 1
   addEndurance: 0
   finishLine: 100
+  vibration: 1
   levels:
   - {fileID: 11400000, guid: e390c3401eccdb24abd891727f64252d, type: 2}
   - {fileID: 11400000, guid: 1ab28aa7654309348bfc1914054c7261, type: 2}
   - {fileID: 11400000, guid: afb6f4d8508ba334d95c61a23fb04828, type: 2}
+  - {fileID: 11400000, guid: 10384b4b568bf0049b7a9597e06f8b15, type: 2}
 --- !u!1 &7860004419328118326
 GameObject:
   m_ObjectHideFlags: 0
