@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public Action<GameState> OnGameStateChanged;
     public float multiplyTorque = 1f;
     public int addEndurance = 0;
+    public float multiplyHandling = 1f;
     public float finishLine;
     public bool vibration = true;
 

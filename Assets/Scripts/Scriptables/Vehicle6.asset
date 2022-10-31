@@ -18,7 +18,7 @@ MonoBehaviour:
   endurance: 30
   torqueReverse: 50
   brakeForce: 2000
-  steeringSpeed: 300
+  steeringSpeed: 128
   maxSteeringAngle: 30
   maxRpm: 5.6810346
   groundLayer:

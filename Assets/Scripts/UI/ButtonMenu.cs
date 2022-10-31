@@ -92,7 +92,18 @@ public class ButtonMenu : MonoBehaviour
         }
         else
         {
-            GameManager.instance.multiplyTorque = 1f;
+            GameManager.instance.addEndurance = 0;
+        }
+
+        if (bau.trueScriptVeh[index].originalHandling == bau.trueScriptVeh[index].upgradeHandling)
+        {
+            float highestHandling = Mathf.Lerp(40, 150, bau.trueScriptVeh[index].upgradeHandling);
+            float percentageHandling = bau.trueScriptVeh[index].originalSteeringSpeed / highestHandling;
+            GameManager.instance.multiplyHandling = percentageHandling;
+        }
+        else
+        {
+            GameManager.instance.multiplyHandling = 1f;
         }
     }
 }

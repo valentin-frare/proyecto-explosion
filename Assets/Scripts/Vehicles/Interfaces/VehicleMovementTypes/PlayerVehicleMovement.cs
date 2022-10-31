@@ -35,4 +35,28 @@ public class PlayerVehicleMovement : BaseVehicleMovement
         else
             this.torque = Mathf.Clamp(torque * (vehicleConfig.torque / GameManager.instance.multiplyTorque), (vehicleConfig.torque / GameManager.instance.multiplyTorque)/4, (vehicleConfig.torque / GameManager.instance.multiplyTorque));
     }
+
+    public override void SteerToCenter()
+    {
+        float singleStep = (vehicleConfig.steeringSpeed / GameManager.instance.multiplyHandling) * Time.deltaTime;
+
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, Vector3.back, singleStep, 0.0f);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDirection), Time.smoothDeltaTime * 4f);
+    }
+
+    public override void SetSteeringAngle(float input)
+    {
+        
+        if (isCarGrounded)
+        {
+            float singleStep = (vehicleConfig.steeringSpeed / GameManager.instance.multiplyHandling) * Time.smoothDeltaTime;
+
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, singleStep, 0.0f);
+
+            //Vector3 newDirection = Vector3.RotateTowards(transform.forward, input < 0 ? Vector3.right : Vector3.left, vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)), 0.0f);
+
+            transform.rotation = Quaternion.Slerp(startRot, Quaternion.LookRotation(newDirection), vehicleConfig.steeringCurve.Evaluate(Mathf.Abs(input)));
+        }
+    }
 }

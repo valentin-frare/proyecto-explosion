@@ -18,7 +18,7 @@ MonoBehaviour:
   endurance: 5
   torqueReverse: 50
   brakeForce: 2000
-  steeringSpeed: 300
+  steeringSpeed: 50
   maxSteeringAngle: 30
   maxRpm: 5.6810346
   groundLayer:
@@ -52,7 +52,7 @@ MonoBehaviour:
   price: 0
   originalSpeed: 0.33
   originalEndurance: 0.1
-  originalHandling: 0.1
+  originalHandling: 0.11
   upgradeSpeed: 0.4
   upgradeEndurance: 0.2
   upgradeHandling: 0.2
