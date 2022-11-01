@@ -26,6 +26,7 @@ public class PlayerPointUpdate : MonoBehaviour
     {
         maxWidth = playerPointInvisible.position.x - playerPoint.position.x;
         playerPointStart = playerPoint.position.x;
+        transform.gameObject.SetActive(false);
     }
     
     private void OnPlayerSpawn(GameObject player)
