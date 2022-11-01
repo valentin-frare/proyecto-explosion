@@ -11,6 +11,7 @@ public class OnCollision : MonoBehaviour
 {
     [SerializeField] private UnityEvent onCollision;
     [SerializeField] private CollisionType collisionType;
+    [SerializeField] private GameObject go;
 
     private void OnCollisionEnter(Collision other) 
     {
@@ -26,6 +27,7 @@ public class OnCollision : MonoBehaviour
                 {
                     case CollisionType.CivilCar:
                         EndLevelCoins.instance.AddDestructionCoins(25);
+                        go.SetActive(false);
                         break;
                     case CollisionType.Objects:
                         EndLevelCoins.instance.AddDestructionCoins(10);

@@ -5015,6 +5015,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   collisionType: 1
+  go: {fileID: 6327605440512770557}
 --- !u!114 &8085716950150860721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5156,6 +5157,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 714550232777f0144a8920eb2c5edf51, type: 3}
+--- !u!1 &6327605440512770557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 714550232777f0144a8920eb2c5edf51,
+    type: 3}
+  m_PrefabInstance: {fileID: 6562099036518284460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6673203469780228935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 714550232777f0144a8920eb2c5edf51,

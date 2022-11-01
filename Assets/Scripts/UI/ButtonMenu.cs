@@ -39,6 +39,7 @@ public class ButtonMenu : MonoBehaviour
                 RespawnManager.instance.DeleteAllPlayers();
                 RespawnManager.instance.SpawnPlayer();
                 GameManager.instance.SetGameState(GameState.Playing);
+                GameManager.instance.wonLevel = false;
                 break;
             default:
                 break;

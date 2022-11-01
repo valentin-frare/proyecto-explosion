@@ -22,7 +22,7 @@ MonoBehaviour:
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}
-  civilCars: {fileID: 5509143493056119399, guid: bac0b1b605d95844b9ed3f71c05f1ce9,
+  civilCars: {fileID: 5509143493056119399, guid: 7c481160805db9f4bbf99a4641379d82,
     type: 3}
   finishLine: 500
   lanes:

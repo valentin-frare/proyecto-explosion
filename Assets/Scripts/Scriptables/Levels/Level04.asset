@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 3
   roadChunks:
-  - {fileID: 5761019812433220405, guid: b949f8519e7a83c4f8bd2394389fa46c, type: 3}
-  - {fileID: 5761019812433220405, guid: 79151a32687011147b08e936e6aa14f8, type: 3}
-  - {fileID: 5761019812433220405, guid: 3ae0535710135c2448cf884b4e8a8654, type: 3}
-  - {fileID: 5761019812433220405, guid: 4b98a3d5b9e89c448914437dd6a0cdfb, type: 3}
-  - {fileID: 5761019812433220405, guid: ca35bf29b57d6c542bf3a2dcb11b62d4, type: 3}
-  - {fileID: 5761019812433220405, guid: 031527fccf664344eaa04e56db9ccb58, type: 3}
-  - {fileID: 5761019812433220405, guid: daa36217a64ec0148a35be1351e62101, type: 3}
+  - {fileID: 5761019812433220405, guid: 080ae4579dcf43d4abb4c78b5eacaef7, type: 3}
+  - {fileID: 5761019812433220405, guid: 333d17e7a7d034445973ee4dcc0d1008, type: 3}
+  - {fileID: 5761019812433220405, guid: dd50f543d1fc5ec4e855f44cccd486d9, type: 3}
+  - {fileID: 5761019812433220405, guid: 4ea06b5e2bccc3147ae14e307bf9673b, type: 3}
+  - {fileID: 5761019812433220405, guid: 910ceac2a4f6e7c48828500a291e8ba8, type: 3}
+  - {fileID: 5761019812433220405, guid: c7ceb4dde1be2cb4ba50de8be1e794e1, type: 3}
+  - {fileID: 5761019812433220405, guid: d741136cb4404954b8e7c76775c79aae, type: 3}
   plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}

@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public int addEndurance = 0;
     public float multiplyHandling = 1f;
     public float finishLine;
+    public bool wonLevel = false;
     public bool vibration = true;
 
     [SerializeField] private List<LevelData> levels;
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator Victory(float x, float final, float timer, float torque = 200)
     {
         yield return new WaitForSeconds(x);
+        GameManager.instance.SetGameState(GameState.Menu);
         Transform go = GameObject.FindGameObjectWithTag("GeneralMenu").transform;
         go.GetChild(0).gameObject.SetActive(true);
         go.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "GANASTE";

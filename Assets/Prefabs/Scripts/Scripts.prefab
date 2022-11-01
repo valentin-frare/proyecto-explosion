@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db73349f6a529c46b4d5517a44a690a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalCoins: 500
+  totalCoins: 0
   levelCoins: 0
   objectCoins: 0
   timerCoins: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
   obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
     type: 3}
   amountObstacles: 8
-  civilCars: {fileID: 5509143493056119399, guid: bac0b1b605d95844b9ed3f71c05f1ce9,
+  civilCars: {fileID: 5509143493056119399, guid: 7c481160805db9f4bbf99a4641379d82,
     type: 3}
   amountCivilCars: 16
 --- !u!1 &6069603103408384432
@@ -718,14 +718,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 2
-  level: 3
+  level: 0
   multiplyTorque: 1
   addEndurance: 0
   multiplyHandling: 1
   finishLine: 100
+  wonLevel: 0
   vibration: 1
   levels:
-  - {fileID: 11400000, guid: 10384b4b568bf0049b7a9597e06f8b15, type: 2}
+  - {fileID: 11400000, guid: e390c3401eccdb24abd891727f64252d, type: 2}
   - {fileID: 11400000, guid: 1ab28aa7654309348bfc1914054c7261, type: 2}
   - {fileID: 11400000, guid: afb6f4d8508ba334d95c61a23fb04828, type: 2}
   - {fileID: 11400000, guid: 10384b4b568bf0049b7a9597e06f8b15, type: 2}

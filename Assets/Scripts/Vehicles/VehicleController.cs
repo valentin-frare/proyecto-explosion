@@ -128,7 +128,7 @@ public class VehicleController : MonoBehaviour, IDamageable
     
     public void Damage(int damage = 1)
     {
-        if (GameManager.instance.gameState == GameState.MainMenu)
+        if (GameManager.instance.wonLevel)
         {
             return;
         }

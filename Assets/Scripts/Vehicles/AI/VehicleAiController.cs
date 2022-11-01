@@ -29,7 +29,7 @@ public class VehicleAiController : MonoBehaviour
         Init();
     }
 
-    private void Init()
+    public void Init()
     {
         sensors = new Sensors(gameObject, sensorsConfig);
 
