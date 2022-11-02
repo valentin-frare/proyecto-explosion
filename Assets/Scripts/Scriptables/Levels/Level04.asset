@@ -32,19 +32,19 @@ MonoBehaviour:
   - -1.5
   - 1.5
   - 5.5
-  positionCoinStart: 70
-  positionBetweenCoins: 70
-  posBetCoinsMinOffset: -10
-  posBetCoinsMaxOffset: 10
+  positionCoinStart: 60
+  positionBetweenCoins: 60
+  posBetCoinsMinOffset: -15
+  posBetCoinsMaxOffset: 15
   positionBvStart: 50
-  positionBetweenBv: 80
-  posBetBvMinOffset: -20
-  posBetBvMaxOffset: 20
+  positionBetweenBv: 70
+  posBetBvMinOffset: -35
+  posBetBvMaxOffset: 35
   positionCvlStart: 70
-  positionBetweenCvl: 85
-  probSpawnOneLeft: 60
-  probSpawnTwoLeft: 30
-  positionCvrStart: 80
-  positionBetweenCvr: 80
-  probSpawnOneRight: 60
-  probSpawnTwoRight: 30
+  positionBetweenCvl: 70
+  probSpawnOneLeft: 25
+  probSpawnTwoLeft: 75
+  positionCvrStart: 65
+  positionBetweenCvr: 65
+  probSpawnOneRight: 25
+  probSpawnTwoRight: 75
