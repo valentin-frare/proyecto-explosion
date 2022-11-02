@@ -144,6 +144,7 @@ public class VehicleController : MonoBehaviour, IDamageable
     private void OnPlayerCrash(Transform crashDetector)
     {
         Instantiate(fireParticles, crashDetector.position, Quaternion.identity);
+        SoundManager.instance?.StartSound("explosion_car");
         stopHandleInputs = true;
         vehicleMovement.Brake();
         sphere.constraints = RigidbodyConstraints.FreezeAll;

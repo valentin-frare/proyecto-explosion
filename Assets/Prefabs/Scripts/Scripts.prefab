@@ -397,6 +397,12 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 749ec0a5fd08b6d468e416d090154412, type: 3}
   - title: coin_pickup_01
     sound: {fileID: 8300000, guid: 348811c7d6940ff479ab4adc3d5f6742, type: 3}
+  - title: impact_objects
+    sound: {fileID: 8300000, guid: 5f83b9836289cb64cad6a1ca647c2179, type: 3}
+  - title: explosion_civil
+    sound: {fileID: 8300000, guid: a3233f424e8cac04eb0173c1b66d8e7d, type: 3}
+  - title: explosion_car
+    sound: {fileID: 8300000, guid: df1b22bf6045bbb4282c3a6bd0b70ce6, type: 3}
   mixer: {fileID: 24300002, guid: 9b9cd2e453b15474ebd931c9d54d6879, type: 2}
 --- !u!1 &3915610730548294064
 GameObject:

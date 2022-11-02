@@ -35,9 +35,11 @@ public class OnCollision : MonoBehaviour
                         {
                             Instantiate(go.GetComponent<AnotherExplosion>().fireParticles, go.transform.position, Quaternion.identity);
                         }
+                        SoundManager.instance?.StartSound("explosion_civil");
                         go.SetActive(false);
                         break;
                     case CollisionType.Objects:
+                        SoundManager.instance?.StartSound("impact_objects");
                         EndLevelCoins.instance.AddDestructionCoins(10);
                         break;
                     default:
