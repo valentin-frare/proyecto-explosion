@@ -15,6 +15,10 @@ public class ConfigMenu : MonoBehaviour
     private GameObject music;
     [SerializeField]
     private GameObject vibrate;
+    [SerializeField]
+    private Sprite[] backgrounds;
+    [SerializeField]
+    private GameObject configGeneral;
 
     public Image actualImageConfig;
     private bool configActive;
@@ -46,11 +50,23 @@ public class ConfigMenu : MonoBehaviour
                 if (configActive)
                 {
                     actualImageConfig.sprite = spritesConfigMenu[1];
+                    configGeneral.GetComponent<Image>().sprite = backgrounds[0];
+                    configGeneral.transform.localPosition = new Vector3(0, -9, 0);
+                    configGeneral.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 150);
+                    transform.localPosition = new Vector3(0, 0, 0);
+                    music.transform.localPosition = new Vector3(0, -116, 0);
+                    vibrate.transform.localPosition = new Vector3(0, -232, 0);
                     configActive = false;
                 }
                 else
                 {
                     actualImageConfig.sprite = spritesConfigMenu[0];
+                    configGeneral.GetComponent<Image>().sprite = backgrounds[1];
+                    configGeneral.transform.localPosition = new Vector3(0, -125, 0);
+                    configGeneral.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 390);
+                    transform.localPosition = new Vector3(0, 116, 0);
+                    music.transform.localPosition = new Vector3(0, 0, 0);
+                    vibrate.transform.localPosition = new Vector3(0, -116, 0);
                     configActive = true;
                 }
                 ShowOrNot();
