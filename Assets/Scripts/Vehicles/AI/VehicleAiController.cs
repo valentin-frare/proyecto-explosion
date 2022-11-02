@@ -16,6 +16,7 @@ public class VehicleAiController : MonoBehaviour
     [SerializeField] private VehicleConfig vehicleConfig; 
     [SerializeField] private VehicleWheels vehicleWheels; 
     [SerializeField] private SensorsConfig sensorsConfig;
+    [SerializeField] private GameObject fireParticles;
 
     private void Awake() 
     {
@@ -87,5 +88,10 @@ public class VehicleAiController : MonoBehaviour
     {
         Debug.Log(state);
         stateMachine.SetCurrentState( stateMachine.States.FindIndex( st => st.ToString() == state ) );
+    }
+
+    public void Explode (Transform crashDetector)
+    {
+        Instantiate(fireParticles, crashDetector.position, Quaternion.identity);
     }
 }

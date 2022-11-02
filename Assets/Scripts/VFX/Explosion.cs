@@ -20,6 +20,7 @@ public class Explosion : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem particles;
+    [SerializeField] private bool explosionPlayer;
 
     private void Start() 
     {
@@ -40,7 +41,10 @@ public class Explosion : MonoBehaviour
         }
         LeanTween.alpha(smokeRing, 1, 0);
 
-        BloomController.instance?.ExplosionBloom();
+        if (explosionPlayer)
+        {
+            BloomController.instance?.ExplosionBloom();
+        }
         LeanTween.scale(fireball, new Vector3(fireballScaleTarget, fireballScaleTarget, fireballScaleTarget), fireballScaleTime).setEase(fireballEase).setOnComplete(() => {
             for (var i = 0; i < fireball.transform.childCount; i++)
             {

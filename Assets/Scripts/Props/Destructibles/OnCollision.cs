@@ -27,6 +27,14 @@ public class OnCollision : MonoBehaviour
                 {
                     case CollisionType.CivilCar:
                         EndLevelCoins.instance.AddDestructionCoins(25);
+                        if (go.GetComponent<VehicleAiController>() != null)
+                        {
+                            go.GetComponent<VehicleAiController>().Explode(go.transform);
+                        }
+                        else
+                        {
+                            Instantiate(go.GetComponent<AnotherExplosion>().fireParticles, go.transform.position, Quaternion.identity);
+                        }
                         go.SetActive(false);
                         break;
                     case CollisionType.Objects:

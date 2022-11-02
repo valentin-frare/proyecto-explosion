@@ -16,6 +16,8 @@ public class ButtonMenu : MonoBehaviour
     private BuyAndUpgrade bau;
     [SerializeField]
     private GameObject allMoney;
+    [SerializeField]
+    private Sprite[] spritesButtons;
     
     public void SpawnAgain()
     {
@@ -50,13 +52,26 @@ public class ButtonMenu : MonoBehaviour
     {
         int index = RespawnManager.instance.GetPlayer().GetComponent<VehicleController>().vehicleConfig.id;
 
-        grid.transform.GetChild(index).GetComponent<Toggle>().isOn = true;
-        switchOff.allowSwitchOff = false;
-
         allMoney.GetComponent<TextMeshProUGUI>().text = "$ " + EndLevelCoins.instance.totalCoins;
         for (int i = 0; i < bau.trueScriptVeh.Count; i++)
         {
             grid.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = bau.trueScriptVeh[i].price.ToString();
+
+            if (i == index)
+            {
+                grid.transform.GetChild(i).GetComponent<Toggle>().isOn = true;
+                grid.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = spritesButtons[1];
+                switchOff.allowSwitchOff = false;
+            }
+
+            if (bau.trueScriptVeh[i].price == 0)
+            {
+                grid.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Image>().sprite = spritesButtons[0];
+            }
+            else
+            {
+                grid.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = spritesButtons[2];
+            }
         }
     }
 
@@ -77,7 +92,7 @@ public class ButtonMenu : MonoBehaviour
         
         if (bau.trueScriptVeh[index].originalSpeed == bau.trueScriptVeh[index].upgradeSpeed)
         {
-            float highestTorque = Mathf.Lerp(0, 2000, bau.trueScriptVeh[index].upgradeSpeed);
+            float highestTorque = Mathf.Lerp(0, 600, bau.trueScriptVeh[index].upgradeSpeed);
             float percentageTorque = bau.trueScriptVeh[index].originalTorque / highestTorque;
             GameManager.instance.multiplyTorque = percentageTorque;
         }

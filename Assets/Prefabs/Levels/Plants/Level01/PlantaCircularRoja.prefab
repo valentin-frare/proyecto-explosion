@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179b95e98f349f042bccec57656642ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 100
+  points: 10
 --- !u!33 &1232917648328724399
 MeshFilter:
   m_ObjectHideFlags: 0

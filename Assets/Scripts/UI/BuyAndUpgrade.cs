@@ -24,6 +24,7 @@ public class BuyAndUpgrade : MonoBehaviour
     private Button exitButton;
     public List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
     public List<VehicleNonScriptable> trueScriptVeh = new List<VehicleNonScriptable>();
+    public Sprite[] spritesButtons;
     private VehicleNonScriptable selectedVehicle;
     private GameObject vehicleToBuy;
     private int vehiclePrice;
@@ -62,6 +63,8 @@ public class BuyAndUpgrade : MonoBehaviour
             if (int.Parse(go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text) == 0)
             {
                 exitButton.interactable = true;
+                go.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = spritesButtons[0];
+                go.transform.GetChild(0).GetComponent<Image>().sprite = spritesButtons[1];
                 foreach (Transform obj in up)
                 {
                     if (int.Parse(obj.GetChild(1).GetComponent<TextMeshProUGUI>().text) > 0)
@@ -76,6 +79,8 @@ public class BuyAndUpgrade : MonoBehaviour
             }
             else
             {
+                go.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = spritesButtons[2];
+                go.transform.GetChild(0).GetComponent<Image>().sprite = spritesButtons[3];
                 exitButton.interactable = false;
                 foreach (Transform obj in up)
                 {
@@ -154,6 +159,8 @@ public class BuyAndUpgrade : MonoBehaviour
             {
                 EndLevelCoins.instance.totalCoins -= vehiclePrice;
                 vehicleToBuy.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = 0.ToString();
+                vehicleToBuy.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = spritesButtons[0];
+                vehicleToBuy.transform.GetChild(0).GetComponent<Image>().sprite = spritesButtons[1];
                 textSt.GetComponent<TextMeshProUGUI>().text = EndLevelCoins.instance.totalCoins.ToString();
                 trueScriptVeh[index].price = 0;
                 vehiclePrice = 0;
