@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b417602d39c3846bb31dcd2ea3e47f, type: 3}
+  m_Name: Level05
+  m_EditorClassIdentifier: 
+  level: 4
+  roadChunks:
+  - {fileID: 2529273007883808284, guid: 072d9f21df928ee4d8b415ae5243fcc0, type: 3}
+  - {fileID: 2529273007883808284, guid: 018c458a3b38ca848a3f3e5a0627a04b, type: 3}
+  - {fileID: 2529273007883808284, guid: f3e82808025b7974c8d286b50b689abe, type: 3}
+  - {fileID: 2529273007883808284, guid: 0806fb917d06c6749b0ff5afa46e250e, type: 3}
+  - {fileID: 2529273007883808284, guid: 7ceaacf38fb53db4e8e41673daada213, type: 3}
+  plants: {fileID: 5192225616128303055, guid: ad79e2c377e309143957a0505e6959d6, type: 3}
+  obstacles: {fileID: 3827005686703500155, guid: 55d1f1423553eb74d8df056d30a044a8,
+    type: 3}
+  civilCars: {fileID: 5509143493056119399, guid: bac0b1b605d95844b9ed3f71c05f1ce9,
+    type: 3}
+  finishLine: 1250
+  lanes:
+  - -7.02
+  - -3.19
+  - 3.19
+  - 7.02
+  positionCoinStart: 60
+  positionBetweenCoins: 60
+  posBetCoinsMinOffset: -15
+  posBetCoinsMaxOffset: 15
+  positionBvStart: 40
+  positionBetweenBv: 70
+  posBetBvMinOffset: -30
+  posBetBvMaxOffset: 30
+  positionCvlStart: 75
+  positionBetweenCvl: 65
+  probSpawnOneLeft: 0
+  probSpawnTwoLeft: 100
+  positionCvrStart: 60
+  positionBetweenCvr: 70
+  probSpawnOneRight: 0
+  probSpawnTwoRight: 100

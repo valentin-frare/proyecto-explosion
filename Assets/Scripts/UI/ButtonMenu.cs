@@ -18,6 +18,7 @@ public class ButtonMenu : MonoBehaviour
     private GameObject allMoney;
     [SerializeField]
     private Sprite[] spritesButtons;
+    public Image selectedCar;
     
     public void SpawnAgain()
     {
@@ -61,6 +62,7 @@ public class ButtonMenu : MonoBehaviour
             {
                 grid.transform.GetChild(i).GetComponent<Toggle>().isOn = true;
                 grid.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = spritesButtons[1];
+                selectedCar.sprite = bau.spritesCars[i];
                 switchOff.allowSwitchOff = false;
             }
 

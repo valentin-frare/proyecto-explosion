@@ -117,9 +117,9 @@ public class GameManager : MonoBehaviour
     {
         int x = (int)GameManager.instance.level;
         x++;
-        if (x > 3)
+        if (x > 4)
         {
-            x = 3;
+            x = UnityEngine.Random.Range(1,5);
         }
         return (Level)x;
     }

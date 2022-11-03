@@ -25,6 +25,8 @@ public class BuyAndUpgrade : MonoBehaviour
     public List<VehicleConfig> scriptVeh = new List<VehicleConfig>();
     public List<VehicleNonScriptable> trueScriptVeh = new List<VehicleNonScriptable>();
     public Sprite[] spritesButtons;
+    public Sprite[] spritesCars;
+    public Image selectedCar;
     private VehicleNonScriptable selectedVehicle;
     private GameObject vehicleToBuy;
     private int vehiclePrice;
@@ -47,6 +49,8 @@ public class BuyAndUpgrade : MonoBehaviour
             vehicleToBuy = go;
             vehiclePrice = int.Parse(go.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text);
             Transform up = upgrades.transform;
+            selectedCar.sprite = spritesCars[go.transform.GetSiblingIndex()];
+
             foreach (Transform obj in up)
             {
                 obj.gameObject.GetComponent<Toggle>().isOn = false;
